@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import '@trussworks/react-uswds/lib/uswds.css'
 import '@trussworks/react-uswds/lib/index.css'
+import { GovBanner } from "@trussworks/react-uswds";
+import FakeHeader from "./_components/FakeHeader";
+import FakeFooter from "./_components/FakeFooter";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,10 +29,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <a className="usa-skipnav" href="#main-content">
+          Skip to main content
+        </a>
+        <GovBanner />
+        <FakeHeader />
         {children}
+        <FakeFooter />
       </body>
     </html>
   );
