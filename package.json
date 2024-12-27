@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pages": "npm run pages:build && npm run pages:copy",
+    "pages:build": "next build",
+    "pages:copy": "mkdir -p _site && rm -rf _site/* && cp -r out/* _site/"
   },
   "dependencies": {
     "@trussworks/react-uswds": "^9.1.0",
