@@ -1,9 +1,12 @@
+import NextLink from 'next/link';
 import { Radio, Fieldset, Link } from "@trussworks/react-uswds";
 
 export default function Home() {
   return (
     <>
-        <Link href="/FlowA" variant="nav" className='margin-bottom-2'>&lt; Back</Link>
+        <div  className='margin-bottom-2'>
+            <NextLink href="/FlowA" passHref legacyBehavior><Link variant="nav">&lt; Back</Link></NextLink>
+        </div>
         <p>What was the product?<abbr title="required" className="usa-hint usa-hint--required text-no-underline">*</abbr></p>
         <Fieldset legend="What was the product?" legendStyle="srOnly" className="margin-bottom-3">
             <Radio id="cosmeticProductType" name="ProductType" label="Cosmetic" />
@@ -17,7 +20,7 @@ export default function Home() {
             <Radio id="otherProductType" name="ProductType" label="Other / Don't know" />
         </Fieldset>
         <div style={{width: '100%', textAlign: 'center'}}>
-            <Link href="/FlowA/ProductType" className="usa-button" variant="unstyled" allowSpacebarActivation>Save and continue</Link>
+            <NextLink href="/FlowA/ProductType" passHref legacyBehavior><Link className="usa-button padding-left-2 padding-right-2" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
         </div>
     </>
   );
