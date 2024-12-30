@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <form className="usa-form usa-form--large padding-9" style={{paddingTop: '0'}}>
+    <>
       <h1>Report a problem</h1>
       <p>We review every submission. We use this information to monitor the safety of FDA-regulated products. </p>
       <p>We will ask you for the product information, what happened, and any photos of the product.  </p>
@@ -11,6 +11,6 @@ export default function Home() {
       <div style={{width: '100%', textAlign: 'center'}}>
         <Link href="/FlowA"><button className="usa-button" type="button" style={{width: '100%', textAlign: 'center'}}>Get Started</button></Link>
       </div>
-    </form>
+    </>
   );
 }

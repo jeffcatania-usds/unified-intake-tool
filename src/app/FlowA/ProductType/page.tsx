@@ -1,12 +1,11 @@
-import Link from 'next/link';
-import { Radio, Fieldset } from "@trussworks/react-uswds";
+import { Radio, Fieldset, Link } from "@trussworks/react-uswds";
 
 export default function Home() {
   return (
     <>
-        <Link href="/FlowA">&lt; Back</Link>
-        <p>What was the product?<abbr title="required" className="usa-hint usa-hint--required">*</abbr></p>
-        <Fieldset legend="What was the product?" legendStyle="srOnly">
+        <Link href="/FlowA" variant="nav" className='margin-bottom-2'>&lt; Back</Link>
+        <p>What was the product?<abbr title="required" className="usa-hint usa-hint--required text-no-underline">*</abbr></p>
+        <Fieldset legend="What was the product?" legendStyle="srOnly" className="margin-bottom-3">
             <Radio id="cosmeticProductType" name="ProductType" label="Cosmetic" />
             <Radio id="drugProductType" name="ProductType" label="Drug" />
             <Radio id="supplementProductType" name="ProductType" label="Dietary Supplement" />
@@ -18,7 +17,7 @@ export default function Home() {
             <Radio id="otherProductType" name="ProductType" label="Other / Don't know" />
         </Fieldset>
         <div style={{width: '100%', textAlign: 'center'}}>
-            <Link href="/FlowA/ProductType"><button className="usa-button" type="button" style={{width: '100%', textAlign: 'center'}}>Save and continue</button></Link>
+            <Link href="/FlowA/ProductType" className="usa-button" variant="unstyled" allowSpacebarActivation>Save and continue</Link>
         </div>
     </>
   );

@@ -1,20 +1,19 @@
-import { ProcessList, ProcessListItem, ProcessListHeading } from "@trussworks/react-uswds";
 
 const OverviewProcessList = () => (
-  <ProcessList>
-    <ProcessListItem>
-      <ProcessListHeading type="h4">The product</ProcessListHeading>
-    </ProcessListItem>
-    <ProcessListItem>
-      <ProcessListHeading type="h4">What happened</ProcessListHeading>
-    </ProcessListItem>
-    <ProcessListItem>
-      <ProcessListHeading type="h4">Who was harmed <span className="text-base">(optional)</span></ProcessListHeading>
-    </ProcessListItem>
-    <ProcessListItem>
-      <ProcessListHeading type="h4">How to reach you <span className="text-base">(optional)</span></ProcessListHeading>
-    </ProcessListItem>
-  </ProcessList>
+  <ul className="usa-process-list">
+    <li>
+      <h2 class="usa-process-list__heading">The product</h2>
+    </li>
+    <li>
+      <h2 class="usa-process-list__heading">What happened</h2>
+    </li>
+    <li>
+      <h2 class="usa-process-list__heading">Who was harmed <span className="text-normal">(optional)</span></h2>
+    </li>
+    <li>
+      <h2 class="usa-process-list__heading">How to reach you <span className="text-normal">(optional)</span></h2>
+    </li>
+  </ul>
 );
 
 export default OverviewProcessList;

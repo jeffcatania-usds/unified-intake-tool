@@ -40,7 +40,9 @@ export default function RootLayout({
         </a>
         <GovBanner />
         <FakeHeader />
-        {children}
+        <form className="usa-form usa-form--large padding-9" style={{paddingTop: '0'}}>
+          {children}
+        </form>
         <FakeFooter />
       </body>
     </html>
