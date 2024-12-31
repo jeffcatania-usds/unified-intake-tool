@@ -8,6 +8,7 @@ export const BARCODE = 'barcode';
 export const NDC_NUMBER = 'ndcNumber';
 export const PRODUCT_PHOTOS = 'productPhotos';
 export const PRODUCT_NAME = 'productName';
+export const WHAT_HAPPENED = 'whatHappened';
 
 interface FormData {
   [key: string]: string | Array<string>;
@@ -30,7 +31,8 @@ export default function FormDataProvider({
       SUBMISSION_TYPE: [],
       BARCODE: '',
       NDC_NUMBER: '',
-      PRODUCT_NAME: ''
+      PRODUCT_NAME: '',
+      WHAT_HAPPENED: ''
     });
     
     const updateFormData = (name : string, value : string | Array<string>) => {
