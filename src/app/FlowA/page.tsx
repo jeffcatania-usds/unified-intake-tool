@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <>
-      <h1 className="font-ui-xl text-bold">Report a problem</h1>
+      <h1 className="font-ui-xl">Report a problem</h1>
       <p>Please tell us about</p>
       <OverviewProcessList />
       <div style={{width: '100%', textAlign: 'center'}}>
