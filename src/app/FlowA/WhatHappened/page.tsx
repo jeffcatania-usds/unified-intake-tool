@@ -2,13 +2,13 @@
 
 import NextLink from 'next/link';
 import { FormGroup, Link, Label, CharacterCount } from "@trussworks/react-uswds";
-import { WHAT_HAPPENED, useFormDataContext } from '@/_components/FormDataProvider';
+import { WHAT_HAPPENED, useUserDataContext } from '@/_contexts/UserDataProvider';
 
 export default function WhatHappened() {
-  const { formData, updateFormData } = useFormDataContext();
+  const { userData, updateUserData } = useUserDataContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    updateFormData(WHAT_HAPPENED, event.target.value);
+    updateUserData(WHAT_HAPPENED, event.target.value);
   }
   return (
     <>
@@ -29,7 +29,7 @@ export default function WhatHappened() {
               name="whatHappened" 
               isTextArea={true}
               aria-describedby="whatHappened-info whatHappenedHint"
-              value={formData[WHAT_HAPPENED]}
+              value={userData[WHAT_HAPPENED]}
               onChange={handleChange} 
               maxLength={4000}
             />

@@ -2,23 +2,23 @@
 
 import NextLink from 'next/link';
 import { Checkbox, Fieldset, Link } from "@trussworks/react-uswds";
-import { SUBMISSION_TYPE, useFormDataContext } from '@/_components/FormDataProvider';
+import { SUBMISSION_TYPE, useUserDataContext } from '@/_contexts/UserDataProvider';
 
 export default function SubmissionType() {
-  const { formData, updateFormData } = useFormDataContext();
+  const { userData, updateUserData } = useUserDataContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (typeof formData[SUBMISSION_TYPE] === "object") {
-      const previous = formData[SUBMISSION_TYPE];
+    if (typeof userData[SUBMISSION_TYPE] === "object") {
+      const previous = userData[SUBMISSION_TYPE];
       const indexOfValue = previous.indexOf(event.target.value);
       if (indexOfValue >= 0) {
         previous.splice(indexOfValue, 1);
-        updateFormData(SUBMISSION_TYPE, previous);
+        updateUserData(SUBMISSION_TYPE, previous);
       } else {
-        updateFormData(SUBMISSION_TYPE, [...previous, event.target.value]);
+        updateUserData(SUBMISSION_TYPE, [...previous, event.target.value]);
       }
     } else {
-      updateFormData(SUBMISSION_TYPE, [event.target.value]);
+      updateUserData(SUBMISSION_TYPE, [event.target.value]);
     }
   }
   return (
@@ -36,7 +36,7 @@ export default function SubmissionType() {
               value="someoneWasHarmedSubmissionType" 
               name="SubmissionType" 
               label="Someone was harmed" 
-              checked={formData[SUBMISSION_TYPE]?.includes('someoneWasHarmedSubmissionType')}
+              checked={userData[SUBMISSION_TYPE]?.includes('someoneWasHarmedSubmissionType')}
               onChange={handleChange} 
               tile
             />
@@ -45,7 +45,7 @@ export default function SubmissionType() {
               value="someoneUsedAProductIncorrectlySubmissionType" 
               name="SubmissionType" 
               label="Someone used a product incorrectly" 
-              checked={formData[SUBMISSION_TYPE]?.includes('someoneUsedAProductIncorrectlySubmissionType')}
+              checked={userData[SUBMISSION_TYPE]?.includes('someoneUsedAProductIncorrectlySubmissionType')}
               onChange={handleChange} 
               tile
             />
@@ -54,7 +54,7 @@ export default function SubmissionType() {
               value="somethingWasWrongWithAProductSubmissionType" 
               name="SubmissionType" 
               label="Something was wrong with a product" 
-              checked={formData[SUBMISSION_TYPE]?.includes('somethingWasWrongWithAProductSubmissionType')}
+              checked={userData[SUBMISSION_TYPE]?.includes('somethingWasWrongWithAProductSubmissionType')}
               onChange={handleChange} 
               tile
             />
@@ -63,7 +63,7 @@ export default function SubmissionType() {
               value="illegalActivityOrFraudSubmissionType" 
               name="SubmissionType" 
               label="Illegal activity or fraud" 
-              checked={formData[SUBMISSION_TYPE]?.includes('illegalActivityOrFraudSubmissionType')}
+              checked={userData[SUBMISSION_TYPE]?.includes('illegalActivityOrFraudSubmissionType')}
               onChange={handleChange} 
               tile
             />

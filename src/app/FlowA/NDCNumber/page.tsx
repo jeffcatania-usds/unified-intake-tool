@@ -2,13 +2,13 @@
 
 import NextLink from 'next/link';
 import { TextInput, Fieldset, Link } from "@trussworks/react-uswds";
-import { NDC_NUMBER, useFormDataContext } from '@/_components/FormDataProvider';
+import { NDC_NUMBER, useUserDataContext } from '@/_contexts/UserDataProvider';
 
 export default function NDCNumber() {
-  const { formData, updateFormData } = useFormDataContext();
+  const { userData, updateUserData } = useUserDataContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    updateFormData(NDC_NUMBER, event.target.value);
+    updateUserData(NDC_NUMBER, event.target.value);
   }
   return (
     <>
@@ -24,7 +24,7 @@ export default function NDCNumber() {
               id="ndcNumber" 
               name="ndcNumber" 
               type="number"
-              value={formData[NDC_NUMBER]}
+              value={userData[NDC_NUMBER]}
               onChange={handleChange} 
             />
         </Fieldset>

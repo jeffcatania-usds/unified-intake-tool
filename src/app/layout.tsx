@@ -6,7 +6,7 @@ import '@trussworks/react-uswds/lib/index.css'
 import { GovBanner } from "@trussworks/react-uswds";
 import FakeHeader from "@/components/FakeHeader";
 import FakeFooter from "@/components/FakeFooter";
-import FormDataProvider from "@/components/FormDataProvider"
+import UserDataProvider from "@/_contexts/UserDataProvider"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,9 +42,9 @@ export default function RootLayout({
         <GovBanner />
         <FakeHeader />
         <form className="usa-form usa-form--large padding-9" style={{paddingTop: '0'}}>
-            <FormDataProvider>
+            <UserDataProvider>
               {children}
-            </FormDataProvider>
+            </UserDataProvider>
         </form>
         <FakeFooter />
       </body>

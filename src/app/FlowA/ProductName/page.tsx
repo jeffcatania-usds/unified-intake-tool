@@ -2,13 +2,13 @@
 
 import NextLink from 'next/link';
 import { TextInput, Fieldset, Link } from "@trussworks/react-uswds";
-import { PRODUCT_NAME, useFormDataContext } from '@/_components/FormDataProvider';
+import { PRODUCT_NAME, useUserDataContext } from '@/_contexts/UserDataProvider';
 
 export default function ProductName() {
-  const { formData, updateFormData } = useFormDataContext();
+  const { userData, updateUserData } = useUserDataContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    updateFormData(PRODUCT_NAME, event.target.value);
+    updateUserData(PRODUCT_NAME, event.target.value);
   }
   return (
     <>
@@ -23,7 +23,7 @@ export default function ProductName() {
               id="productName" 
               name="productName" 
               type="text"
-              value={formData[PRODUCT_NAME]}
+              value={userData[PRODUCT_NAME]}
               onChange={handleChange} 
             />
         </Fieldset>

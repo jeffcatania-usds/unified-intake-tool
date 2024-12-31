@@ -2,18 +2,19 @@
 
 import NextLink from 'next/link';
 import { Radio, Fieldset, Link } from "@trussworks/react-uswds";
-import { PRODUCT_TYPE, useFormDataContext } from '@/_components/FormDataProvider';
+import { PRODUCT_TYPE, useUserDataContext } from '@/_contexts/UserDataProvider';
+import { previousScreen, nextScreen } from '@/_utils/Navigation';
 
 export default function ProductType() {
-  const { formData, updateFormData } = useFormDataContext();
+  const { userData, updateUserData } = useUserDataContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    updateFormData(PRODUCT_TYPE, event.target.value);
+    updateUserData(PRODUCT_TYPE, event.target.value);
   }
   return (
     <>
         <div  className='margin-bottom-2 margin-top-2'>
-            <NextLink href="/FlowA" passHref legacyBehavior><Link variant="nav">&lt; Back</Link></NextLink>
+            <NextLink href={previousScreen("ProductType", userData)} passHref legacyBehavior><Link variant="nav">&lt; Back</Link></NextLink>
         </div>
         <p>What was the product?<abbr title="required" className="usa-hint usa-hint--required text-no-underline">*</abbr></p>
         <Fieldset legend="What was the product?" legendStyle="srOnly" className="margin-bottom-3">
@@ -22,7 +23,7 @@ export default function ProductType() {
               value="cosmeticProductType" 
               name="ProductType" 
               label="Cosmetic" 
-              checked={formData[PRODUCT_TYPE] === 'cosmeticProductType'}
+              checked={userData[PRODUCT_TYPE] === 'cosmeticProductType'}
               onChange={handleChange} 
             />
             <Radio 
@@ -30,7 +31,7 @@ export default function ProductType() {
               value="drugProductType" 
               name="ProductType" 
               label="Drug" 
-              checked={formData[PRODUCT_TYPE] === 'drugProductType'}
+              checked={userData[PRODUCT_TYPE] === 'drugProductType'}
               onChange={handleChange} 
             />
             <Radio 
@@ -38,7 +39,7 @@ export default function ProductType() {
               value="supplementProductType" 
               name="ProductType" 
               label="Dietary Supplement" 
-              checked={formData[PRODUCT_TYPE] === 'supplementProductType'}
+              checked={userData[PRODUCT_TYPE] === 'supplementProductType'}
               onChange={handleChange} 
             />
             <Radio 
@@ -46,7 +47,7 @@ export default function ProductType() {
               value="foodProductType" 
               name="ProductType" 
               label="Food" 
-              checked={formData[PRODUCT_TYPE] === 'foodProductType'}
+              checked={userData[PRODUCT_TYPE] === 'foodProductType'}
               onChange={handleChange} 
             />
             <Radio 
@@ -54,7 +55,7 @@ export default function ProductType() {
               value="deviceProductType" 
               name="ProductType" 
               label="Medical Device" 
-              checked={formData[PRODUCT_TYPE] === 'deviceProductType'}
+              checked={userData[PRODUCT_TYPE] === 'deviceProductType'}
               onChange={handleChange} 
             />
             <Radio 
@@ -62,7 +63,7 @@ export default function ProductType() {
               value="tobaccoProductType" 
               name="ProductType" 
               label="Tobacco" 
-              checked={formData[PRODUCT_TYPE] === 'tobaccoProductType'}
+              checked={userData[PRODUCT_TYPE] === 'tobaccoProductType'}
               onChange={handleChange} 
             />
             <Radio 
@@ -70,7 +71,7 @@ export default function ProductType() {
               value="vaccineProductType" 
               name="ProductType" 
               label="Vaccine" 
-              checked={formData[PRODUCT_TYPE] === 'vaccineProductType'}
+              checked={userData[PRODUCT_TYPE] === 'vaccineProductType'}
               onChange={handleChange} 
             />
             <Radio 
@@ -78,7 +79,7 @@ export default function ProductType() {
               value="veterinaryProductType" 
               name="ProductType" 
               label="Veterinary (animal food, drug, or device)" 
-              checked={formData[PRODUCT_TYPE] === 'veterinaryProductType'}
+              checked={userData[PRODUCT_TYPE] === 'veterinaryProductType'}
               onChange={handleChange} 
             />
             <Radio 
@@ -86,12 +87,12 @@ export default function ProductType() {
               value="otherProductType"
               name="ProductType" 
               label="Other / Don't know" 
-              checked={formData[PRODUCT_TYPE] === 'otherProductType'}
+              checked={userData[PRODUCT_TYPE] === 'otherProductType'}
               onChange={handleChange} 
             />
         </Fieldset>
         <div style={{width: '100%', textAlign: 'center'}}>
-            <NextLink href="/FlowA/SubmissionType" passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
+            <NextLink href={nextScreen("ProductType", userData)} passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
         </div>
     </>
   );
