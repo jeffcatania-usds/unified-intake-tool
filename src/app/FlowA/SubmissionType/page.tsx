@@ -16,6 +16,8 @@ export default function SubmissionType() {
       } else {
         updateFormData(SUBMISSION_TYPE, [...previous, event.target.value]);
       }
+    } else {
+      updateFormData(SUBMISSION_TYPE, [event.target.value]);
     }
   }
   return (
@@ -33,7 +35,7 @@ export default function SubmissionType() {
               value="someoneWasHarmedSubmissionType" 
               name="SubmissionType" 
               label="Someone was harmed" 
-              checked={formData[SUBMISSION_TYPE].includes('someoneWasHarmedSubmissionType')}
+              checked={formData[SUBMISSION_TYPE]?.includes('someoneWasHarmedSubmissionType')}
               onChange={handleChange} 
               tile
             />
@@ -42,7 +44,7 @@ export default function SubmissionType() {
               value="someoneUsedAProductIncorrectlySubmissionType" 
               name="SubmissionType" 
               label="Someone used a product incorrectly" 
-              checked={formData[SUBMISSION_TYPE].includes('someoneUsedAProductIncorrectlySubmissionType')}
+              checked={formData[SUBMISSION_TYPE]?.includes('someoneUsedAProductIncorrectlySubmissionType')}
               onChange={handleChange} 
               tile
             />
@@ -51,7 +53,7 @@ export default function SubmissionType() {
               value="somethingWasWrongWithAProductSubmissionType" 
               name="SubmissionType" 
               label="Something was wrong with a product" 
-              checked={formData[SUBMISSION_TYPE].includes('somethingWasWrongWithAProductSubmissionType')}
+              checked={formData[SUBMISSION_TYPE]?.includes('somethingWasWrongWithAProductSubmissionType')}
               onChange={handleChange} 
               tile
             />
@@ -60,7 +62,7 @@ export default function SubmissionType() {
               value="illegalActivityOrFraudSubmissionType" 
               name="SubmissionType" 
               label="Illegal activity or fraud" 
-              checked={formData[SUBMISSION_TYPE].includes('illegalActivityOrFraudSubmissionType')}
+              checked={formData[SUBMISSION_TYPE]?.includes('illegalActivityOrFraudSubmissionType')}
               onChange={handleChange} 
               tile
             />
