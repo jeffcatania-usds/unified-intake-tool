@@ -4,6 +4,7 @@ import React, { createContext, useState, useContext } from 'react'
 
 export const PRODUCT_TYPE = 'productType';
 export const SUBMISSION_TYPE = 'submissionType';
+export const BARCODE = 'barcode';
 
 interface FormData {
   [key: string]: string | Array<string>;
@@ -23,7 +24,8 @@ export default function FormDataProvider({
 }) {
     const [formData, setFormData] = useState<FormData>({
       PRODUCT_TYPE: '',
-      SUBMISSION_TYPE: []
+      SUBMISSION_TYPE: [],
+      BARCODE: ''
     });
     
     const updateFormData = (name : string, value : string | Array<string>) => {

@@ -12,7 +12,7 @@ export default function ProductType() {
   }
   return (
     <>
-        <div  className='margin-bottom-2'>
+        <div  className='margin-bottom-2 margin-top-2'>
             <NextLink href="/FlowA" passHref legacyBehavior><Link variant="nav">&lt; Back</Link></NextLink>
         </div>
         <p>What was the product?<abbr title="required" className="usa-hint usa-hint--required text-no-underline">*</abbr></p>

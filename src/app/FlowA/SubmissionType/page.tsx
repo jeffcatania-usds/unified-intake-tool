@@ -23,12 +23,12 @@ export default function SubmissionType() {
   }
   return (
     <>
-        <div  className='margin-bottom-2'>
+        <div  className='margin-bottom-2 margin-top-2'>
             <NextLink href="/FlowA/ProductType" passHref legacyBehavior><Link variant="nav">&lt; Back</Link></NextLink>
         </div>
         <p>
           Tell us what happened<abbr title="required" className="usa-hint usa-hint--required text-no-underline">*</abbr><br />
-          <span className="text-base">Select all that apply</span>
+          <span className="usa-hint">Select all that apply</span>
         </p>
         <Fieldset legend="Tell us what happened" legendStyle="srOnly" className="margin-bottom-3">
             <Checkbox 
@@ -69,7 +69,7 @@ export default function SubmissionType() {
             />
         </Fieldset>
         <div style={{width: '100%', textAlign: 'center'}}>
-            <NextLink href="/FlowA/ProductType" passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
+            <NextLink href="/FlowA/ScanBarcode" passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
         </div>
     </>
   );
