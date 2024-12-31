@@ -22,6 +22,7 @@ export default function Home() {
         <Fieldset legend="What was the product?" legendStyle="srOnly" className="margin-bottom-3">
             <Radio 
               id="cosmeticProductType" 
+              value="cosmeticProductType" 
               name="ProductType" 
               label="Cosmetic" 
               checked={formData[PRODUCT_TYPE] === 'cosmeticProductType'}
@@ -29,6 +30,7 @@ export default function Home() {
             />
             <Radio 
               id="drugProductType" 
+              value="drugProductType" 
               name="ProductType" 
               label="Drug" 
               checked={formData[PRODUCT_TYPE] === 'drugProductType'}
@@ -36,6 +38,7 @@ export default function Home() {
             />
             <Radio 
               id="supplementProductType" 
+              value="supplementProductType" 
               name="ProductType" 
               label="Dietary Supplement" 
               checked={formData[PRODUCT_TYPE] === 'supplementProductType'}
@@ -43,6 +46,7 @@ export default function Home() {
             />
             <Radio 
               id="foodProductType" 
+              value="foodProductType" 
               name="ProductType" 
               label="Food" 
               checked={formData[PRODUCT_TYPE] === 'foodProductType'}
@@ -50,6 +54,7 @@ export default function Home() {
             />
             <Radio 
               id="deviceProductType" 
+              value="deviceProductType" 
               name="ProductType" 
               label="Medical Device" 
               checked={formData[PRODUCT_TYPE] === 'deviceProductType'}
@@ -57,6 +62,7 @@ export default function Home() {
             />
             <Radio 
               id="tobaccoProductType" 
+              value="tobaccoProductType" 
               name="ProductType" 
               label="Tobacco" 
               checked={formData[PRODUCT_TYPE] === 'tobaccoProductType'}
@@ -64,6 +70,7 @@ export default function Home() {
             />
             <Radio 
               id="vaccineProductType" 
+              value="vaccineProductType" 
               name="ProductType" 
               label="Vaccine" 
               checked={formData[PRODUCT_TYPE] === 'vaccineProductType'}
@@ -71,6 +78,7 @@ export default function Home() {
             />
             <Radio 
               id="veterinaryProductType" 
+              value="veterinaryProductType" 
               name="ProductType" 
               label="Veterinary (animal food, drug, or device)" 
               checked={formData[PRODUCT_TYPE] === 'veterinaryProductType'}
@@ -78,6 +86,7 @@ export default function Home() {
             />
             <Radio 
               id="otherProductType"
+              value="otherProductType"
               name="ProductType" 
               label="Other / Don't know" 
               checked={formData[PRODUCT_TYPE] === 'otherProductType'}
