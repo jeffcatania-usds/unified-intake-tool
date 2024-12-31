@@ -12,7 +12,8 @@ export default function SubmissionType() {
       const previous = formData[SUBMISSION_TYPE];
       const indexOfValue = previous.indexOf(event.target.value);
       if (indexOfValue >= 0) {
-        updateFormData(SUBMISSION_TYPE, previous.splice(indexOfValue, 1));
+        previous.splice(indexOfValue, 1);
+        updateFormData(SUBMISSION_TYPE, previous);
       } else {
         updateFormData(SUBMISSION_TYPE, [...previous, event.target.value]);
       }
