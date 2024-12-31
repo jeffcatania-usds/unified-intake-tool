@@ -8,10 +8,7 @@ export default function Home() {
   const { formData, updateFormData } = useFormDataContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("Old value: " + formData[PRODUCT_TYPE]);
-    console.log("New value: " + event.target.value);
     updateFormData(PRODUCT_TYPE, event.target.value);
-    console.log("Updated value: " + formData[PRODUCT_TYPE]);
   }
   return (
     <>
