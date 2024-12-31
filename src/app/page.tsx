@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function Home() {
+export default function Landing() {
   return (
     <>
       <h1 className="font-ui-xl text-bold">Report a problem</h1>

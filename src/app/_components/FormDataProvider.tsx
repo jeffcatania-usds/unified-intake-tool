@@ -3,14 +3,15 @@
 import React, { createContext, useState, useContext } from 'react'
 
 export const PRODUCT_TYPE = 'productType';
+export const SUBMISSION_TYPE = 'submissionType';
 
 interface FormData {
-  [key: string]: string;
+  [key: string]: string | Array<string>;
 };
 
 interface FormDataContextType {
   formData: FormData;
-  updateFormData: (name: string, value: string) => void;
+  updateFormData: (name: string, value: string | Array<string>) => void;
 };
 
 export const FormDataContext = createContext<FormDataContextType | null>(null);
@@ -21,10 +22,11 @@ export default function FormDataProvider({
   children: React.ReactNode
 }) {
     const [formData, setFormData] = useState<FormData>({
-      productType: ''
+      PRODUCT_TYPE: '',
+      SUBMISSION_TYPE: []
     });
     
-    const updateFormData = (name : string, value : string) => {
+    const updateFormData = (name : string, value : string | Array<string>) => {
       setFormData({
         ...formData,
         [name]: value,

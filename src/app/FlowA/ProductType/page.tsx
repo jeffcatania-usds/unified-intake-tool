@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 import { Radio, Fieldset, Link } from "@trussworks/react-uswds";
 import { PRODUCT_TYPE, useFormDataContext } from '@/_components/FormDataProvider';
 
-export default function Home() {
+export default function ProductType() {
   const { formData, updateFormData } = useFormDataContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -91,7 +91,7 @@ export default function Home() {
             />
         </Fieldset>
         <div style={{width: '100%', textAlign: 'center'}}>
-            <NextLink href="/FlowA/ProductType" passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
+            <NextLink href="/FlowA/SubmissionType" passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
         </div>
     </>
   );
