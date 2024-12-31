@@ -16,7 +16,7 @@ export default function NDCNumber() {
             <NextLink href="/FlowA/ScanBarcode" passHref legacyBehavior><Link variant="nav">&lt; Back</Link></NextLink>
         </div>
         <p title="National Drug Code">
-          NDC number <Icon.HelpOutline label="Help" /> (optional)<br />
+          NDC number (optional)<br />
           <span className="usa-hint">The code is 10 numbers, such as 12345-6789-01.</span>
         </p>
         <Fieldset legend="NDC number" legendStyle="srOnly" className="margin-bottom-3">
