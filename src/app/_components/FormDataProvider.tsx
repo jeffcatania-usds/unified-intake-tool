@@ -6,6 +6,8 @@ export const PRODUCT_TYPE = 'productType';
 export const SUBMISSION_TYPE = 'submissionType';
 export const BARCODE = 'barcode';
 export const NDC_NUMBER = 'ndcNumber';
+export const PRODUCT_PHOTOS = 'productPhotos';
+export const PRODUCT_NAME = 'productName';
 
 interface FormData {
   [key: string]: string | Array<string>;
@@ -27,7 +29,8 @@ export default function FormDataProvider({
       PRODUCT_TYPE: '',
       SUBMISSION_TYPE: [],
       BARCODE: '',
-      NDC_NUMBER: ''
+      NDC_NUMBER: '',
+      PRODUCT_NAME: ''
     });
     
     const updateFormData = (name : string, value : string | Array<string>) => {

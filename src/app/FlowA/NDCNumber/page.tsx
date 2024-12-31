@@ -1,7 +1,7 @@
 'use client'
 
 import NextLink from 'next/link';
-import { TextInput, Fieldset, Link, Icon } from "@trussworks/react-uswds";
+import { TextInput, Fieldset, Link } from "@trussworks/react-uswds";
 import { NDC_NUMBER, useFormDataContext } from '@/_components/FormDataProvider';
 
 export default function NDCNumber() {
@@ -28,8 +28,11 @@ export default function NDCNumber() {
               onChange={handleChange} 
             />
         </Fieldset>
+        <div  className='margin-bottom-2 margin-top-2'>
+            <NextLink href="/FlowA/ProductPhotos" passHref legacyBehavior><Link variant="nav">Skip this step</Link></NextLink>
+        </div>
         <div style={{width: '100%', textAlign: 'center'}}>
-            <NextLink href="/FlowA/ScanBarcode" passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
+            <NextLink href="/FlowA/ProductPhotos" passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
         </div>
     </>
   );
