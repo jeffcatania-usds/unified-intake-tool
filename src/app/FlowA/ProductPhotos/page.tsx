@@ -2,13 +2,20 @@
 
 import NextLink from 'next/link';
 import { FileInput, Fieldset, Link } from "@trussworks/react-uswds";
+import { PRODUCT_PHOTOS, useUserDataContext } from '@/_contexts/UserDataProvider';
+import { previousScreen, nextScreen } from '@/_utils/Navigation';
 
 export default function ProductPhotos() {
+  const { userData, updateUserData } = useUserDataContext();
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    updateUserData(PRODUCT_PHOTOS, event.target.value);
+  }
  
   return (
     <>
         <div  className='margin-bottom-2 margin-top-2'>
-            <NextLink href="/FlowA/NDCNumber" passHref legacyBehavior><Link variant="nav">&lt; Back</Link></NextLink>
+            <NextLink href={previousScreen("ProductPhotos", userData)} passHref legacyBehavior><Link variant="nav">&lt; Back</Link></NextLink>
         </div>
         <p>Upload product photos (optional)</p>
         <div className="usa-hint margin-bottom-2" id="product-photos-hint">
@@ -21,11 +28,12 @@ export default function ProductPhotos() {
               name="productPhotosFileInput" 
               accept="image/*"
               aria-describedby="product-photos-hint"
+              onChange={handleChange}
               multiple
             />
         </Fieldset>
         <div style={{width: '100%', textAlign: 'center'}}>
-            <NextLink href="/FlowA/ProductName" passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
+            <NextLink href={nextScreen("ProductPhotos", userData)} passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
         </div>
     </>
   );

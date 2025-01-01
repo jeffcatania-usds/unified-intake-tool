@@ -3,6 +3,7 @@
 import NextLink from 'next/link';
 import { Checkbox, Fieldset, Link } from "@trussworks/react-uswds";
 import { SUBMISSION_TYPE, useUserDataContext } from '@/_contexts/UserDataProvider';
+import { previousScreen, nextScreen } from '@/_utils/Navigation';
 
 export default function SubmissionType() {
   const { userData, updateUserData } = useUserDataContext();
@@ -24,7 +25,7 @@ export default function SubmissionType() {
   return (
     <>
         <div  className='margin-bottom-2 margin-top-2'>
-            <NextLink href="/FlowA/ProductType" passHref legacyBehavior><Link variant="nav">&lt; Back</Link></NextLink>
+            <NextLink href={previousScreen("SubmissionType", userData)} passHref legacyBehavior><Link variant="nav">&lt; Back</Link></NextLink>
         </div>
         <p>
           Tell us what happened<abbr title="required" className="usa-hint usa-hint--required text-no-underline">*</abbr><br />
@@ -69,7 +70,7 @@ export default function SubmissionType() {
             />
         </Fieldset>
         <div style={{width: '100%', textAlign: 'center'}}>
-            <NextLink href="/FlowA/ScanBarcode" passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
+            <NextLink href={nextScreen("SubmissionType", userData)} passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
         </div>
     </>
   );

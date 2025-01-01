@@ -2,17 +2,24 @@
 
 import NextLink from 'next/link';
 import { FileInput, Fieldset, Link } from "@trussworks/react-uswds";
+import { BARCODE, useUserDataContext } from '@/_contexts/UserDataProvider';
+import { previousScreen, nextScreen } from '@/_utils/Navigation';
 
 export default function ScanBarcode() {
+  const { userData, updateUserData } = useUserDataContext();
  
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    updateUserData(BARCODE, event.target.value);
+  }
+
   return (
     <>
         <div  className='margin-bottom-2 margin-top-2'>
-            <NextLink href="/FlowA/SubmissionType" passHref legacyBehavior><Link variant="nav">&lt; Back</Link></NextLink>
+            <NextLink href={previousScreen("ScanBarcode", userData)} passHref legacyBehavior><Link variant="nav">&lt; Back</Link></NextLink>
         </div>
         <p>Scan barcode (optional)</p>
         <div  className='margin-bottom-2 margin-top-2'>
-            <NextLink href="/FlowA/NDCNumber" passHref legacyBehavior><Link variant="nav">Skip this step</Link></NextLink>
+            <NextLink href={nextScreen("ScanBarcode", userData)} passHref legacyBehavior><Link variant="nav">Skip this step</Link></NextLink>
         </div>
         <div className="usa-hint margin-bottom-2" id="barcode-hint">
           Find the barcode on the package. Open your camera application and take a photo of the barcode.<br /><br />
@@ -24,11 +31,12 @@ export default function ScanBarcode() {
               name="barcodeFileInput" 
               accept="image/*"
               aria-describedby="barcode-hint"
+              onChange={handleChange}
               multiple
             />
         </Fieldset>
         <div style={{width: '100%', textAlign: 'center'}}>
-            <NextLink href="/FlowA/NDCNumber" passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
+            <NextLink href={nextScreen("ScanBarcode", userData)} passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
         </div>
     </>
   );

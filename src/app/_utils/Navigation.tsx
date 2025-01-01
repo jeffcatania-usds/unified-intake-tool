@@ -17,7 +17,8 @@ const screenOrder: Array<Screen> = [
   createScreen('NDCNumber', '/FlowA/NDCNumber'),
   createScreen('ProductPhotos', '/FlowA/ProductPhotos'),
   createScreen('ProductName', '/FlowA/ProductName'),
-  createScreen('WhatHappened', '/FlowA/WhatHappened')
+  createScreen('WhatHappened', '/FlowA/WhatHappened'),
+  createScreen('EventDate', '/FlowA/EventDate')
 ];
 
 function createScreen(name: string, route: string) {

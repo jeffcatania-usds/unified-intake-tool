@@ -9,6 +9,7 @@ export const NDC_NUMBER = 'ndcNumber';
 export const PRODUCT_PHOTOS = 'productPhotos';
 export const PRODUCT_NAME = 'productName';
 export const WHAT_HAPPENED = 'whatHappened';
+export const EVENT_DATE = 'eventDate';
 
 export interface UserData {
   [key: string]: string | Array<string>;
@@ -32,7 +33,8 @@ export default function UserDataProvider({
       BARCODE: '',
       NDC_NUMBER: '',
       PRODUCT_NAME: '',
-      WHAT_HAPPENED: ''
+      WHAT_HAPPENED: '',
+      EVENT_DATE: ''
     });
     
     const updateUserData = (name : string, value : string | Array<string>) => {

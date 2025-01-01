@@ -3,6 +3,7 @@
 import NextLink from 'next/link';
 import { FormGroup, Link, Label, CharacterCount } from "@trussworks/react-uswds";
 import { WHAT_HAPPENED, useUserDataContext } from '@/_contexts/UserDataProvider';
+import { previousScreen, nextScreen } from '@/_utils/Navigation';
 
 export default function WhatHappened() {
   const { userData, updateUserData } = useUserDataContext();
@@ -13,7 +14,7 @@ export default function WhatHappened() {
   return (
     <>
         <div  className='margin-bottom-2 margin-top-2'>
-            <NextLink href="/FlowA/ProductName" passHref legacyBehavior><Link variant="nav">&lt; Back</Link></NextLink>
+            <NextLink href={previousScreen("WhatHappened", userData)} passHref legacyBehavior><Link variant="nav">&lt; Back</Link></NextLink>
         </div>
         <FormGroup className="margin-bottom-3">
             <Label htmlFor="whatHappened">
@@ -35,7 +36,7 @@ export default function WhatHappened() {
             />
         </FormGroup>
         <div style={{width: '100%', textAlign: 'center'}}>
-            <NextLink href="/FlowA/ProductPhotos" passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
+            <NextLink href={nextScreen("WhatHappened", userData)} passHref legacyBehavior><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
         </div>
     </>
   );
