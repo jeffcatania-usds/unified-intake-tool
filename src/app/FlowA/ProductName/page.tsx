@@ -26,6 +26,7 @@ export default function ProductName() {
               type="text"
               value={userData[PRODUCT_NAME]}
               onChange={handleChange} 
+              required
             />
         </Fieldset>
         <div style={{width: '100%', textAlign: 'center'}}>

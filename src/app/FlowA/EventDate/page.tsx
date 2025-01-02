@@ -65,6 +65,7 @@ export default function EventDate() {
                 maxLength={4} 
                 placeholder="YYYY" 
                 onChange={handleYearChange} 
+                required
             />
         </DateInputGroup>
         <div style={{width: '100%', textAlign: 'center'}}>

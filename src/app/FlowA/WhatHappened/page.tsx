@@ -33,6 +33,7 @@ export default function WhatHappened() {
               value={userData[WHAT_HAPPENED]}
               onChange={handleChange} 
               maxLength={4000}
+              required
             />
         </FormGroup>
         <div style={{width: '100%', textAlign: 'center'}}>
