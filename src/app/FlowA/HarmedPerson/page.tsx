@@ -22,7 +22,7 @@ export default function HarmedPerson() {
   const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Special case because NA disables other gender options
     if (event.target.value == 'naGender') {
-      if (userData[HARMED_GENDER].includes('naGender')) {
+      if (userData[HARMED_GENDER]?.includes('naGender')) {
         updateUserData(HARMED_GENDER, []);
       } else {
         updateUserData(HARMED_GENDER, ['naGender']);
