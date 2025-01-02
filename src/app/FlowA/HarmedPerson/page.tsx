@@ -86,8 +86,8 @@ export default function HarmedPerson() {
               Please enter a valid age.
             </ErrorMessage>
           }
-          <TextInput id="age-text" name="age-text" type="number" onChange={handleAgeChange} className="usa-input-2xs float-left" />
-          <Select id="age-unit" name="age-unit" onChange={handleAgeUnitChange} className="usa-input-sm">
+          <TextInput id="age-text" name="age-text" type="number" onChange={handleAgeChange} className="usa-input--2xs float-left margin-right-2" />
+          <Select id="age-unit" name="age-unit" onChange={handleAgeUnitChange} className="usa-input--sm">
             <option value="years">Years</option>
             <option value="months">Months</option>
             <option value="days">Days</option>
