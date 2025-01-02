@@ -1,7 +1,7 @@
 'use client'
 
 import NextLink from 'next/link';
-import { TextInput, Fieldset, Link, FormGroup, ErrorMessage, Label } from "@trussworks/react-uswds";
+import { TextInput, Link, FormGroup, ErrorMessage, Label } from "@trussworks/react-uswds";
 import { CONTACT_FIRST_NAME, CONTACT_LAST_NAME, CONTACT_EMAIL, useUserDataContext } from '@/_contexts/UserDataProvider';
 import { previousScreen, nextScreen } from '@/_utils/Navigation';
 import React, { useState } from 'react';
