@@ -31,7 +31,8 @@ const screenOrder: Array<Screen> = [
     (userData: UserData) => {
       return userData[SUBMISSION_TYPE]?.includes('someoneWasHarmedSubmissionType');
     }
-  )
+  ),
+  createScreen('ContactInfo', '/FlowA/ContactInfo')
 ];
 
 function createScreen(name: string, route: string) {

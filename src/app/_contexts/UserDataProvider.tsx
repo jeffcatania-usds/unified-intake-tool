@@ -15,6 +15,9 @@ export const HARMED_AGE_UNIT = 'harmedAgeUnit';
 export const HARMED_GENDER = 'harmedGender';
 export const HARMED_GENDER_OTHER = 'harmedGenderOther';
 export const HARMED_MEDICAL = 'harmedMedical';
+export const CONTACT_FIRST_NAME = 'contactFirstName';
+export const CONTACT_LAST_NAME = 'contactLastName';
+export const CONTACT_EMAIL = 'contactEmail';
 
 export interface UserData {
   [key: string]: string | Array<string>;
