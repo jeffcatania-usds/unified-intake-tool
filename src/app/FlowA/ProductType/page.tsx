@@ -34,9 +34,11 @@ export default function ProductType() {
         </div>
         <p>What was the product?<abbr title="required" className="usa-hint usa-hint--required text-no-underline">*</abbr></p>
         <FormGroup error={validated && !isValid()}>
-          <ErrorMessage id="product-type-error">
-            Please select one of the following options.
-          </ErrorMessage>
+          { validated && !isValid() && 
+            <ErrorMessage id="product-type-error">
+              Please select one of the following options.
+            </ErrorMessage>
+          }
           <Fieldset 
             legend="What was the product?" 
             legendStyle="srOnly" 
