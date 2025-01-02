@@ -10,6 +10,11 @@ export const PRODUCT_PHOTOS = 'productPhotos';
 export const PRODUCT_NAME = 'productName';
 export const WHAT_HAPPENED = 'whatHappened';
 export const EVENT_DATE = 'eventDate';
+export const HARMED_AGE = 'harmedAge';
+export const HARMED_AGE_UNIT = 'harmedAgeUnit';
+export const HARMED_GENDER = 'harmedGender';
+export const HARMED_GENDER_OTHER = 'harmedGenderOther';
+export const HARMED_MEDICAL = 'harmedMedical';
 
 export interface UserData {
   [key: string]: string | Array<string>;
@@ -34,7 +39,12 @@ export default function UserDataProvider({
       NDC_NUMBER: '',
       PRODUCT_NAME: '',
       WHAT_HAPPENED: '',
-      EVENT_DATE: ''
+      EVENT_DATE: '',
+      HARMED_AGE: '',
+      HARMED_AGE_UNIT: 'years',
+      HARMED_GENDER: [],
+      HARMED_GENDER_OTHER: '',
+      HARMED_MEDICAL: ''
     });
     
     const updateUserData = (name : string, value : string | Array<string>) => {
