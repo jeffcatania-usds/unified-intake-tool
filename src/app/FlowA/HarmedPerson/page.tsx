@@ -79,15 +79,15 @@ export default function HarmedPerson() {
         <div  className='margin-bottom-2 margin-top-2'>
             <NextLink href={nextScreen("HarmedPerson", userData)} passHref legacyBehavior><Link variant="nav">Skip this step</Link></NextLink>
         </div>
-        <FormGroup error={validated && !isValid()}>
+        <FormGroup error={validated && !isValid()} className='margin-bottom-2'>
           <Label htmlFor="age-text">Age (optional)</Label>
           { validated && !isValid() && 
             <ErrorMessage id="age-error">
               Please enter a valid age.
             </ErrorMessage>
           }
-          <TextInput id="age-text" name="age-text" type="number" onChange={handleAgeChange} />
-          <Select id="age-unit" name="age-unit" onChange={handleAgeUnitChange}>
+          <TextInput id="age-text" name="age-text" type="number" onChange={handleAgeChange} className="usa-input-2xs float-left" />
+          <Select id="age-unit" name="age-unit" onChange={handleAgeUnitChange} className="usa-input-sm">
             <option value="years">Years</option>
             <option value="months">Months</option>
             <option value="days">Days</option>
@@ -160,7 +160,7 @@ export default function HarmedPerson() {
         }
         <FormGroup>
             <Label htmlFor="medical-text">
-              Provide their medical details (optional)
+              Provide their medical details (optional)<br />
               <span className="usa-hint">List any prescriptions taken at the same time or allergies</span>
             </Label>
             <CharacterCount 
