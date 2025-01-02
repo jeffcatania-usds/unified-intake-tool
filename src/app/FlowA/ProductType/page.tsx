@@ -4,7 +4,7 @@ import NextLink from 'next/link';
 import { Radio, Fieldset, Link, ErrorMessage, FormGroup } from "@trussworks/react-uswds";
 import { PRODUCT_TYPE, useUserDataContext } from '@/_contexts/UserDataProvider';
 import { previousScreen, nextScreen } from '@/_utils/Navigation';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 export default function ProductType() {
   const { userData, updateUserData } = useUserDataContext();
@@ -14,8 +14,9 @@ export default function ProductType() {
     updateUserData(PRODUCT_TYPE, event.target.value);
   }
 
-  const validate = () => {
+  const validate = (event: React.ChangeEvent) => {
     if (!isValid()) {
+      event.preventDefault();
       setValidated(true);
       return false;
     }
