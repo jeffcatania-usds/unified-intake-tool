@@ -117,7 +117,7 @@ export default function ProductType() {
           </Fieldset>
         </FormGroup>
         <div style={{width: '100%', textAlign: 'center'}}>
-            <NextLink href={nextScreen("ProductType", userData)} passHref legacyBehavior onClick={validate}><Link className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
+            <NextLink href={nextScreen("ProductType", userData)} passHref legacyBehavior><Link onClick={validate} className="usa-button padding-left-6 padding-right-6" variant="unstyled" allowSpacebarActivation>Save and continue</Link></NextLink>
         </div>
     </>
   );
