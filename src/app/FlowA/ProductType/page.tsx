@@ -15,7 +15,7 @@ export default function ProductType() {
   }
 
   const validate = () => {
-    if (isValid()) {
+    if (!isValid()) {
       setValidated(true);
       return false;
     }
@@ -23,7 +23,7 @@ export default function ProductType() {
   }
 
   const isValid = () => {
-    return !userData[PRODUCT_TYPE] || userData[PRODUCT_TYPE].length == 0;
+    return userData[PRODUCT_TYPE] && userData[PRODUCT_TYPE].length > 0;
   }
 
   return (
