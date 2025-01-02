@@ -18,6 +18,7 @@ export const HARMED_MEDICAL = 'harmedMedical';
 export const CONTACT_FIRST_NAME = 'contactFirstName';
 export const CONTACT_LAST_NAME = 'contactLastName';
 export const CONTACT_EMAIL = 'contactEmail';
+export const ADDITIONAL_FILES = 'additionalFiles';
 
 export interface UserData {
   [key: string]: string | Array<string>;

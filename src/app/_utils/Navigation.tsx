@@ -32,7 +32,8 @@ const screenOrder: Array<Screen> = [
       return userData[SUBMISSION_TYPE]?.includes('someoneWasHarmedSubmissionType');
     }
   ),
-  createScreen('ContactInfo', '/FlowA/ContactInfo')
+  createScreen('ContactInfo', '/FlowA/ContactInfo'),
+  createScreen('AdditionalFiles', '/FlowA/AdditionalFiles')
 ];
 
 function createScreen(name: string, route: string) {
