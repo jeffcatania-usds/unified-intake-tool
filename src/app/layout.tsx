@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import '@trussworks/react-uswds/lib/uswds.css'
-import '@trussworks/react-uswds/lib/index.css'
+import "@trussworks/react-uswds/lib/uswds.css";
+import "@trussworks/react-uswds/lib/index.css";
 import { GovBanner } from "@trussworks/react-uswds";
 import FakeHeader from "@/components/FakeHeader";
 import FakeFooter from "@/components/FakeFooter";
-import UserDataProvider from "@/_contexts/UserDataProvider"
+import UserDataProvider from "@/_contexts/UserDataProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +31,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <link
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          rel="stylesheet"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -41,10 +44,11 @@ export default function RootLayout({
         </a>
         <GovBanner />
         <FakeHeader />
-        <form className="usa-form usa-form--large padding-9" style={{paddingTop: '0'}}>
-            <UserDataProvider>
-              {children}
-            </UserDataProvider>
+        <form
+          className="usa-form usa-form--large padding-9"
+          style={{ paddingTop: "0" }}
+        >
+          <UserDataProvider>{children}</UserDataProvider>
         </form>
         <FakeFooter />
       </body>
