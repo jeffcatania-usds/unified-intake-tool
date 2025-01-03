@@ -1,6 +1,7 @@
 "use client";
 
 import { ScreenMetadata } from "@/_utils/ScreenMetadata";
+import AdditionalFilesReview from "./review";
 
 export const AdditionalFilesMetadata = {
   name: "AdditionalFiles",
@@ -9,4 +10,5 @@ export const AdditionalFilesMetadata = {
   shouldDisplay: () => {
     return true;
   },
+  reviewSection: AdditionalFilesReview,
 } as ScreenMetadata;

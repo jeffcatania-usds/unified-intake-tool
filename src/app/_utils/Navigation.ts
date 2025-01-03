@@ -15,8 +15,9 @@ import { SubmissionTypeMetadata } from "@/FlowA/SubmissionType/metadata";
 import { WhatHappenedMetadata } from "@/FlowA/WhatHappened/metadata";
 import { FlowAMetadata } from "@/FlowA/metadata";
 import { LandingMetadata } from "@/metadata";
+import { ReviewScreenMetadata } from "@/ReviewScreen/metadata";
 
-const screenOrder: Array<ScreenMetadata> = [
+export const screenOrder: Array<ScreenMetadata> = [
   LandingMetadata,
   FlowAMetadata,
   ProductTypeMetadata,
@@ -30,6 +31,7 @@ const screenOrder: Array<ScreenMetadata> = [
   HarmedPersonMetadata,
   ContactInfoMetadata,
   AdditionalFilesMetadata,
+  ReviewScreenMetadata,
 ];
 
 export const previousScreen = (currentScreen: string, userData: UserData) => {
