@@ -11,7 +11,7 @@
     "pages:build": "next build",
     "pages:copy": "mkdir -p _site && rm -rf _site/* && cp -r public/* _site/ && cp -r out/* _site/",
     "prettier": "npm prettier . --write",
-    "prepare": "husky install"
+    "prepare": "husky && husky install"
   },
   "dependencies": {
     "@trussworks/react-uswds": "^9.1.0",
@@ -36,7 +36,7 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,ts,jsx,tsx}": "eslint --cache --fix",
+    "*.{js,css,md,tx,jsx,tsx,css}": "prettier --write"
   }
 }
