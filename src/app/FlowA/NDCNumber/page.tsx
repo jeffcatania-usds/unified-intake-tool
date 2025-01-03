@@ -62,7 +62,7 @@ export default function NDCNumber() {
           Do not enter the dashes, for example 12345678901
         </span>
       </p>
-      <FormGroup className="margin-bottom-3">
+      <FormGroup className="margin-bottom-3" error={validated && !isValid()}>
         {validated && !isValid() && (
           <ErrorMessage id="email-error">
             Please provide a 10 or 11 digit NDC number.
