@@ -1,6 +1,7 @@
 "use client";
 
 import { ScreenMetadata } from "@/_utils/ScreenMetadata";
+import ScanBarcodeReview from "./review";
 
 export const ScanBarcodeMetadata = {
   name: "ScanBarcode",
@@ -9,4 +10,5 @@ export const ScanBarcodeMetadata = {
   shouldDisplay: () => {
     return true;
   },
+  reviewSection: ScanBarcodeReview,
 } as ScreenMetadata;

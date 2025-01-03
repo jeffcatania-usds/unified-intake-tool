@@ -2,6 +2,7 @@
 
 import { ScreenMetadata } from "@/_utils/ScreenMetadata";
 import { UserData, SUBMISSION_TYPE } from "@/_contexts/UserDataProvider";
+import HarmedPersonReview from "./review";
 
 export const HarmedPersonMetadata = {
   name: "HarmedPerson",
@@ -12,4 +13,5 @@ export const HarmedPersonMetadata = {
       "someoneWasHarmedSubmissionType",
     );
   },
+  reviewSection: HarmedPersonReview,
 } as ScreenMetadata;

@@ -17,8 +17,8 @@ export default function ReviewScreen() {
   return (
     <>
       <NavigateBack userData={userData} screenName={screenName} />
-      <h1 className="font-ui-xl text-bold">Review your submission</h1>
-      <p>
+      <h1 className="font-ui-lg text-bold">Review your submission</h1>
+      <p className="margin-bottom-2">
         Review your information below to make sure it is correct. After you
         submit, you will not be able to update this report.
       </p>

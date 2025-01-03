@@ -1,6 +1,7 @@
 "use client";
 
 import { ScreenMetadata } from "@/_utils/ScreenMetadata";
+import ProductPhotosReview from "./review";
 
 export const ProductPhotosMetadata = {
   name: "ProductPhotos",
@@ -9,4 +10,5 @@ export const ProductPhotosMetadata = {
   shouldDisplay: () => {
     return true;
   },
+  reviewSection: ProductPhotosReview,
 } as ScreenMetadata;

@@ -1,6 +1,7 @@
 "use client";
 
 import { ScreenMetadata } from "@/_utils/ScreenMetadata";
+import WhatHappenedReview from "./review";
 
 export const WhatHappenedMetadata = {
   name: "WhatHappened",
@@ -9,4 +10,5 @@ export const WhatHappenedMetadata = {
   shouldDisplay: () => {
     return true;
   },
+  reviewSection: WhatHappenedReview,
 } as ScreenMetadata;

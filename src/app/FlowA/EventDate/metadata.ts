@@ -1,6 +1,7 @@
 "use client";
 
 import { ScreenMetadata } from "@/_utils/ScreenMetadata";
+import EventDateReview from "./review";
 
 export const EventDateMetadata = {
   name: "EventDate",
@@ -9,4 +10,5 @@ export const EventDateMetadata = {
   shouldDisplay: () => {
     return true;
   },
+  reviewSection: EventDateReview,
 } as ScreenMetadata;

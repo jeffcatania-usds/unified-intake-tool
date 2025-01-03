@@ -2,6 +2,7 @@
 
 import { ScreenMetadata } from "@/_utils/ScreenMetadata";
 import { UserData, PRODUCT_TYPE } from "@/_contexts/UserDataProvider";
+import NDCNumberReview from "./review";
 
 export const NDCNumberMetadata = {
   name: "NDCNumber",
@@ -10,4 +11,5 @@ export const NDCNumberMetadata = {
   shouldDisplay: (userData: UserData) => {
     return userData[PRODUCT_TYPE] === "drugProductType";
   },
+  reviewSection: NDCNumberReview,
 } as ScreenMetadata;
