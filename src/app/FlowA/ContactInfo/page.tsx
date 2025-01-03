@@ -120,7 +120,7 @@ export default function ContactInfo() {
         </Label>
         {validated && !isValid() && (
           <ErrorMessage id="email-error">
-            Please provide the product name.
+            Please provide a valid email address.
           </ErrorMessage>
         )}
         <TextInput
