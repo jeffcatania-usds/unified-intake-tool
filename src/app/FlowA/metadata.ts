@@ -4,7 +4,7 @@ import { ScreenMetadata } from "@/_utils/ScreenMetadata";
 
 export const FlowAMetadata = {
   name: "FlowAOverview",
-  route: "/FlowA/FlowA",
+  route: "/FlowA",
   title: "Report a problem",
   shouldDisplay: () => {
     return true;
