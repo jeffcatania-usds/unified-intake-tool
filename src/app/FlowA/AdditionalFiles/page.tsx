@@ -1,14 +1,15 @@
 "use client";
 
-import NextLink from "next/link";
-import { FileInput, Fieldset, Link } from "@trussworks/react-uswds";
+import { FileInput, Fieldset } from "@trussworks/react-uswds";
 import {
   ADDITIONAL_FILES,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
-import { previousScreen, nextScreen } from "@/_utils/Navigation";
+import NavigateBack from "@/_components/NavigateBack";
+import NavigateNext from "@/_components/NavigateNext";
 
 export default function AdditionalFiles() {
+  const screenName = "AdditionalFiles";
   const { userData, updateUserData } = useUserDataContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,15 +18,7 @@ export default function AdditionalFiles() {
 
   return (
     <>
-      <div className="margin-bottom-2 margin-top-2">
-        <NextLink
-          href={previousScreen("AdditionalFiles", userData)}
-          passHref
-          legacyBehavior
-        >
-          <Link variant="nav">&lt; Back</Link>
-        </NextLink>
-      </div>
+      <NavigateBack userData={userData} screenName={screenName} />
       <p>Upload any additional information (optional)</p>
       <div className="usa-hint margin-bottom-2" id="additional-files-hint">
         This may include medical records.
@@ -43,21 +36,7 @@ export default function AdditionalFiles() {
           multiple
         />
       </Fieldset>
-      <div style={{ width: "100%", textAlign: "center" }}>
-        <NextLink
-          href={nextScreen("AdditionalFiles", userData)}
-          passHref
-          legacyBehavior
-        >
-          <Link
-            className="usa-button padding-left-6 padding-right-6"
-            variant="unstyled"
-            allowSpacebarActivation
-          >
-            Save and continue
-          </Link>
-        </NextLink>
-      </div>
+      <NavigateNext userData={userData} screenName={screenName} />
     </>
   );
 }

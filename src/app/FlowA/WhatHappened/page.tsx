@@ -1,9 +1,7 @@
 "use client";
 
-import NextLink from "next/link";
 import {
   FormGroup,
-  Link,
   Label,
   CharacterCount,
   ErrorMessage,
@@ -12,10 +10,12 @@ import {
   WHAT_HAPPENED,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
-import { previousScreen, nextScreen } from "@/_utils/Navigation";
-import React, { useState } from "react";
+import { useState } from "react";
+import NavigateBack from "@/_components/NavigateBack";
+import NavigateNext from "@/_components/NavigateNext";
 
 export default function WhatHappened() {
+  const screenName = "WhatHappened";
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
 
@@ -38,15 +38,7 @@ export default function WhatHappened() {
 
   return (
     <>
-      <div className="margin-bottom-2 margin-top-2">
-        <NextLink
-          href={previousScreen("WhatHappened", userData)}
-          passHref
-          legacyBehavior
-        >
-          <Link variant="nav">&lt; Back</Link>
-        </NextLink>
-      </div>
+      <NavigateBack userData={userData} screenName={screenName} />
       <FormGroup className="margin-bottom-3" error={validated && !isValid()}>
         <Label htmlFor="whatHappened">
           Describe what happened in detail
@@ -83,22 +75,11 @@ export default function WhatHappened() {
           required
         />
       </FormGroup>
-      <div style={{ width: "100%", textAlign: "center" }}>
-        <NextLink
-          href={nextScreen("WhatHappened", userData)}
-          passHref
-          legacyBehavior
-        >
-          <Link
-            onClick={validate}
-            className="usa-button padding-left-6 padding-right-6"
-            variant="unstyled"
-            allowSpacebarActivation
-          >
-            Save and continue
-          </Link>
-        </NextLink>
-      </div>
+      <NavigateNext
+        userData={userData}
+        screenName={screenName}
+        validate={validate}
+      />
     </>
   );
 }

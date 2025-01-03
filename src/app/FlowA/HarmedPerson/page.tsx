@@ -1,10 +1,8 @@
 "use client";
 
-import NextLink from "next/link";
 import {
   Checkbox,
   Fieldset,
-  Link,
   ErrorMessage,
   FormGroup,
   TextInput,
@@ -20,11 +18,14 @@ import {
   HARMED_MEDICAL,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
-import { previousScreen, nextScreen } from "@/_utils/Navigation";
-import React, { useState } from "react";
+import { useState } from "react";
 import { z } from "zod";
+import NavigateBack from "@/_components/NavigateBack";
+import NavigateNext from "@/_components/NavigateNext";
+import NavigateSkip from "@/_components/NavigateSkip";
 
 export default function HarmedPerson() {
+  const screenName = "HarmedPerson";
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
 
@@ -90,15 +91,7 @@ export default function HarmedPerson() {
 
   return (
     <>
-      <div className="margin-bottom-2 margin-top-2">
-        <NextLink
-          href={previousScreen("HarmedPerson", userData)}
-          passHref
-          legacyBehavior
-        >
-          <Link variant="nav">&lt; Back</Link>
-        </NextLink>
-      </div>
+      <NavigateBack userData={userData} screenName={screenName} />
       <p>
         Tell us about who was harmed (optional)
         <br />
@@ -107,15 +100,11 @@ export default function HarmedPerson() {
           investigations.
         </span>
       </p>
-      <div className="margin-bottom-2 margin-top-2">
-        <NextLink
-          href={nextScreen("HarmedPerson", userData)}
-          passHref
-          legacyBehavior
-        >
-          <Link variant="nav">Skip this step</Link>
-        </NextLink>
-      </div>
+      <NavigateSkip
+        userData={userData}
+        screenName={screenName}
+        validate={validate}
+      />
       <FormGroup error={validated && !isValid()} className="margin-bottom-2">
         <Label htmlFor="age-text">Age (optional)</Label>
         {validated && !isValid() && (
@@ -227,22 +216,11 @@ export default function HarmedPerson() {
         />
       </FormGroup>
 
-      <div style={{ width: "100%", textAlign: "center" }}>
-        <NextLink
-          href={nextScreen("HarmedPerson", userData)}
-          passHref
-          legacyBehavior
-        >
-          <Link
-            onClick={validate}
-            className="usa-button padding-left-6 padding-right-6"
-            variant="unstyled"
-            allowSpacebarActivation
-          >
-            Save and continue
-          </Link>
-        </NextLink>
-      </div>
+      <NavigateNext
+        userData={userData}
+        screenName={screenName}
+        validate={validate}
+      />
     </>
   );
 }

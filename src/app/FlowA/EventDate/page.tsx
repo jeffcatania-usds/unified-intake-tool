@@ -1,20 +1,20 @@
 "use client";
 
-import NextLink from "next/link";
 import {
   DateInputGroup,
   FormGroup,
-  Link,
   Label,
   Select,
   DateInput,
   ErrorMessage,
 } from "@trussworks/react-uswds";
 import { EVENT_DATE, useUserDataContext } from "@/_contexts/UserDataProvider";
-import { previousScreen, nextScreen } from "@/_utils/Navigation";
-import React, { useState } from "react";
+import { useState } from "react";
+import NavigateBack from "@/_components/NavigateBack";
+import NavigateNext from "@/_components/NavigateNext";
 
 export default function EventDate() {
+  const screenName = "EventDate";
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
 
@@ -41,15 +41,7 @@ export default function EventDate() {
   };
   return (
     <>
-      <div className="margin-bottom-2 margin-top-2">
-        <NextLink
-          href={previousScreen("EventDate", userData)}
-          passHref
-          legacyBehavior
-        >
-          <Link variant="nav">&lt; Back</Link>
-        </NextLink>
-      </div>
+      <NavigateBack userData={userData} screenName={screenName} />
       <p>
         When did this happen?
         <abbr
@@ -119,22 +111,11 @@ export default function EventDate() {
           />
         </DateInputGroup>
       </FormGroup>
-      <div style={{ width: "100%", textAlign: "center" }}>
-        <NextLink
-          href={nextScreen("EventDate", userData)}
-          passHref
-          legacyBehavior
-        >
-          <Link
-            onClick={validate}
-            className="usa-button padding-left-6 padding-right-6"
-            variant="unstyled"
-            allowSpacebarActivation
-          >
-            Save and continue
-          </Link>
-        </NextLink>
-      </div>
+      <NavigateNext
+        userData={userData}
+        screenName={screenName}
+        validate={validate}
+      />
     </>
   );
 }
