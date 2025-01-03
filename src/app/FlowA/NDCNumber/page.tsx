@@ -7,9 +7,10 @@ import { z } from "zod";
 import NavigateBack from "@/_components/NavigateBack";
 import NavigateNext from "@/_components/NavigateNext";
 import NavigateSkip from "@/_components/NavigateSkip";
+import { NDCNumberMetadata } from "./metadata";
 
 export default function NDCNumber() {
-  const screenName = "NDCNumber";
+  const screenName = NDCNumberMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
 

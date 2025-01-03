@@ -10,9 +10,10 @@ import { PRODUCT_NAME, useUserDataContext } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
 import NavigateBack from "@/_components/NavigateBack";
 import NavigateNext from "@/_components/NavigateNext";
+import { ProductNameMetadata } from "./metadata";
 
 export default function ProductName() {
-  const screenName = "ProductName";
+  const screenName = ProductNameMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
 

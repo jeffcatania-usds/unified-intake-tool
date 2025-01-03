@@ -5,9 +5,10 @@ import { BARCODE, useUserDataContext } from "@/_contexts/UserDataProvider";
 import NavigateBack from "@/_components/NavigateBack";
 import NavigateNext from "@/_components/NavigateNext";
 import NavigateSkip from "@/_components/NavigateSkip";
+import { ScanBarcodeMetadata } from "./metadata";
 
 export default function ScanBarcode() {
-  const screenName = "ScanBarcode";
+  const screenName = ScanBarcodeMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

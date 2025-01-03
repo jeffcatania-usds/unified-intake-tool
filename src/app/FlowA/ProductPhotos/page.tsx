@@ -7,9 +7,10 @@ import {
 } from "@/_contexts/UserDataProvider";
 import NavigateBack from "@/_components/NavigateBack";
 import NavigateNext from "@/_components/NavigateNext";
+import { ProductPhotosMetadata } from "./metadata";
 
 export default function ProductPhotos() {
-  const screenName = "ProductPhotos";
+  const screenName = ProductPhotosMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

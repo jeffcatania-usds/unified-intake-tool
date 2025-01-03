@@ -7,9 +7,10 @@ import {
 } from "@/_contexts/UserDataProvider";
 import NavigateBack from "@/_components/NavigateBack";
 import NavigateNext from "@/_components/NavigateNext";
+import { AdditionalFilesMetadata } from "./metadata";
 
 export default function AdditionalFiles() {
-  const screenName = "AdditionalFiles";
+  const screenName = AdditionalFilesMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

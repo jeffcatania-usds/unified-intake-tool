@@ -13,9 +13,10 @@ import {
 import { useState } from "react";
 import NavigateBack from "@/_components/NavigateBack";
 import NavigateNext from "@/_components/NavigateNext";
+import { WhatHappenedMetadata } from "./metadata";
 
 export default function WhatHappened() {
-  const screenName = "WhatHappened";
+  const screenName = WhatHappenedMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
 

@@ -23,9 +23,10 @@ import { z } from "zod";
 import NavigateBack from "@/_components/NavigateBack";
 import NavigateNext from "@/_components/NavigateNext";
 import NavigateSkip from "@/_components/NavigateSkip";
+import { HarmedPersonMetadata } from "./metadata";
 
 export default function HarmedPerson() {
-  const screenName = "HarmedPerson";
+  const screenName = HarmedPersonMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
 

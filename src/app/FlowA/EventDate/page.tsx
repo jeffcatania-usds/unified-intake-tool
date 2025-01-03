@@ -12,9 +12,10 @@ import { EVENT_DATE, useUserDataContext } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
 import NavigateBack from "@/_components/NavigateBack";
 import NavigateNext from "@/_components/NavigateNext";
+import { EventDateMetadata } from "./metadata";
 
 export default function EventDate() {
-  const screenName = "EventDate";
+  const screenName = EventDateMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
 

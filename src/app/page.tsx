@@ -2,9 +2,10 @@
 
 import { useUserDataContext } from "@/_contexts/UserDataProvider";
 import NavigateNext from "@/_components/NavigateNext";
+import { LandingMetadata } from "./metadata";
 
 export default function Landing() {
-  const screenName = "Landing";
+  const screenName = LandingMetadata.name;
   const { userData } = useUserDataContext();
   return (
     <>

@@ -3,9 +3,10 @@
 import OverviewProcessList from "@/components/OverviewProcessList";
 import { useUserDataContext } from "@/_contexts/UserDataProvider";
 import NavigateNext from "@/_components/NavigateNext";
+import { FlowAMetadata } from "./metadata";
 
 export default function FlowA() {
-  const screenName = "FlowAOverview";
+  const screenName = FlowAMetadata.name;
   const { userData } = useUserDataContext();
 
   return (

@@ -17,9 +17,10 @@ import { z } from "zod";
 import NavigateBack from "@/_components/NavigateBack";
 import NavigateNext from "@/_components/NavigateNext";
 import NavigateSkip from "@/_components/NavigateSkip";
+import { ContactInfoMetadata } from "./metadata";
 
 export default function ContactInfo() {
-  const screenName = "ContactInfo";
+  const screenName = ContactInfoMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
 

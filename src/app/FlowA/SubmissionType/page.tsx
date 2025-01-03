@@ -13,9 +13,10 @@ import {
 import { useState } from "react";
 import NavigateBack from "@/_components/NavigateBack";
 import NavigateNext from "@/_components/NavigateNext";
+import { SubmissionTypeMetadata } from "./metadata";
 
 export default function SubmissionType() {
-  const screenName = "SubmissionType";
+  const screenName = SubmissionTypeMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
 
