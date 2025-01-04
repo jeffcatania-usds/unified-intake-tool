@@ -18,7 +18,11 @@ import { LandingMetadata } from "@/metadata";
 import { ReviewScreenMetadata } from "@/ReviewScreen/metadata";
 import { ConfirmationScreenMetadata } from "@/ConfirmationScreen/metadata";
 
-export const screenOrder: Array<ScreenMetadata> = [
+export const screenOrder = () => {
+  return screenOrderA;
+};
+
+export const screenOrderA: Array<ScreenMetadata> = [
   LandingMetadata,
   FlowAMetadata,
   ProductTypeMetadata,
@@ -36,10 +40,17 @@ export const screenOrder: Array<ScreenMetadata> = [
   ConfirmationScreenMetadata,
 ];
 
+export const screenOrderB: Array<ScreenMetadata> = [
+  LandingMetadata,
+  FlowAMetadata,
+  ReviewScreenMetadata,
+  ConfirmationScreenMetadata,
+];
+
 export const previousScreen = (currentScreen: string, userData: UserData) => {
   // If current screen is the first screen that should be displayed, return an empty string
   let prevScreen = "";
-  for (const screen of screenOrder) {
+  for (const screen of screenOrder()) {
     if (screen.name === currentScreen) {
       return prevScreen;
     } else if (screen.shouldDisplay(userData)) {
@@ -52,7 +63,7 @@ export const previousScreen = (currentScreen: string, userData: UserData) => {
 
 export const nextScreen = (currentScreen: string, userData: UserData) => {
   let foundScreen = false;
-  for (const screen of screenOrder) {
+  for (const screen of screenOrder()) {
     if (screen.name === currentScreen) {
       foundScreen = true;
     } else if (foundScreen && screen.shouldDisplay(userData)) {

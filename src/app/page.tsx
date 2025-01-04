@@ -7,6 +7,7 @@ import { LandingMetadata } from "./metadata";
 export default function Landing() {
   const screenName = LandingMetadata.name;
   const { userData } = useUserDataContext();
+
   return (
     <>
       <h1 className="font-ui-xl text-bold">Report a problem</h1>

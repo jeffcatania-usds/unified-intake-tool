@@ -10,7 +10,7 @@ export default function ReviewScreen() {
   const screenName = ReviewScreenMetadata.name;
   const { userData } = useUserDataContext();
 
-  const displayedScreens = screenOrder.filter((screen) =>
+  const displayedScreens = screenOrder().filter((screen) =>
     screen.shouldDisplay(userData),
   );
 
