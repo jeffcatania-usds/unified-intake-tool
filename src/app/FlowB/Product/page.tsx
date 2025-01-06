@@ -171,7 +171,7 @@ export default function Product() {
           />
         </Fieldset>
       </FormGroup>
-      <div>
+      <div className="margin-bottom-neg-1">
         What happened?
         <abbr
           title="required"
