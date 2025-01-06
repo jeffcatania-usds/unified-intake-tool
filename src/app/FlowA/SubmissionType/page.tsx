@@ -64,7 +64,7 @@ export default function SubmissionType() {
       </p>
       <FormGroup error={validated && !isValid()}>
         {validated && !isValid() && (
-          <ErrorMessage id="product-type-error">
+          <ErrorMessage id="submission-type-error">
             Please select one or more of the following options.
           </ErrorMessage>
         )}

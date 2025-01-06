@@ -19,6 +19,7 @@ import { LandingMetadata } from "@/metadata";
 import { ReviewScreenMetadata } from "@/ReviewScreen/metadata";
 import { ConfirmationScreenMetadata } from "@/ConfirmationScreen/metadata";
 import Cookies from "js-cookie";
+import { ProductMetadata } from "@/FlowB/Product/metadata";
 
 export const screenOrder = () => {
   return Cookies.get("CurrentFlow") === "B" ? screenOrderB : screenOrderA;
@@ -45,6 +46,7 @@ export const screenOrderA: Array<ScreenMetadata> = [
 export const screenOrderB: Array<ScreenMetadata> = [
   LandingMetadata,
   FlowBMetadata,
+  ProductMetadata,
   ReviewScreenMetadata,
   ConfirmationScreenMetadata,
 ];
