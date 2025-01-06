@@ -20,7 +20,7 @@ export default function Landing() {
         photos of the product.
       </p>
       <p>
-        We are unable to answer questions about submissions. You can check
+        We are unable to answer questions about submissions. You can check{" "}
         <a href="https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts">
           the current list of recalled products.
         </a>

@@ -8,7 +8,7 @@ interface NavigateBackProps {
   userData: UserData;
 }
 
-const NavigateBack = ({ screenName, userData }: NavigateBackProps) => (
+const NavigateBackB = ({ screenName, userData }: NavigateBackProps) => (
   <div className="margin-bottom-2 margin-top-2 width-full text-center">
     <NextLink
       href={previousScreen(screenName, userData)}
@@ -22,4 +22,4 @@ const NavigateBack = ({ screenName, userData }: NavigateBackProps) => (
   </div>
 );
 
-export default NavigateBack;
+export default NavigateBackB;
