@@ -14,6 +14,7 @@ import { ScanBarcodeMetadata } from "@/FlowA/ScanBarcode/metadata";
 import { SubmissionTypeMetadata } from "@/FlowA/SubmissionType/metadata";
 import { WhatHappenedMetadata } from "@/FlowA/WhatHappened/metadata";
 import { FlowAMetadata } from "@/FlowA/metadata";
+import { FlowBMetadata } from "@/FlowB/metadata";
 import { LandingMetadata } from "@/metadata";
 import { ReviewScreenMetadata } from "@/ReviewScreen/metadata";
 import { ConfirmationScreenMetadata } from "@/ConfirmationScreen/metadata";
@@ -43,7 +44,7 @@ export const screenOrderA: Array<ScreenMetadata> = [
 
 export const screenOrderB: Array<ScreenMetadata> = [
   LandingMetadata,
-  FlowAMetadata,
+  FlowBMetadata,
   ReviewScreenMetadata,
   ConfirmationScreenMetadata,
 ];
