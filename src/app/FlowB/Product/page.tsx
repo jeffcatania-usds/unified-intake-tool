@@ -76,7 +76,7 @@ export default function Product() {
         <StepIndicatorStep label="Who was harmed (optional)" />
         <StepIndicatorStep label="How to reach you (optional)" />
       </StepIndicator>
-      <div>
+      <div className="margin-bottom-neg-2">
         What was the product?
         <abbr
           title="required"
