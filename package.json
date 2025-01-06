@@ -9,7 +9,7 @@
     "lint": "next lint",
     "pages": "npm run pages:build && npm run pages:copy",
     "pages:build": "next build",
-    "pages:copy": "mkdir -p _site && rm -rf _site/* && cp -r public/* _site/ && cp -r out/* _site/",
+    "pages:copy": "rm -rf _site && mv out _site && cp -r public/*.svg _site/",
     "prettier": "npm prettier . --write",
     "prepare": "husky && husky install"
   },
