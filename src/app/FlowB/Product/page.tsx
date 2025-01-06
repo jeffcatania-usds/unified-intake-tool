@@ -63,7 +63,7 @@ export default function Product() {
   return (
     <>
       <h1 className="font-ui-lg text-bold">The product</h1>
-      <p>
+      <div>
         What was the product?
         <abbr
           title="required"
@@ -71,7 +71,7 @@ export default function Product() {
         >
           *
         </abbr>
-      </p>
+      </div>
       <FormGroup error={validated && !isValidType()}>
         {validated && !isValidType() && (
           <ErrorMessage id="product-type-error">
@@ -158,8 +158,8 @@ export default function Product() {
           />
         </Fieldset>
       </FormGroup>
-      <p>
-        Tell us what happened
+      <div>
+        What happened?
         <abbr
           title="required"
           className="usa-hint usa-hint--required text-no-underline"
@@ -168,7 +168,7 @@ export default function Product() {
         </abbr>
         <br />
         <span className="usa-hint">Select all that apply</span>
-      </p>
+      </div>
       <FormGroup error={validated && !isValidReportType()}>
         {validated && !isValidReportType() && (
           <ErrorMessage id="report-type-error">

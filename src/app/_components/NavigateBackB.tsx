@@ -15,7 +15,9 @@ const NavigateBack = ({ screenName, userData }: NavigateBackProps) => (
       passHref
       legacyBehavior
     >
-      <Link variant="nav">Go back</Link>
+      <Link variant="nav" className="text-no-underline">
+        Go back
+      </Link>
     </NextLink>
   </div>
 );
