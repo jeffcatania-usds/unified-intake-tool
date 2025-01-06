@@ -6,6 +6,8 @@ import {
   Fieldset,
   ErrorMessage,
   FormGroup,
+  StepIndicator,
+  StepIndicatorStep,
 } from "@trussworks/react-uswds";
 import {
   SUBMISSION_TYPE,
@@ -62,7 +64,17 @@ export default function Product() {
 
   return (
     <>
-      <h1 className="font-ui-lg text-bold">The product</h1>
+      <StepIndicator
+        headingLevel="h1"
+        ofText="of"
+        stepText="Step"
+        className="font-ui-lg text-bold"
+      >
+        <StepIndicatorStep label="The product" status="current" />
+        <StepIndicatorStep label="What happened" />
+        <StepIndicatorStep label="Who was harmed (optional)" />
+        <StepIndicatorStep label="How to reach you (optional)" />
+      </StepIndicator>
       <div>
         What was the product?
         <abbr
