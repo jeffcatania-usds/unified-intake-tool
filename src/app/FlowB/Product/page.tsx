@@ -68,7 +68,8 @@ export default function Product() {
         headingLevel="h1"
         ofText="of"
         stepText="Step"
-        className="font-ui-lg text-bold"
+        className="font-ui-lg text-bold margin-top-3"
+        showLabels={false}
       >
         <StepIndicatorStep label="The product" status="current" />
         <StepIndicatorStep label="What happened" />

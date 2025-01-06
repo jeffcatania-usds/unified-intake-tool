@@ -23,3 +23,7 @@ body {
 .usa-process-list__item:before {
   content: "" !important;
 }
+
+.usa-step-indicator__heading-counter {
+  display: none !important;
+}
