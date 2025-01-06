@@ -4,10 +4,13 @@ import OverviewProcessList from "@/components/OverviewProcessList";
 import { useUserDataContext } from "@/_contexts/UserDataProvider";
 import NavigateNext from "@/_components/NavigateNext";
 import { FlowAMetadata } from "./metadata";
+import Cookies from "js-cookie";
 
 export default function FlowA() {
   const screenName = FlowAMetadata.name;
   const { userData } = useUserDataContext();
+
+  Cookies.set("CurrentFlow", "A");
 
   return (
     <>
