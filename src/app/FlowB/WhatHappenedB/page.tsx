@@ -2,7 +2,6 @@
 
 import {
   FileInput,
-  Fieldset,
   ErrorMessage,
   FormGroup,
   StepIndicator,
@@ -156,19 +155,17 @@ export default function WhatHappenedB() {
         <StepIndicatorStep label="Who was harmed (optional)" />
         <StepIndicatorStep label="How to reach you (optional)" />
       </StepIndicator>
-      <p>Upload product photos (optional)</p>
-      <div id="product-photos-hint">
-        Include a photo of anywhere there is text on the package, product, and
-        instructions.
-        <br />
-        <br />
-        Include photos of anything wrong with the product.
-      </div>
-      <Fieldset
-        legend="Upload product photos"
-        legendStyle="srOnly"
-        className="margin-bottom-3"
-      >
+      <FormGroup>
+        <Label htmlFor="productPhotosFileInput">
+          Upload product photos (optional)
+          <div id="product-photos-hint">
+            Include a photo of anywhere there is text on the package, product,
+            and instructions.
+            <br />
+            <br />
+            Include photos of anything wrong with the product.
+          </div>
+        </Label>
         <FileInput
           id="productPhotosFileInput"
           name="productPhotosFileInput"
@@ -177,9 +174,9 @@ export default function WhatHappenedB() {
           onChange={handleProductPhotoChange}
           multiple
         />
-      </Fieldset>
+      </FormGroup>
       <FormGroup error={validated && !isProductNameValid()}>
-        <p className="margin-bottom-neg-3">
+        <Label htmlFor="productName">
           Product name
           <abbr
             title="required"
@@ -191,56 +188,48 @@ export default function WhatHappenedB() {
           <span className="usa-hint">
             Include as much detail as possible, including the brand.
           </span>
-        </p>
+        </Label>
         {validated && !isProductNameValid() && (
           <ErrorMessage id="product-type-error">
             Please provide the product name.
           </ErrorMessage>
         )}
-        <Fieldset
-          legend="Product name"
-          legendStyle="srOnly"
-          className="margin-bottom-3"
-        >
-          <TextInput
-            id="productName"
-            name="productName"
-            type="text"
-            value={userData[PRODUCT_NAME]}
-            onChange={handleProductNameChange}
-            required
-          />
-        </Fieldset>
+        <TextInput
+          id="productName"
+          name="productName"
+          type="text"
+          value={userData[PRODUCT_NAME]}
+          onChange={handleProductNameChange}
+          required
+        />
       </FormGroup>
       {userData[PRODUCT_TYPE] === "Drug" && (
-        <>
-          <p title="National Drug Code" className="margin-bottom-neg-2">
+        <FormGroup
+          className="margin-bottom-3"
+          error={validated && !isNDCValid()}
+        >
+          <Label title="National Drug Code" htmlFor="ndcNumber">
             NDC number (optional)
             <br />
             <span className="usa-hint">
               The code is 10 or 11 numbers, such as 12345-6789-01.
             </span>
-          </p>
-          <FormGroup
-            className="margin-bottom-3"
-            error={validated && !isNDCValid()}
-          >
-            {validated && !isNDCValid() && (
-              <ErrorMessage id="ndc-error">
-                Please provide a 10 or 11 digit NDC number.
-              </ErrorMessage>
-            )}
-            <TextInputMask
-              id="ndcNumber"
-              name="ndcNumber"
-              type="text"
-              mask="_____-____-__"
-              pattern="^\d{4,5}-\d{4}-\d{2}$"
-              value={userData[NDC_NUMBER]}
-              onChange={handleNDCChange}
-            />
-          </FormGroup>
-        </>
+          </Label>
+          {validated && !isNDCValid() && (
+            <ErrorMessage id="ndc-error">
+              Please provide a 10 or 11 digit NDC number.
+            </ErrorMessage>
+          )}
+          <TextInputMask
+            id="ndcNumber"
+            name="ndcNumber"
+            type="text"
+            mask="_____-____-__"
+            pattern="^\d{4,5}-\d{4}-\d{2}$"
+            value={userData[NDC_NUMBER]}
+            onChange={handleNDCChange}
+          />
+        </FormGroup>
       )}
       <FormGroup
         className="margin-bottom-3"
@@ -256,16 +245,15 @@ export default function WhatHappenedB() {
           </abbr>
           <br />
           <span className="usa-hint">What happened, step by step?</span>
+          <div className="usa-hint" id="whatHappenedHint">
+            When first using the product, how long did it take before problems
+            started, and did issues go away after stopping the product?
+            <br />
+            <br />
+            If the person harmed went to the hospital, what was the diagnosis
+            and how was it treated?
+          </div>
         </Label>
-        <br />
-        <p className="usa-hint" id="whatHappenedHint">
-          When first using the product, how long did it take before problems
-          started, and did issues go away after stopping the product?
-          <br />
-          <br />
-          If the person harmed went to the hospital, what was the diagnosis and
-          how was it treated?
-        </p>
         {validated && !isDescriptionValid() && (
           <ErrorMessage id="description-error">
             Please describe what happened.
@@ -283,7 +271,7 @@ export default function WhatHappenedB() {
         />
       </FormGroup>
       <FormGroup error={validated && !isDateValid()}>
-        <p className="margin-bottom-neg-4">
+        <Label htmlFor="eventDateMonth" className="margin-bottom-neg-4">
           When did this happen?
           <abbr
             title="required"
@@ -297,7 +285,7 @@ export default function WhatHappenedB() {
             <br />
             If you don&apos;t know, give an approximate date.
           </span>
-        </p>
+        </Label>
         {validated && !isDateValid() && (
           <ErrorMessage id="event-date-error" className="margin-top-1">
             Please provide the date this happened.
@@ -352,13 +340,13 @@ export default function WhatHappenedB() {
           />
         </DateInputGroup>
       </FormGroup>
-      <p>Upload any additional information (optional)</p>
-      <div id="additional-files-hint">This may include medical records.</div>
-      <Fieldset
-        legend="Upload any additional information"
-        legendStyle="srOnly"
-        className="margin-bottom-3"
-      >
+      <FormGroup>
+        <Label htmlFor="additionalFileInput">
+          Upload any additional information (optional)
+          <div id="additional-files-hint">
+            This may include medical records.
+          </div>
+        </Label>
         <FileInput
           id="additionalFileInput"
           name="additionalFileInput"
@@ -366,7 +354,7 @@ export default function WhatHappenedB() {
           onChange={handleAdditionalFileChange}
           multiple
         />
-      </Fieldset>
+      </FormGroup>
       <NavigateNext
         userData={userData}
         screenName={screenName}

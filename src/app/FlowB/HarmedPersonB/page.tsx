@@ -138,66 +138,68 @@ export default function HarmedPersonB() {
           <option value="days">Days</option>
         </Select>
       </FormGroup>
-      <p>
-        Gender (optional)
-        <br />
-        <span className="usa-hint">Select all that apply</span>
-      </p>
-      <Fieldset
-        legend="Gender"
-        legendStyle="srOnly"
-        className="margin-bottom-3"
-      >
-        <Checkbox
-          id="femaleGender"
-          value="Female"
-          name="gender"
-          label="Female"
-          checked={userData[HARMED_GENDER]?.includes("Female")}
-          onChange={handleGenderChange}
-          disabled={userData[HARMED_GENDER]?.includes("Prefer not to say")}
-          tile
-        />
-        <Checkbox
-          id="maleGender"
-          value="Male"
-          name="gender"
-          label="Male"
-          checked={userData[HARMED_GENDER]?.includes("Male")}
-          onChange={handleGenderChange}
-          disabled={userData[HARMED_GENDER]?.includes("Prefer not to say")}
-          tile
-        />
-        <Checkbox
-          id="transGender"
-          value="Transgender"
-          name="gender"
-          label="Transgender"
-          checked={userData[HARMED_GENDER]?.includes("Transgender")}
-          onChange={handleGenderChange}
-          disabled={userData[HARMED_GENDER]?.includes("Prefer not to say")}
-          tile
-        />
-        <Checkbox
-          id="anotherGender"
-          value="Another gender"
-          name="gender"
-          label="Another gender (specify)"
-          checked={userData[HARMED_GENDER]?.includes("Another gender")}
-          onChange={handleGenderChange}
-          disabled={userData[HARMED_GENDER]?.includes("Prefer not to say")}
-          tile
-        />
-        <Checkbox
-          id="naGender"
-          value="Prefer not to say"
-          name="gender"
-          label="Prefer not to say"
-          checked={userData[HARMED_GENDER]?.includes("Prefer not to say")}
-          onChange={handleGenderChange}
-          tile
-        />
-      </Fieldset>
+      <FormGroup>
+        <Label htmlFor="gender">
+          Gender (optional)
+          <br />
+          <span className="usa-hint">Select all that apply</span>
+        </Label>
+        <Fieldset
+          legend="Gender"
+          legendStyle="srOnly"
+          className="margin-bottom-3"
+        >
+          <Checkbox
+            id="femaleGender"
+            value="Female"
+            name="gender"
+            label="Female"
+            checked={userData[HARMED_GENDER]?.includes("Female")}
+            onChange={handleGenderChange}
+            disabled={userData[HARMED_GENDER]?.includes("Prefer not to say")}
+            tile
+          />
+          <Checkbox
+            id="maleGender"
+            value="Male"
+            name="gender"
+            label="Male"
+            checked={userData[HARMED_GENDER]?.includes("Male")}
+            onChange={handleGenderChange}
+            disabled={userData[HARMED_GENDER]?.includes("Prefer not to say")}
+            tile
+          />
+          <Checkbox
+            id="transGender"
+            value="Transgender"
+            name="gender"
+            label="Transgender"
+            checked={userData[HARMED_GENDER]?.includes("Transgender")}
+            onChange={handleGenderChange}
+            disabled={userData[HARMED_GENDER]?.includes("Prefer not to say")}
+            tile
+          />
+          <Checkbox
+            id="anotherGender"
+            value="Another gender"
+            name="gender"
+            label="Another gender (specify)"
+            checked={userData[HARMED_GENDER]?.includes("Another gender")}
+            onChange={handleGenderChange}
+            disabled={userData[HARMED_GENDER]?.includes("Prefer not to say")}
+            tile
+          />
+          <Checkbox
+            id="naGender"
+            value="Prefer not to say"
+            name="gender"
+            label="Prefer not to say"
+            checked={userData[HARMED_GENDER]?.includes("Prefer not to say")}
+            onChange={handleGenderChange}
+            tile
+          />
+        </Fieldset>
+      </FormGroup>
       {userData[HARMED_GENDER]?.includes("Another gender") && (
         <FormGroup>
           <Label htmlFor="gender-specify">Specify gender</Label>

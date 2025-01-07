@@ -8,6 +8,7 @@ import {
   FormGroup,
   StepIndicator,
   StepIndicatorStep,
+  Label,
 } from "@trussworks/react-uswds";
 import {
   SUBMISSION_TYPE,
@@ -76,16 +77,16 @@ export default function Product() {
         <StepIndicatorStep label="Who was harmed (optional)" />
         <StepIndicatorStep label="How to reach you (optional)" />
       </StepIndicator>
-      <div className="margin-bottom-neg-3">
-        What was the product?
-        <abbr
-          title="required"
-          className="usa-hint usa-hint--required text-no-underline"
-        >
-          *
-        </abbr>
-      </div>
       <FormGroup error={validated && !isValidType()}>
+        <Label htmlFor="ProductType" className="margin-bottom-neg-3">
+          What was the product?
+          <abbr
+            title="required"
+            className="usa-hint usa-hint--required text-no-underline"
+          >
+            *
+          </abbr>
+        </Label>
         {validated && !isValidType() && (
           <ErrorMessage id="product-type-error">
             Please select one of the following options.
@@ -171,18 +172,18 @@ export default function Product() {
           />
         </Fieldset>
       </FormGroup>
-      <div className="margin-bottom-neg-3">
-        What happened?
-        <abbr
-          title="required"
-          className="usa-hint usa-hint--required text-no-underline"
-        >
-          *
-        </abbr>
-        <br />
-        <span className="usa-hint">Select all that apply</span>
-      </div>
       <FormGroup error={validated && !isValidReportType()}>
+        <Label htmlFor="SubmissionType" className="margin-bottom-neg-3">
+          What happened?
+          <abbr
+            title="required"
+            className="usa-hint usa-hint--required text-no-underline"
+          >
+            *
+          </abbr>
+          <br />
+          <span className="usa-hint">Select all that apply</span>
+        </Label>
         {validated && !isValidReportType() && (
           <ErrorMessage id="report-type-error">
             Please select one or more of the following options.
