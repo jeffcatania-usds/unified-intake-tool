@@ -121,7 +121,6 @@ export default function EventDate() {
               <option value="10">10 - October</option>
               <option value="11">11 - November</option>
               <option value="12">12 - December</option>
-              <option>Not sure</option>
             </Select>
           </FormGroup>
           <DateInput
