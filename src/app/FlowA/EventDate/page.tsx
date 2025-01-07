@@ -136,7 +136,7 @@ export default function EventDate() {
           <DateInput
             id="eventDateYear"
             name="eventDateYear"
-            label="Year<abbr title='required' class='usa-hint usa-hint--required text-no-underline'>*</abbr>"
+            label="Year*"
             unit="year"
             maxLength={4}
             placeholder="YYYY"

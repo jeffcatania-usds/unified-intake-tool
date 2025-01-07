@@ -58,16 +58,6 @@ export default function WhatHappenedB() {
     updateUserData(WHAT_HAPPENED, event.target.value);
   };
 
-  const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    updateUserData(EVENT_DATE, event.target.value);
-  };
-  const handleDayChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    updateUserData(EVENT_DATE, event.target.value);
-  };
-  const handleYearChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    updateUserData(EVENT_DATE, event.target.value);
-  };
-
   const handleAdditionalFileChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
@@ -109,8 +99,47 @@ export default function WhatHappenedB() {
     return userData[WHAT_HAPPENED] && userData[WHAT_HAPPENED].length > 0;
   };
 
+  const [month, setMonth] = useState("");
+  const [day, setDay] = useState("");
+  const [year, setYear] = useState("");
+
+  const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setMonth(event.target.value);
+    updateUserData(EVENT_DATE, formatDate());
+  };
+  const handleDayChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDay(event.target.value);
+    updateUserData(EVENT_DATE, formatDate());
+  };
+  const handleYearChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setYear(event.target.value);
+    updateUserData(EVENT_DATE, formatDate());
+  };
+
+  const formatDate = () => {
+    let result = "";
+    try {
+      result = new Date(month + "/" + day + "/" + year).toDateString();
+    } catch {
+      // If the date is invalid, default to a less specific value.
+      result = month ? month + "/" : "";
+      result += year;
+    }
+    return result;
+  };
+
+  // Require at minimum a 2-digit year.
+  const yearSchema = z.number().min(10);
+  const dateSchema = z.coerce.date();
+
   const isDateValid = () => {
-    return userData[EVENT_DATE];
+    // If a day is provided, ensure that the date is valid.
+    if (day.length > 0) {
+      return dateSchema.safeParse(formatDate());
+    } else {
+      // If a day is not provided, require a valid year.
+      return yearSchema.safeParse(year).success;
+    }
   };
 
   return (
@@ -205,11 +234,7 @@ export default function WhatHappenedB() {
               id="ndcNumber"
               name="ndcNumber"
               type="text"
-              mask={
-                userData[NDC_NUMBER]?.length > 10
-                  ? "_____-____-__"
-                  : "____-____-__"
-              }
+              mask="_____-____-__"
               pattern="^\d{4,5}-\d{4}-\d{2}$"
               value={userData[NDC_NUMBER]}
               onChange={handleNDCChange}
@@ -318,7 +343,7 @@ export default function WhatHappenedB() {
           <DateInput
             id="eventDateYear"
             name="eventDateYear"
-            label="Year<abbr title='required' class='usa-hint usa-hint--required text-no-underline'>*</abbr>"
+            label="Year*"
             unit="year"
             maxLength={4}
             placeholder="YYYY"
