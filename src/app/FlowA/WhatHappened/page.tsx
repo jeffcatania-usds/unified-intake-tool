@@ -52,6 +52,8 @@ export default function WhatHappened() {
           <br />
           <span className="usa-hint">What happened, step by step?</span>
         </Label>
+        <br />
+        <br />
         <p className="usa-hint" id="whatHappenedHint">
           When first using the product, how long did it take before problems
           started, and did issues go away after stopping the product?

@@ -21,6 +21,7 @@ import {
   WHAT_HAPPENED,
   EVENT_DATE,
   ADDITIONAL_FILES,
+  PRODUCT_TYPE,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
@@ -181,29 +182,36 @@ export default function WhatHappenedB() {
           />
         </Fieldset>
       </FormGroup>
-      <p title="National Drug Code">
-        NDC number (optional)
-        <br />
-        <span className="usa-hint">
-          The code is 10 or 11 numbers, such as 12345-6789-01.
-          <br />
-          Do not enter the dashes, for example 12345678901
-        </span>
-      </p>
-      <FormGroup className="margin-bottom-3" error={validated && !isNDCValid()}>
-        {validated && !isNDCValid() && (
-          <ErrorMessage id="ndc-error">
-            Please provide a 10 or 11 digit NDC number.
-          </ErrorMessage>
-        )}
-        <TextInput
-          id="ndcNumber"
-          name="ndcNumber"
-          type="text"
-          value={userData[NDC_NUMBER]}
-          onChange={handleNDCChange}
-        />
-      </FormGroup>
+      {userData[PRODUCT_TYPE] === "drugProductType" && (
+        <>
+          <p title="National Drug Code">
+            NDC number (optional)
+            <br />
+            <span className="usa-hint">
+              The code is 10 or 11 numbers, such as 12345-6789-01.
+              <br />
+              Do not enter the dashes, for example 12345678901
+            </span>
+          </p>
+          <FormGroup
+            className="margin-bottom-3"
+            error={validated && !isNDCValid()}
+          >
+            {validated && !isNDCValid() && (
+              <ErrorMessage id="ndc-error">
+                Please provide a 10 or 11 digit NDC number.
+              </ErrorMessage>
+            )}
+            <TextInput
+              id="ndcNumber"
+              name="ndcNumber"
+              type="text"
+              value={userData[NDC_NUMBER]}
+              onChange={handleNDCChange}
+            />
+          </FormGroup>
+        </>
+      )}
       <FormGroup
         className="margin-bottom-3"
         error={validated && !isDescriptionValid()}
@@ -219,6 +227,8 @@ export default function WhatHappenedB() {
           <br />
           <span className="usa-hint">What happened, step by step?</span>
         </Label>
+        <br />
+        <br />
         <p className="usa-hint" id="whatHappenedHint">
           When first using the product, how long did it take before problems
           started, and did issues go away after stopping the product?

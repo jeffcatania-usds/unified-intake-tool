@@ -7,6 +7,7 @@ import {
   WHAT_HAPPENED,
   EVENT_DATE,
   ADDITIONAL_FILES,
+  PRODUCT_TYPE,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
 import { WhatHappenedBMetadata } from "./metadata";
@@ -22,8 +23,15 @@ export default function WhatHappenedBReview() {
       <br />
       Product name: {userData[PRODUCT_NAME]}
       <br />
-      NDC number: {userData[NDC_NUMBER] ? userData[NDC_NUMBER] : "Not provided"}
+      Product type: {PRODUCT_TYPE}
       <br />
+      {userData[PRODUCT_TYPE] === "drugProductType" && (
+        <>
+          NDC number:{" "}
+          {userData[NDC_NUMBER] ? userData[NDC_NUMBER] : "Not provided"}
+          <br />
+        </>
+      )}
       Description: {userData[WHAT_HAPPENED]}
       <br />
       Date: {userData[EVENT_DATE]}
