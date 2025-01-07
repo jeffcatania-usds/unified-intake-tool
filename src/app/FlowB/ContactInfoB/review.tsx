@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  CONTACT_PERMISSION,
   CONTACT_FIRST_NAME,
   CONTACT_LAST_NAME,
   CONTACT_EMAIL,
@@ -17,6 +18,10 @@ export default function ContactInfoBReview() {
 
   return (
     <ReviewSection metadata={ContactInfoBMetadata}>
+      {userData[CONTACT_PERMISSION] === "truePermission"
+        ? "We may contact you."
+        : "We will not contact you."}
+      <br />
       {fullName.trim() ? fullName : "Name not provided"}
       <br />
       {userData[CONTACT_EMAIL]
