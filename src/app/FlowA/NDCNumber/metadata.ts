@@ -9,7 +9,7 @@ export const NDCNumberMetadata = {
   route: "/FlowA/NDCNumber",
   title: "NDC number",
   shouldDisplay: (userData: UserData) => {
-    return userData[PRODUCT_TYPE] === "drugProductType";
+    return userData[PRODUCT_TYPE] === "Drug";
   },
   reviewSection: NDCNumberReview,
 } as ScreenMetadata;

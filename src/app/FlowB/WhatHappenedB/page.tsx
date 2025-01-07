@@ -182,7 +182,7 @@ export default function WhatHappenedB() {
           />
         </Fieldset>
       </FormGroup>
-      {userData[PRODUCT_TYPE] === "drugProductType" && (
+      {userData[PRODUCT_TYPE] === "Drug" && (
         <>
           <p title="National Drug Code">
             NDC number (optional)

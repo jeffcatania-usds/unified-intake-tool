@@ -60,7 +60,7 @@ export default function ProductType() {
         >
           <Radio
             id="product-type-cosmetic"
-            value="cosmeticProductType"
+            value="Cosmetic"
             name="ProductType"
             label="Cosmetic"
             checked={userData[PRODUCT_TYPE] === "cosmeticProductType"}
@@ -68,7 +68,7 @@ export default function ProductType() {
           />
           <Radio
             id="product-type-drug"
-            value="drugProductType"
+            value="Drug"
             name="ProductType"
             label="Drug"
             checked={userData[PRODUCT_TYPE] === "drugProductType"}
@@ -76,7 +76,7 @@ export default function ProductType() {
           />
           <Radio
             id="product-type-supplement"
-            value="supplementProductType"
+            value="Dietary Supplement"
             name="ProductType"
             label="Dietary Supplement"
             checked={userData[PRODUCT_TYPE] === "supplementProductType"}
@@ -84,7 +84,7 @@ export default function ProductType() {
           />
           <Radio
             id="product-type-food"
-            value="foodProductType"
+            value="Food"
             name="ProductType"
             label="Food"
             checked={userData[PRODUCT_TYPE] === "foodProductType"}
@@ -92,7 +92,7 @@ export default function ProductType() {
           />
           <Radio
             id="product-type-device"
-            value="deviceProductType"
+            value="Medical Device"
             name="ProductType"
             label="Medical Device"
             checked={userData[PRODUCT_TYPE] === "deviceProductType"}
@@ -100,7 +100,7 @@ export default function ProductType() {
           />
           <Radio
             id="product-type-tobacco"
-            value="tobaccoProductType"
+            value="Tobacco"
             name="ProductType"
             label="Tobacco"
             checked={userData[PRODUCT_TYPE] === "tobaccoProductType"}
@@ -108,7 +108,7 @@ export default function ProductType() {
           />
           <Radio
             id="product-type-vaccine"
-            value="vaccineProductType"
+            value="Vaccine"
             name="ProductType"
             label="Vaccine"
             checked={userData[PRODUCT_TYPE] === "vaccineProductType"}
@@ -116,7 +116,7 @@ export default function ProductType() {
           />
           <Radio
             id="product-type-veterinary"
-            value="veterinaryProductType"
+            value="Veterinary"
             name="ProductType"
             label="Veterinary (animal food, drug, or device)"
             checked={userData[PRODUCT_TYPE] === "veterinaryProductType"}
@@ -124,7 +124,7 @@ export default function ProductType() {
           />
           <Radio
             id="product-type-other"
-            value="otherProductType"
+            value="Other"
             name="ProductType"
             label="Other / Don't know"
             checked={userData[PRODUCT_TYPE] === "otherProductType"}
