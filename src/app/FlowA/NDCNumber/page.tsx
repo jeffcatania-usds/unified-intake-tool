@@ -1,6 +1,10 @@
 "use client";
 
-import { TextInput, FormGroup, ErrorMessage } from "@trussworks/react-uswds";
+import {
+  TextInputMask,
+  FormGroup,
+  ErrorMessage,
+} from "@trussworks/react-uswds";
 import { NDC_NUMBER, useUserDataContext } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
 import { z } from "zod";
@@ -15,7 +19,7 @@ export default function NDCNumber() {
   const [validated, setValidated] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    updateUserData(NDC_NUMBER, event.target.value);
+    updateUserData(NDC_NUMBER, event.target.value.replaceAll("-", ""));
   };
 
   const validate = (event: React.ChangeEvent) => {
@@ -58,10 +62,14 @@ export default function NDCNumber() {
             Please provide a 10 or 11 digit NDC number.
           </ErrorMessage>
         )}
-        <TextInput
+        <TextInputMask
           id="ndcNumber"
           name="ndcNumber"
           type="text"
+          mask={
+            userData[NDC_NUMBER].length > 10 ? "_____-____-__" : "____-____-__"
+          }
+          pattern="^\d{4,5}-\d{4}-\d{2}$"
           value={userData[NDC_NUMBER]}
           onChange={handleChange}
         />
