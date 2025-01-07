@@ -65,7 +65,7 @@ export default function NDCNumber() {
           name="ndcNumber"
           type="text"
           mask={
-            userData[NDC_NUMBER].length > 10 ? "_____-____-__" : "____-____-__"
+            userData[NDC_NUMBER]?.length > 10 ? "_____-____-__" : "____-____-__"
           }
           pattern="^\d{4,5}-\d{4}-\d{2}$"
           value={userData[NDC_NUMBER]}

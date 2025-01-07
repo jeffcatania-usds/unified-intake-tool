@@ -206,7 +206,7 @@ export default function WhatHappenedB() {
               name="ndcNumber"
               type="text"
               mask={
-                userData[NDC_NUMBER].length > 10
+                userData[NDC_NUMBER]?.length > 10
                   ? "_____-____-__"
                   : "____-____-__"
               }

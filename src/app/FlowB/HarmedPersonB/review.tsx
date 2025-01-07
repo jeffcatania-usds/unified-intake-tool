@@ -4,7 +4,7 @@ import {
   HARMED_AGE,
   HARMED_AGE_UNIT,
   HARMED_GENDER,
-  HARMED_GENDER_OTHER,
+  HARMED_GENDER_SPECIFY,
   HARMED_MEDICAL,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
@@ -25,8 +25,8 @@ export default function HarmedPersonBReview() {
       {userData[HARMED_GENDER]
         ? userData[HARMED_GENDER]
         : "Gender not provided"}{" "}
-      {userData[HARMED_GENDER_OTHER]
-        ? "(" + userData[HARMED_GENDER_OTHER] + ")"
+      {userData[HARMED_GENDER_SPECIFY]
+        ? "(" + userData[HARMED_GENDER_SPECIFY] + ")"
         : ""}
       <br />
       {userData[HARMED_MEDICAL]
