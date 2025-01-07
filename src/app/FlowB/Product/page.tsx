@@ -76,7 +76,7 @@ export default function Product() {
         <StepIndicatorStep label="Who was harmed (optional)" />
         <StepIndicatorStep label="How to reach you (optional)" />
       </StepIndicator>
-      <div className="margin-bottom-neg-2">
+      <div className="margin-bottom-neg-3">
         What was the product?
         <abbr
           title="required"
@@ -171,7 +171,7 @@ export default function Product() {
           />
         </Fieldset>
       </FormGroup>
-      <div className="margin-bottom-neg-1">
+      <div className="margin-bottom-neg-3">
         What happened?
         <abbr
           title="required"

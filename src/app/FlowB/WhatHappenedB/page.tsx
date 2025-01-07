@@ -157,7 +157,7 @@ export default function WhatHappenedB() {
         <StepIndicatorStep label="How to reach you (optional)" />
       </StepIndicator>
       <p>Upload product photos (optional)</p>
-      <div className="usa-hint margin-bottom-2" id="product-photos-hint">
+      <div id="product-photos-hint">
         Include a photo of anywhere there is text on the package, product, and
         instructions.
         <br />
@@ -178,7 +178,7 @@ export default function WhatHappenedB() {
           multiple
         />
       </Fieldset>
-      <p>
+      <p className="margin-bottom-neg-3">
         Product name
         <abbr
           title="required"
@@ -214,7 +214,7 @@ export default function WhatHappenedB() {
       </FormGroup>
       {userData[PRODUCT_TYPE] === "Drug" && (
         <>
-          <p title="National Drug Code">
+          <p title="National Drug Code" className="margin-bottom-neg-3">
             NDC number (optional)
             <br />
             <span className="usa-hint">
@@ -258,7 +258,6 @@ export default function WhatHappenedB() {
           <span className="usa-hint">What happened, step by step?</span>
         </Label>
         <br />
-        <br />
         <p className="usa-hint" id="whatHappenedHint">
           When first using the product, how long did it take before problems
           started, and did issues go away after stopping the product?
@@ -283,7 +282,7 @@ export default function WhatHappenedB() {
           required
         />
       </FormGroup>
-      <p>
+      <p className="margin-bottom-neg-4">
         When did this happen?
         <abbr
           title="required"
@@ -354,9 +353,7 @@ export default function WhatHappenedB() {
         </DateInputGroup>
       </FormGroup>
       <p>Upload any additional information (optional)</p>
-      <div className="usa-hint margin-bottom-2" id="additional-files-hint">
-        This may include medical records.
-      </div>
+      <div id="additional-files-hint">This may include medical records.</div>
       <Fieldset
         legend="Upload any additional information"
         legendStyle="srOnly"
