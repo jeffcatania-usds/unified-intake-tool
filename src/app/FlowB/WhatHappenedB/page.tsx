@@ -178,20 +178,20 @@ export default function WhatHappenedB() {
           multiple
         />
       </Fieldset>
-      <p className="margin-bottom-neg-3">
-        Product name
-        <abbr
-          title="required"
-          className="usa-hint usa-hint--required text-no-underline"
-        >
-          *
-        </abbr>
-        <br />
-        <span className="usa-hint">
-          Include as much detail as possible, including the brand.
-        </span>
-      </p>
       <FormGroup error={validated && !isProductNameValid()}>
+        <p className="margin-bottom-neg-3">
+          Product name
+          <abbr
+            title="required"
+            className="usa-hint usa-hint--required text-no-underline"
+          >
+            *
+          </abbr>
+          <br />
+          <span className="usa-hint">
+            Include as much detail as possible, including the brand.
+          </span>
+        </p>
         {validated && !isProductNameValid() && (
           <ErrorMessage id="product-type-error">
             Please provide the product name.
@@ -214,7 +214,7 @@ export default function WhatHappenedB() {
       </FormGroup>
       {userData[PRODUCT_TYPE] === "Drug" && (
         <>
-          <p title="National Drug Code" className="margin-bottom-neg-3">
+          <p title="National Drug Code" className="margin-bottom-neg-2">
             NDC number (optional)
             <br />
             <span className="usa-hint">
@@ -282,24 +282,24 @@ export default function WhatHappenedB() {
           required
         />
       </FormGroup>
-      <p className="margin-bottom-neg-4">
-        When did this happen?
-        <abbr
-          title="required"
-          className="usa-hint usa-hint--required text-no-underline"
-        >
-          *
-        </abbr>
-        <br />
-        <span className="usa-hint">
-          For example: October 1, 2024
-          <br />
-          If you don&apos;t know, give an approximate date.
-        </span>
-      </p>
       <FormGroup error={validated && !isDateValid()}>
+        <p className="margin-bottom-neg-4">
+          When did this happen?
+          <abbr
+            title="required"
+            className="usa-hint usa-hint--required text-no-underline"
+          >
+            *
+          </abbr>
+          <br />
+          <span className="usa-hint">
+            For example: October 1, 2024
+            <br />
+            If you don&apos;t know, give an approximate date.
+          </span>
+        </p>
         {validated && !isDateValid() && (
-          <ErrorMessage id="event-date-error">
+          <ErrorMessage id="event-date-error" className="margin-top-1">
             Please provide the date this happened.
           </ErrorMessage>
         )}
