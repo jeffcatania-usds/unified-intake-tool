@@ -18,11 +18,11 @@ export default function ReviewScreen() {
     <>
       <NavigateBack userData={userData} screenName={screenName} />
       <h1 className="font-ui-lg text-bold">Review your submission</h1>
-      <p className="margin-bottom-2">
+      <div className="margin-bottom-2">
         Review your information below to make sure it is correct. After you
         submit, you will not be able to update this report.
-      </p>
-      <p>To make changes, tap on any section to edit.</p>
+      </div>
+      <div>To make changes, tap on any section to edit.</div>
       {displayedScreens.map((item) => {
         if (item.reviewSection != undefined) {
           return <item.reviewSection key={item.name} />;

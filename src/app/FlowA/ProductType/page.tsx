@@ -5,6 +5,7 @@ import {
   Fieldset,
   ErrorMessage,
   FormGroup,
+  Label,
 } from "@trussworks/react-uswds";
 import { PRODUCT_TYPE, useUserDataContext } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
@@ -37,16 +38,16 @@ export default function ProductType() {
   return (
     <>
       <NavigateBack userData={userData} screenName={screenName} />
-      <p>
-        What was the product?
-        <abbr
-          title="required"
-          className="usa-hint usa-hint--required text-no-underline"
-        >
-          *
-        </abbr>
-      </p>
       <FormGroup error={validated && !isValid()}>
+        <Label htmlFor="ProductType">
+          What was the product?
+          <abbr
+            title="required"
+            className="usa-hint usa-hint--required text-no-underline"
+          >
+            *
+          </abbr>
+        </Label>
         {validated && !isValid() && (
           <ErrorMessage id="product-type-error">
             Please select one of the following options.

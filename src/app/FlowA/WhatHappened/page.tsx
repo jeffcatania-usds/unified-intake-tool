@@ -50,18 +50,18 @@ export default function WhatHappened() {
             *
           </abbr>
           <br />
-          <span className="usa-hint">What happened, step by step?</span>
+          <div className="usa-hint" id="whatHappenedHint">
+            What happened, step by step?
+            <br />
+            <br />
+            When first using the product, how long did it take before problems
+            started, and did issues go away after stopping the product?
+            <br />
+            <br />
+            If the person harmed went to the hospital, what was the diagnosis
+            and how was it treated?
+          </div>
         </Label>
-        <br />
-        <br />
-        <p className="usa-hint" id="whatHappenedHint">
-          When first using the product, how long did it take before problems
-          started, and did issues go away after stopping the product?
-          <br />
-          <br />
-          If the person harmed went to the hospital, what was the diagnosis and
-          how was it treated?
-        </p>
         {validated && !isValid() && (
           <ErrorMessage id="product-type-error">
             Please describe what happened.

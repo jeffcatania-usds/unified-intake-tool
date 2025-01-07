@@ -2,7 +2,7 @@
 
 import {
   TextInput,
-  Fieldset,
+  Label,
   FormGroup,
   ErrorMessage,
 } from "@trussworks/react-uswds";
@@ -37,39 +37,33 @@ export default function ProductName() {
   return (
     <>
       <NavigateBack userData={userData} screenName={screenName} />
-      <p>
-        Product name
-        <abbr
-          title="required"
-          className="usa-hint usa-hint--required text-no-underline"
-        >
-          *
-        </abbr>
-        <br />
-        <span className="usa-hint">
-          Include as much detail as possible, including the brand.
-        </span>
-      </p>
       <FormGroup error={validated && !isValid()}>
+        <Label>
+          Product name
+          <abbr
+            title="required"
+            className="usa-hint usa-hint--required text-no-underline"
+          >
+            *
+          </abbr>
+          <br />
+          <span className="usa-hint">
+            Include as much detail as possible, including the brand.
+          </span>
+        </Label>
         {validated && !isValid() && (
           <ErrorMessage id="product-type-error">
             Please provide the product name.
           </ErrorMessage>
         )}
-        <Fieldset
-          legend="Product name"
-          legendStyle="srOnly"
-          className="margin-bottom-3"
-        >
-          <TextInput
-            id="productName"
-            name="productName"
-            type="text"
-            value={userData[PRODUCT_NAME]}
-            onChange={handleChange}
-            required
-          />
-        </Fieldset>
+        <TextInput
+          id="productName"
+          name="productName"
+          type="text"
+          value={userData[PRODUCT_NAME]}
+          onChange={handleChange}
+          required
+        />
       </FormGroup>
       <NavigateNext
         userData={userData}

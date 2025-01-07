@@ -1,6 +1,6 @@
 "use client";
 
-import { FileInput, Fieldset } from "@trussworks/react-uswds";
+import { FileInput, Label, FormGroup } from "@trussworks/react-uswds";
 import {
   PRODUCT_PHOTOS,
   useUserDataContext,
@@ -20,19 +20,17 @@ export default function ProductPhotos() {
   return (
     <>
       <NavigateBack userData={userData} screenName={screenName} />
-      <p>Upload product photos (optional)</p>
-      <div className="usa-hint margin-bottom-2" id="product-photos-hint">
-        Include a photo of anywhere there is text on the package, product, and
-        instructions.
-        <br />
-        <br />
-        Include photos of anything wrong with the product.
-      </div>
-      <Fieldset
-        legend="Upload product photos"
-        legendStyle="srOnly"
-        className="margin-bottom-3"
-      >
+      <FormGroup>
+        <Label htmlFor="productPhotosFileInput">
+          Upload product photos (optional)
+          <div className="usa-hint margin-bottom-2" id="product-photos-hint">
+            Include a photo of anywhere there is text on the package, product,
+            and instructions.
+            <br />
+            <br />
+            Include photos of anything wrong with the product.
+          </div>
+        </Label>
         <FileInput
           id="productPhotosFileInput"
           name="productPhotosFileInput"
@@ -41,7 +39,7 @@ export default function ProductPhotos() {
           onChange={handleChange}
           multiple
         />
-      </Fieldset>
+      </FormGroup>
       <NavigateNext userData={userData} screenName={screenName} />
     </>
   );

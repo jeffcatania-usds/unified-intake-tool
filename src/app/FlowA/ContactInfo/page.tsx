@@ -59,14 +59,14 @@ export default function ContactInfo() {
   return (
     <>
       <NavigateBack userData={userData} screenName={screenName} />
-      <p>
+      <div>
         Can we contact you? (optional)
         <br />
         <span className="usa-hint">
           We will only contact you to ask questions about this product
           complaint. We will not share your information with anyone else.
         </span>
-      </p>
+      </div>
       <NavigateSkip
         userData={userData}
         screenName={screenName}

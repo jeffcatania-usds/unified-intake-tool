@@ -5,6 +5,7 @@ import {
   Fieldset,
   ErrorMessage,
   FormGroup,
+  Label,
 } from "@trussworks/react-uswds";
 import {
   SUBMISSION_TYPE,
@@ -51,18 +52,18 @@ export default function SubmissionType() {
   return (
     <>
       <NavigateBack userData={userData} screenName={screenName} />
-      <p>
-        Tell us what happened
-        <abbr
-          title="required"
-          className="usa-hint usa-hint--required text-no-underline"
-        >
-          *
-        </abbr>
-        <br />
-        <span className="usa-hint">Select all that apply</span>
-      </p>
       <FormGroup error={validated && !isValid()}>
+        <Label htmlFor="SubmissionType">
+          Tell us what happened
+          <abbr
+            title="required"
+            className="usa-hint usa-hint--required text-no-underline"
+          >
+            *
+          </abbr>
+          <br />
+          <span className="usa-hint">Select all that apply</span>
+        </Label>
         {validated && !isValid() && (
           <ErrorMessage id="submission-type-error">
             Please select one or more of the following options.

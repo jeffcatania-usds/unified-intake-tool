@@ -74,22 +74,22 @@ export default function EventDate() {
   return (
     <>
       <NavigateBack userData={userData} screenName={screenName} />
-      <p>
-        When did this happen?
-        <abbr
-          title="required"
-          className="usa-hint usa-hint--required text-no-underline"
-        >
-          *
-        </abbr>
-        <br />
-        <span className="usa-hint">
-          For example: October 1, 2024
-          <br />
-          If you don&apos;t know, give an approximate date.
-        </span>
-      </p>
       <FormGroup error={validated && !isValid()}>
+        <Label>
+          When did this happen?
+          <abbr
+            title="required"
+            className="usa-hint usa-hint--required text-no-underline"
+          >
+            *
+          </abbr>
+          <br />
+          <span className="usa-hint">
+            For example: October 1, 2024
+            <br />
+            If you don&apos;t know, give an approximate date.
+          </span>
+        </Label>
         {validated && !isValid() && (
           <ErrorMessage id="event-date-error">
             Please provide the date this happened.

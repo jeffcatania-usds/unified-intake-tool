@@ -1,6 +1,6 @@
 "use client";
 
-import { FileInput, Fieldset } from "@trussworks/react-uswds";
+import { FileInput, FormGroup, Label } from "@trussworks/react-uswds";
 import {
   ADDITIONAL_FILES,
   useUserDataContext,
@@ -20,15 +20,13 @@ export default function AdditionalFiles() {
   return (
     <>
       <NavigateBack userData={userData} screenName={screenName} />
-      <p>Upload any additional information (optional)</p>
-      <div className="usa-hint margin-bottom-2" id="additional-files-hint">
-        This may include medical records.
-      </div>
-      <Fieldset
-        legend="Upload any additional information"
-        legendStyle="srOnly"
-        className="margin-bottom-3"
-      >
+      <FormGroup>
+        <Label htmlFor="additionalFileInput">
+          Upload any additional information (optional)
+          <div className="usa-hint margin-bottom-2" id="additional-files-hint">
+            This may include medical records.
+          </div>
+        </Label>
         <FileInput
           id="additionalFileInput"
           name="additionalFileInput"
@@ -36,7 +34,7 @@ export default function AdditionalFiles() {
           onChange={handleChange}
           multiple
         />
-      </Fieldset>
+      </FormGroup>
       <NavigateNext userData={userData} screenName={screenName} />
     </>
   );

@@ -4,6 +4,7 @@ import {
   TextInputMask,
   FormGroup,
   ErrorMessage,
+  Label,
 } from "@trussworks/react-uswds";
 import { NDC_NUMBER, useUserDataContext } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
@@ -47,14 +48,14 @@ export default function NDCNumber() {
   return (
     <>
       <NavigateBack userData={userData} screenName={screenName} />
-      <p title="National Drug Code">
-        NDC number (optional)
-        <br />
-        <span className="usa-hint">
-          The code is 10 or 11 numbers, such as 12345-6789-01.
-        </span>
-      </p>
       <FormGroup className="margin-bottom-3" error={validated && !isValid()}>
+        <Label htmlFor="ndcNumber" title="National Drug Code">
+          NDC number (optional)
+          <br />
+          <span className="usa-hint">
+            The code is 10 or 11 numbers, such as 12345-6789-01.
+          </span>
+        </Label>
         {validated && !isValid() && (
           <ErrorMessage id="email-error">
             Please provide a 10 or 11 digit NDC number.
