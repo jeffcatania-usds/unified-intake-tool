@@ -14,7 +14,7 @@ import {
   HARMED_AGE,
   HARMED_AGE_UNIT,
   HARMED_GENDER,
-  HARMED_GENDER_OTHER,
+  HARMED_GENDER_SPECIFY,
   HARMED_MEDICAL,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
@@ -63,10 +63,10 @@ export default function HarmedPerson() {
     }
   };
 
-  const handleGenderOtherChange = (
+  const handleGenderSpecifyChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    updateUserData(HARMED_GENDER_OTHER, event.target.value);
+    updateUserData(HARMED_GENDER_SPECIFY, event.target.value);
   };
 
   const handleMedicalChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -191,11 +191,11 @@ export default function HarmedPerson() {
       </Fieldset>
       {userData[HARMED_GENDER]?.includes("Another gender") && (
         <FormGroup>
-          <Label htmlFor="gender-other">Other gender</Label>
+          <Label htmlFor="gender-specify">Specify gender</Label>
           <TextInput
-            id="gender-other"
-            name="gender-other"
-            onChange={handleGenderOtherChange}
+            id="gender-specify"
+            name="gender-specify"
+            onChange={handleGenderSpecifyChange}
           />
         </FormGroup>
       )}
