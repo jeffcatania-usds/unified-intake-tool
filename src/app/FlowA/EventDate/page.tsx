@@ -106,6 +106,7 @@ export default function EventDate() {
               id="eventDateMonth"
               name="eventDateMonth"
               value={month}
+              className="width-card"
               onChange={handleMonthChange}
             >
               <option>- Select -</option>

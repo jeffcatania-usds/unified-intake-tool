@@ -314,6 +314,8 @@ export default function WhatHappenedB() {
             <Select
               id="eventDateMonth"
               name="eventDateMonth"
+              className="width-card"
+              value={month}
               onChange={handleMonthChange}
             >
               <option>- Select -</option>
