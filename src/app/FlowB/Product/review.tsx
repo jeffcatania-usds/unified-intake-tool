@@ -4,7 +4,7 @@ import { PRODUCT_TYPE, useUserDataContext } from "@/_contexts/UserDataProvider";
 import { ProductMetadata } from "./metadata";
 import ReviewSection from "@/_components/ReviewSection";
 
-export default function ProductPhotosReview() {
+export default function ProductReview() {
   const { userData } = useUserDataContext();
 
   return (
