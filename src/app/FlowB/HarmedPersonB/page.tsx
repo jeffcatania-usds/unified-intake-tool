@@ -1,0 +1,237 @@
+"use client";
+
+import {
+  Checkbox,
+  Fieldset,
+  ErrorMessage,
+  FormGroup,
+  TextInput,
+  Select,
+  CharacterCount,
+  Label,
+  StepIndicator,
+  StepIndicatorStep,
+} from "@trussworks/react-uswds";
+import {
+  HARMED_AGE,
+  HARMED_AGE_UNIT,
+  HARMED_GENDER,
+  HARMED_GENDER_OTHER,
+  HARMED_MEDICAL,
+  useUserDataContext,
+} from "@/_contexts/UserDataProvider";
+import { useState } from "react";
+import { z } from "zod";
+import NavigateBackB from "@/_components/NavigateBackB";
+import NavigateNext from "@/_components/NavigateNext";
+import NavigateSkip from "@/_components/NavigateSkip";
+import { HarmedPersonBMetadata } from "./metadata";
+
+export default function HarmedPersonB() {
+  const screenName = HarmedPersonBMetadata.name;
+  const { userData, updateUserData } = useUserDataContext();
+  const [validated, setValidated] = useState(false);
+
+  const handleAgeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    updateUserData(HARMED_AGE, event.target.value);
+  };
+
+  const handleAgeUnitChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    updateUserData(HARMED_AGE_UNIT, event.target.value);
+  };
+
+  const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // Special case because NA disables other gender options
+    if (event.target.value == "naGender") {
+      if (userData[HARMED_GENDER]?.includes("naGender")) {
+        updateUserData(HARMED_GENDER, []);
+      } else {
+        updateUserData(HARMED_GENDER, ["naGender"]);
+      }
+      return;
+    }
+
+    if (typeof userData[HARMED_GENDER] === "object") {
+      const previous = userData[HARMED_GENDER];
+      const indexOfValue = previous.indexOf(event.target.value);
+      if (indexOfValue >= 0) {
+        previous.splice(indexOfValue, 1);
+        updateUserData(HARMED_GENDER, previous);
+      } else {
+        updateUserData(HARMED_GENDER, [...previous, event.target.value]);
+      }
+    } else {
+      updateUserData(HARMED_GENDER, [event.target.value]);
+    }
+  };
+
+  const handleGenderOtherChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    updateUserData(HARMED_GENDER_OTHER, event.target.value);
+  };
+
+  const handleMedicalChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    updateUserData(HARMED_MEDICAL, event.target.value);
+  };
+
+  const validate = (event: React.ChangeEvent) => {
+    if (!isValid()) {
+      event.preventDefault();
+      setValidated(true);
+      return false;
+    }
+    return true;
+  };
+
+  const ageSchema = z.number();
+
+  const isValid = () => {
+    return (
+      !userData[HARMED_AGE] || ageSchema.safeParse(userData[HARMED_AGE]).success
+    );
+  };
+
+  return (
+    <>
+      <StepIndicator
+        headingLevel="h1"
+        ofText="of"
+        stepText="Step"
+        className="font-ui-lg text-bold margin-top-3"
+        showLabels={false}
+      >
+        <StepIndicatorStep label="The product" status="complete" />
+        <StepIndicatorStep label="What happened" status="complete" />
+        <StepIndicatorStep label="Who was harmed (optional)" status="current" />
+        <StepIndicatorStep label="How to reach you (optional)" />
+      </StepIndicator>
+      <NavigateSkip
+        userData={userData}
+        screenName={screenName}
+        validate={validate}
+      />
+      <div className="usa-hint">
+        This information is helpful for tracking product problems and conducting
+        investigations.
+      </div>
+      <FormGroup error={validated && !isValid()} className="margin-bottom-2">
+        <Label htmlFor="age-text">Age (optional)</Label>
+        {validated && !isValid() && (
+          <ErrorMessage id="age-error">Please enter a valid age.</ErrorMessage>
+        )}
+        <TextInput
+          id="age-text"
+          name="age-text"
+          type="number"
+          onChange={handleAgeChange}
+          className="usa-input--2xs float-left margin-right-2"
+        />
+        <Select
+          id="age-unit"
+          name="age-unit"
+          onChange={handleAgeUnitChange}
+          className="usa-input--sm"
+        >
+          <option value="years">Years</option>
+          <option value="months">Months</option>
+          <option value="days">Days</option>
+        </Select>
+      </FormGroup>
+      <p>
+        Gender (optional)
+        <br />
+        <span className="usa-hint">Select all that apply</span>
+      </p>
+      <Fieldset
+        legend="Gender"
+        legendStyle="srOnly"
+        className="margin-bottom-3"
+      >
+        <Checkbox
+          id="femaleGender"
+          value="femaleGender"
+          name="gender"
+          label="Female"
+          checked={userData[HARMED_GENDER]?.includes("femaleGender")}
+          onChange={handleGenderChange}
+          disabled={userData[HARMED_GENDER]?.includes("naGender")}
+          tile
+        />
+        <Checkbox
+          id="maleGender"
+          value="maleGender"
+          name="gender"
+          label="Male"
+          checked={userData[HARMED_GENDER]?.includes("maleGender")}
+          onChange={handleGenderChange}
+          disabled={userData[HARMED_GENDER]?.includes("naGender")}
+          tile
+        />
+        <Checkbox
+          id="transGender"
+          value="transGender"
+          name="gender"
+          label="Transgender"
+          checked={userData[HARMED_GENDER]?.includes("transGender")}
+          onChange={handleGenderChange}
+          disabled={userData[HARMED_GENDER]?.includes("naGender")}
+          tile
+        />
+        <Checkbox
+          id="anotherGender"
+          value="anotherGender"
+          name="gender"
+          label="Another gender (specify)"
+          checked={userData[HARMED_GENDER]?.includes("anotherGender")}
+          onChange={handleGenderChange}
+          disabled={userData[HARMED_GENDER]?.includes("naGender")}
+          tile
+        />
+        <Checkbox
+          id="naGender"
+          value="naGender"
+          name="gender"
+          label="Prefer not to say"
+          checked={userData[HARMED_GENDER]?.includes("naGender")}
+          onChange={handleGenderChange}
+          tile
+        />
+      </Fieldset>
+      {userData[HARMED_GENDER]?.includes("anotherGender") && (
+        <FormGroup>
+          <Label htmlFor="gender-other">Other gender</Label>
+          <TextInput
+            id="gender-other"
+            name="gender-other"
+            onChange={handleGenderOtherChange}
+          />
+        </FormGroup>
+      )}
+      <FormGroup>
+        <Label htmlFor="medical-text">
+          Provide their medical details (optional)
+          <br />
+          <span className="usa-hint">
+            List any prescriptions taken at the same time or allergies
+          </span>
+        </Label>
+        <CharacterCount
+          id="medical-text"
+          name="medical-text"
+          isTextArea={true}
+          value={userData[HARMED_MEDICAL]}
+          onChange={handleMedicalChange}
+          maxLength={8000}
+        />
+      </FormGroup>
+
+      <NavigateNext
+        userData={userData}
+        screenName={screenName}
+        validate={validate}
+      />
+      <NavigateBackB userData={userData} screenName={screenName} />
+    </>
+  );
+}

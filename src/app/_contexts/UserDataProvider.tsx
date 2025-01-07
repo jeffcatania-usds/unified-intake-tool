@@ -15,6 +15,7 @@ export const HARMED_AGE_UNIT = "harmedAgeUnit";
 export const HARMED_GENDER = "harmedGender";
 export const HARMED_GENDER_OTHER = "harmedGenderOther";
 export const HARMED_MEDICAL = "harmedMedical";
+export const CONTACT_PERMISSION = "contactPermission";
 export const CONTACT_FIRST_NAME = "contactFirstName";
 export const CONTACT_LAST_NAME = "contactLastName";
 export const CONTACT_EMAIL = "contactEmail";
@@ -49,6 +50,11 @@ export default function UserDataProvider({
     HARMED_GENDER: [],
     HARMED_GENDER_OTHER: "",
     HARMED_MEDICAL: "",
+    CONTACT_PERMISSION: "",
+    CONTACT_FIRST_NAME: "",
+    CONTACT_LAST_NAME: "",
+    CONTACT_EMAIL: "",
+    ADDITIONAL_FILES: "",
   });
 
   const updateUserData = (name: string, value: string | Array<string>) => {
