@@ -27,3 +27,7 @@ body {
 .usa-step-indicator__heading-counter {
   display: none !important;
 }
+
+#eventDateMonth {
+  width: 10rem !important;
+}
