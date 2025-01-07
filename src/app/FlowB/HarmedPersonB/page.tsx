@@ -42,11 +42,11 @@ export default function HarmedPersonB() {
 
   const handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Special case because NA disables other gender options
-    if (event.target.value == "naGender") {
-      if (userData[HARMED_GENDER]?.includes("naGender")) {
+    if (event.target.value == "Prefer not to say") {
+      if (userData[HARMED_GENDER]?.includes("Prefer not to say")) {
         updateUserData(HARMED_GENDER, []);
       } else {
-        updateUserData(HARMED_GENDER, ["naGender"]);
+        updateUserData(HARMED_GENDER, ["Prefer not to say"]);
       }
       return;
     }
@@ -150,55 +150,55 @@ export default function HarmedPersonB() {
       >
         <Checkbox
           id="femaleGender"
-          value="femaleGender"
+          value="Female"
           name="gender"
           label="Female"
-          checked={userData[HARMED_GENDER]?.includes("femaleGender")}
+          checked={userData[HARMED_GENDER]?.includes("Female")}
           onChange={handleGenderChange}
-          disabled={userData[HARMED_GENDER]?.includes("naGender")}
+          disabled={userData[HARMED_GENDER]?.includes("Prefer not to say")}
           tile
         />
         <Checkbox
           id="maleGender"
-          value="maleGender"
+          value="Male"
           name="gender"
           label="Male"
-          checked={userData[HARMED_GENDER]?.includes("maleGender")}
+          checked={userData[HARMED_GENDER]?.includes("Male")}
           onChange={handleGenderChange}
-          disabled={userData[HARMED_GENDER]?.includes("naGender")}
+          disabled={userData[HARMED_GENDER]?.includes("Prefer not to say")}
           tile
         />
         <Checkbox
           id="transGender"
-          value="transGender"
+          value="Transgender"
           name="gender"
           label="Transgender"
-          checked={userData[HARMED_GENDER]?.includes("transGender")}
+          checked={userData[HARMED_GENDER]?.includes("Transgender")}
           onChange={handleGenderChange}
-          disabled={userData[HARMED_GENDER]?.includes("naGender")}
+          disabled={userData[HARMED_GENDER]?.includes("Prefer not to say")}
           tile
         />
         <Checkbox
           id="anotherGender"
-          value="anotherGender"
+          value="Another gender"
           name="gender"
           label="Another gender (specify)"
-          checked={userData[HARMED_GENDER]?.includes("anotherGender")}
+          checked={userData[HARMED_GENDER]?.includes("Another gender")}
           onChange={handleGenderChange}
-          disabled={userData[HARMED_GENDER]?.includes("naGender")}
+          disabled={userData[HARMED_GENDER]?.includes("Prefer not to say")}
           tile
         />
         <Checkbox
           id="naGender"
-          value="naGender"
+          value="Prefer not to say"
           name="gender"
           label="Prefer not to say"
-          checked={userData[HARMED_GENDER]?.includes("naGender")}
+          checked={userData[HARMED_GENDER]?.includes("Prefer not to say")}
           onChange={handleGenderChange}
           tile
         />
       </Fieldset>
-      {userData[HARMED_GENDER]?.includes("anotherGender") && (
+      {userData[HARMED_GENDER]?.includes("Another gender") && (
         <FormGroup>
           <Label htmlFor="gender-other">Other gender</Label>
           <TextInput

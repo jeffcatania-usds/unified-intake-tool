@@ -102,7 +102,7 @@ export default function Product() {
             value="Cosmetic"
             name="ProductType"
             label="Cosmetic"
-            checked={userData[PRODUCT_TYPE] === "cosmeticProductType"}
+            checked={userData[PRODUCT_TYPE] === "Cosmetic"}
             onChange={handleTypeChange}
           />
           <Radio
@@ -110,7 +110,7 @@ export default function Product() {
             value="Drug"
             name="ProductType"
             label="Drug"
-            checked={userData[PRODUCT_TYPE] === "drugProductType"}
+            checked={userData[PRODUCT_TYPE] === "Drug"}
             onChange={handleTypeChange}
           />
           <Radio
@@ -118,7 +118,7 @@ export default function Product() {
             value="Dietary Supplement"
             name="ProductType"
             label="Dietary Supplement"
-            checked={userData[PRODUCT_TYPE] === "supplementProductType"}
+            checked={userData[PRODUCT_TYPE] === "Dietary Supplement"}
             onChange={handleTypeChange}
           />
           <Radio
@@ -126,7 +126,7 @@ export default function Product() {
             value="Food"
             name="ProductType"
             label="Food"
-            checked={userData[PRODUCT_TYPE] === "foodProductType"}
+            checked={userData[PRODUCT_TYPE] === "Food"}
             onChange={handleTypeChange}
           />
           <Radio
@@ -134,7 +134,7 @@ export default function Product() {
             value="Medical Device"
             name="ProductType"
             label="Medical Device"
-            checked={userData[PRODUCT_TYPE] === "deviceProductType"}
+            checked={userData[PRODUCT_TYPE] === "Medical Device"}
             onChange={handleTypeChange}
           />
           <Radio
@@ -142,7 +142,7 @@ export default function Product() {
             value="Tobacco"
             name="ProductType"
             label="Tobacco"
-            checked={userData[PRODUCT_TYPE] === "tobaccoProductType"}
+            checked={userData[PRODUCT_TYPE] === "Tobacco"}
             onChange={handleTypeChange}
           />
           <Radio
@@ -150,7 +150,7 @@ export default function Product() {
             value="Vaccine"
             name="ProductType"
             label="Vaccine"
-            checked={userData[PRODUCT_TYPE] === "vaccineProductType"}
+            checked={userData[PRODUCT_TYPE] === "Vaccine"}
             onChange={handleTypeChange}
           />
           <Radio
@@ -158,7 +158,7 @@ export default function Product() {
             value="Veterinary"
             name="ProductType"
             label="Veterinary (animal food, drug, or device)"
-            checked={userData[PRODUCT_TYPE] === "veterinaryProductType"}
+            checked={userData[PRODUCT_TYPE] === "Veterinary"}
             onChange={handleTypeChange}
           />
           <Radio
@@ -166,7 +166,7 @@ export default function Product() {
             value="Other"
             name="ProductType"
             label="Other / Don't know"
-            checked={userData[PRODUCT_TYPE] === "otherProductType"}
+            checked={userData[PRODUCT_TYPE] === "Other"}
             onChange={handleTypeChange}
           />
         </Fieldset>
