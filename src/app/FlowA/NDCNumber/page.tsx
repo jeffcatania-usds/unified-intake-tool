@@ -52,8 +52,6 @@ export default function NDCNumber() {
         <br />
         <span className="usa-hint">
           The code is 10 or 11 numbers, such as 12345-6789-01.
-          <br />
-          Do not enter the dashes, for example 12345678901
         </span>
       </p>
       <FormGroup className="margin-bottom-3" error={validated && !isValid()}>
