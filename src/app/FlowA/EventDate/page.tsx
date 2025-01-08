@@ -44,7 +44,7 @@ export default function EventDate() {
       } catch {
         result = "";
       }
-    } else {
+    } else if (year) {
       // If the date is incomplete, default to a less specific value.
       if (month) {
         result = month + "/";
@@ -70,7 +70,7 @@ export default function EventDate() {
   const isValid = () => {
     // If a day is provided, ensure that the date is valid.
     if (day.length > 0) {
-      return dateSchema.safeParse(formatDate());
+      return dateSchema.safeParse(formatDate()).success;
     } else {
       // If a day is not provided, require a valid year.
       return yearSchema.safeParse(year).success;
