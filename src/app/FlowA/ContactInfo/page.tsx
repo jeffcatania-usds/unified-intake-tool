@@ -86,7 +86,7 @@ export default function ContactInfo() {
           onChange={handleFirstNameChange}
         />
       </FormGroup>
-      <FormGroup className="margin-top-2 margin-bottom-2">
+      <FormGroup className="margin-top-2 margin-bottom-1">
         <Label htmlFor="lastName">
           Last or family name (optional)
           <br />

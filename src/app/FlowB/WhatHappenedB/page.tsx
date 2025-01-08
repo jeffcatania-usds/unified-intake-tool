@@ -117,11 +117,17 @@ export default function WhatHappenedB() {
 
   const formatDate = () => {
     let result = "";
-    try {
-      result = new Date(month + "/" + day + "/" + year).toDateString();
-    } catch {
-      // If the date is invalid, default to a less specific value.
-      result = month ? month + "/" : "";
+    if (month && day && year) {
+      try {
+        result = new Date(month + "/" + day + "/" + year).toDateString();
+      } catch {
+        result = "";
+      }
+    } else {
+      // If the date is incomplete, default to a less specific value.
+      if (month) {
+        result = month + "/";
+      }
       result += year;
     }
     return result;
@@ -158,7 +164,7 @@ export default function WhatHappenedB() {
       <FormGroup>
         <Label htmlFor="productPhotosFileInput">
           Upload product photos (optional)
-          <div id="product-photos-hint">
+          <div id="product-photos-hint" className="usa-hint">
             Include a photo of anywhere there is text on the package, product,
             and instructions.
             <br />
@@ -271,7 +277,7 @@ export default function WhatHappenedB() {
         />
       </FormGroup>
       <FormGroup error={validated && !isDateValid()}>
-        <Label htmlFor="eventDateMonth" className="margin-bottom-neg-4">
+        <Label htmlFor="eventDateMonth" className="margin-bottom-neg-2">
           When did this happen?
           <abbr
             title="required"
@@ -343,7 +349,7 @@ export default function WhatHappenedB() {
       <FormGroup>
         <Label htmlFor="additionalFileInput">
           Upload any additional information (optional)
-          <div id="additional-files-hint">
+          <div id="additional-files-hint" className="usa-hint">
             This may include medical records.
           </div>
         </Label>

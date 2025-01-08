@@ -95,12 +95,11 @@ export default function ContactInfo() {
       <FormGroup>
         <Label htmlFor="contactPermission">
           Can we contact you with any follow up questions? (optional)
+          <div className="usa-hint">
+            We will only contact you to ask questions about this product
+            complaint. We will not share your information with anyone else.
+          </div>
         </Label>
-        <br />
-        <span className="usa-hint">
-          We will only contact you to ask questions about this product
-          complaint. We will not share your information with anyone else.
-        </span>
         <Fieldset
           legend="Can we contact you with any follow up questions?"
           legendStyle="srOnly"

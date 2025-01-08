@@ -78,7 +78,7 @@ export default function Product() {
         <StepIndicatorStep label="How to reach you (optional)" />
       </StepIndicator>
       <FormGroup error={validated && !isValidType()}>
-        <Label htmlFor="ProductType" className="margin-bottom-neg-3">
+        <Label htmlFor="ProductType">
           What was the product?
           <abbr
             title="required"
@@ -173,7 +173,7 @@ export default function Product() {
         </Fieldset>
       </FormGroup>
       <FormGroup error={validated && !isValidReportType()}>
-        <Label htmlFor="SubmissionType" className="margin-bottom-neg-3">
+        <Label htmlFor="SubmissionType">
           What happened?
           <abbr
             title="required"

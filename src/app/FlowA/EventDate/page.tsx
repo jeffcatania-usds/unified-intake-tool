@@ -38,11 +38,17 @@ export default function EventDate() {
 
   const formatDate = () => {
     let result = "";
-    try {
-      result = new Date(month + "/" + day + "/" + year).toDateString();
-    } catch {
-      // If the date is invalid, default to a less specific value.
-      result = month ? month + "/" : "";
+    if (month && day && year) {
+      try {
+        result = new Date(month + "/" + day + "/" + year).toDateString();
+      } catch {
+        result = "";
+      }
+    } else {
+      // If the date is incomplete, default to a less specific value.
+      if (month) {
+        result = month + "/";
+      }
       result += year;
     }
     return result;

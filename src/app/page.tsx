@@ -11,21 +11,21 @@ export default function Landing() {
   return (
     <>
       <h1 className="font-ui-xl text-bold">Report a problem</h1>
-      <p>
+      <div className="margin-bottom-2">
         We review every submission. We use this information to monitor the
         safety of FDA-regulated products.
-      </p>
-      <p>
+      </div>
+      <div className="margin-bottom-2">
         We will ask you for the product information, what happened, and any
         photos of the product.
-      </p>
-      <p>
+      </div>
+      <div className="margin-bottom-2">
         We are unable to answer questions about submissions. You can check{" "}
         <a href="https://www.fda.gov/safety/recalls-market-withdrawals-safety-alerts">
           the current list of recalled products.
         </a>
-      </p>
-      <p>We will reach out if we have any questions.</p>
+      </div>
+      <div>We will reach out if we have any questions.</div>
       <NavigateNext
         userData={userData}
         screenName={screenName}
