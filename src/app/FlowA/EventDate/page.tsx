@@ -79,23 +79,17 @@ export default function EventDate() {
 
   // The FDA cannot accept complaints occuring before the agency was founded.
   // Or complaints from the future.
-  const yearSchema = z.number().min(1906).max(parseInt(currentYear));
+  const yearSchema = z.coerce.number().min(1906).max(parseInt(currentYear));
   const dateSchema = z.coerce
     .date()
     .min(new Date("1906-06-30"))
     .max(new Date());
 
   const isValid = () => {
-    console.log("Day: " + day);
-    console.log("Month: " + month);
-    console.log("Year: " + year);
-    console.log("Date: " + formatDate());
     // If a day is provided, ensure that the date is valid.
     if (day) {
-      console.log("Validating full date");
       return month && year && dateSchema.safeParse(formatDate()).success;
     } else {
-      console.log("Validating year");
       // If a day is not provided, require a valid year.
       return yearSchema.safeParse(year).success;
     }
