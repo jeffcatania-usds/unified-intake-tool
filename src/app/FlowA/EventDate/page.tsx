@@ -33,18 +33,7 @@ export default function EventDate() {
     updateUserData(EVENT_DATE, formatDate());
   };
   const handleYearChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // Auto-complete 2-digit years into 4-digit years.
-    if (event.target.value && event.target.value.length < 3) {
-      if (parseInt(event.target.value) > parseInt(currentYear.slice(2))) {
-        // 2-digit years greater than the current 2-digit year are in 1900.
-        setYear("19" + event.target.value);
-      } else {
-        // 2-digit years less than the current 2-digit year are in 2000.
-        setYear("20" + event.target.value);
-      }
-    } else {
-      setYear(event.target.value);
-    }
+    setYear(event.target.value);
     updateUserData(EVENT_DATE, formatDate());
   };
 
@@ -66,6 +55,19 @@ export default function EventDate() {
     return result;
   };
 
+  const autoCompleteYear = () => {
+    // Auto-complete 2-digit years into 4-digit years.
+    if (year && year.length < 3) {
+      if (parseInt(year) > parseInt(currentYear.slice(2))) {
+        // 2-digit years greater than the current 2-digit year are in 1900.
+        setYear("19" + year);
+      } else {
+        // 2-digit years less than the current 2-digit year are in 2000.
+        setYear("20" + year);
+      }
+    }
+  };
+
   const validate = (event: React.ChangeEvent) => {
     if (!isValid()) {
       event.preventDefault();
@@ -84,10 +86,16 @@ export default function EventDate() {
     .max(new Date());
 
   const isValid = () => {
+    console.log("Day: " + day);
+    console.log("Month: " + month);
+    console.log("Year: " + year);
+    console.log("Date: " + formatDate());
     // If a day is provided, ensure that the date is valid.
     if (day) {
+      console.log("Validating full date");
       return month && year && dateSchema.safeParse(formatDate()).success;
     } else {
+      console.log("Validating year");
       // If a day is not provided, require a valid year.
       return yearSchema.safeParse(year).success;
     }
@@ -164,6 +172,7 @@ export default function EventDate() {
             placeholder="YYYY"
             value={year}
             onChange={handleYearChange}
+            onBlur={autoCompleteYear}
             required
           />
         </DateInputGroup>
