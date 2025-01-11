@@ -6,7 +6,11 @@ import {
   FormGroup,
   ErrorMessage,
 } from "@trussworks/react-uswds";
-import { PRODUCT_NAME, useUserDataContext } from "@/_contexts/UserDataProvider";
+import {
+  PRODUCT_NAME,
+  SUBMISSION_TYPE,
+  useUserDataContext,
+} from "@/_contexts/UserDataProvider";
 import { useState } from "react";
 import NavigateBack from "@/_components/NavigateBack";
 import NavigateNext from "@/_components/NavigateNext";
@@ -16,6 +20,14 @@ export default function ProductName() {
   const screenName = ProductNameMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
+
+  const isRequired =
+    userData[SUBMISSION_TYPE]?.includes(
+      "someoneUsedAProductIncorrectlySubmissionType",
+    ) ||
+    userData[SUBMISSION_TYPE]?.includes(
+      "somethingWasWrongWithAProductSubmissionType",
+    );
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     updateUserData(PRODUCT_NAME, event.target.value);
@@ -31,7 +43,11 @@ export default function ProductName() {
   };
 
   const isValid = () => {
-    return userData[PRODUCT_NAME] && userData[PRODUCT_NAME].length > 0;
+    // Only validate that the field isn't empty if it's required.
+    return (
+      !isRequired ||
+      (userData[PRODUCT_NAME] && userData[PRODUCT_NAME].length > 0)
+    );
   };
 
   return (
@@ -40,12 +56,14 @@ export default function ProductName() {
       <FormGroup error={validated && !isValid()}>
         <Label>
           Product name
-          <abbr
-            title="required"
-            className="usa-hint usa-hint--required text-no-underline"
-          >
-            *
-          </abbr>
+          {isRequired && (
+            <abbr
+              title="required"
+              className="usa-hint usa-hint--required text-no-underline"
+            >
+              *
+            </abbr>
+          )}
           <br />
           <span className="usa-hint">
             Include as much detail as possible, including the brand.

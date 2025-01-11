@@ -22,6 +22,7 @@ import {
   EVENT_DATE,
   ADDITIONAL_FILES,
   PRODUCT_TYPE,
+  SUBMISSION_TYPE,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
@@ -34,6 +35,14 @@ export default function WhatHappenedB() {
   const screenName = WhatHappenedBMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
+
+  const isProductNameRequired =
+    userData[SUBMISSION_TYPE]?.includes(
+      "someoneUsedAProductIncorrectlySubmissionType",
+    ) ||
+    userData[SUBMISSION_TYPE]?.includes(
+      "somethingWasWrongWithAProductSubmissionType",
+    );
 
   const handleProductPhotoChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -78,7 +87,11 @@ export default function WhatHappenedB() {
   };
 
   const isProductNameValid = () => {
-    return userData[PRODUCT_NAME] && userData[PRODUCT_NAME].length > 0;
+    // Only validate that the product name isn't empty if it's required.
+    return (
+      !isProductNameRequired ||
+      (userData[PRODUCT_NAME] && userData[PRODUCT_NAME].length > 0)
+    );
   };
 
   // Testing for a string consisting only of digits because the number may contain leading 0's
@@ -184,12 +197,14 @@ export default function WhatHappenedB() {
       <FormGroup error={validated && !isProductNameValid()}>
         <Label htmlFor="productName">
           Product name
-          <abbr
-            title="required"
-            className="usa-hint usa-hint--required text-no-underline"
-          >
-            *
-          </abbr>
+          {isProductNameRequired && (
+            <abbr
+              title="required"
+              className="usa-hint usa-hint--required text-no-underline"
+            >
+              *
+            </abbr>
+          )}
           <br />
           <span className="usa-hint">
             Include as much detail as possible, including the brand.
