@@ -22,6 +22,7 @@ export default function EventDate() {
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
   const [year, setYear] = useState("");
+  const currentYear = new Date().getFullYear().toString();
 
   const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMonth(event.target.value);
@@ -32,7 +33,18 @@ export default function EventDate() {
     updateUserData(EVENT_DATE, formatDate());
   };
   const handleYearChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setYear(event.target.value);
+    // Auto-complete 2-digit years into 4-digit years.
+    if (event.target.value && event.target.value.length < 3) {
+      if (parseInt(event.target.value) > parseInt(currentYear.slice(2))) {
+        // 2-digit years greater than the current 2-digit year are in 1900.
+        setYear("19" + event.target.value);
+      } else {
+        // 2-digit years less than the current 2-digit year are in 2000.
+        setYear("20" + event.target.value);
+      }
+    } else {
+      setYear(event.target.value);
+    }
     updateUserData(EVENT_DATE, formatDate());
   };
 
@@ -63,14 +75,18 @@ export default function EventDate() {
     return true;
   };
 
-  // Require at minimum a 2-digit year.
-  const yearSchema = z.number().min(10);
-  const dateSchema = z.coerce.date();
+  // The FDA cannot accept complaints occuring before the agency was founded.
+  // Or complaints from the future.
+  const yearSchema = z.number().min(1906).max(parseInt(currentYear));
+  const dateSchema = z.coerce
+    .date()
+    .min(new Date("1906-06-30"))
+    .max(new Date());
 
   const isValid = () => {
     // If a day is provided, ensure that the date is valid.
-    if (day.length > 0) {
-      return dateSchema.safeParse(formatDate()).success;
+    if (day) {
+      return month && year && dateSchema.safeParse(formatDate()).success;
     } else {
       // If a day is not provided, require a valid year.
       return yearSchema.safeParse(year).success;
