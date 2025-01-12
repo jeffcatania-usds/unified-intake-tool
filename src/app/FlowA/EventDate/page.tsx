@@ -28,14 +28,11 @@ export default function EventDate() {
   const [year, setYear] = useState("");
   const currentYear = new Date().getFullYear().toString();
 
-  const initialDate = userData[EVENT_DATE];
-  const initialPrecision = userData[EVENT_DATE_PRECISION];
-
   useEffect(() => {
     // Pre-populate date from existing data if applicable.
-    if (initialDate && typeof initialDate === "string") {
-      const currentDate = new Date(initialDate);
-      switch (initialPrecision) {
+    if (userData[EVENT_DATE] && typeof userData[EVENT_DATE] === "string") {
+      const currentDate = new Date(userData[EVENT_DATE]);
+      switch (userData[EVENT_DATE_PRECISION]) {
         case "day":
           setDay(currentDate.getDate().toString());
         case "month":
@@ -45,24 +42,24 @@ export default function EventDate() {
         default:
       }
     }
-  }, []);
+  });
 
   const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMonth(event.target.value);
-    updateUserData(EVENT_DATE, formatDate());
+    updateUserData(EVENT_DATE, formatDate(day, event.target.value, year));
   };
   const handleDayChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDay(event.target.value);
-    updateUserData(EVENT_DATE, formatDate());
+    updateUserData(EVENT_DATE, formatDate(event.target.value, month, year));
   };
   const handleYearChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setYear(event.target.value);
-    updateUserData(EVENT_DATE, formatDate());
+    updateUserData(EVENT_DATE, formatDate(day, month, event.target.value));
     console.log("Year: " + year);
     console.log("Date: " + userData[EVENT_DATE]);
   };
 
-  const formatDate = () => {
+  const formatDate = (day: string, month: string, year: string) => {
     const result = new Date();
     let precision = "year";
     if (day) {
@@ -82,18 +79,18 @@ export default function EventDate() {
     return result.toDateString();
   };
 
-  // const autoCompleteYear = () => {
-  //   // Auto-complete 2-digit years into 4-digit years.
-  //   if (year && year.length < 3) {
-  //     if (parseInt(year) > parseInt(currentYear.slice(2))) {
-  //       // 2-digit years greater than the current 2-digit year are in 1900.
-  //       setYear("19" + year);
-  //     } else {
-  //       // 2-digit years less than the current 2-digit year are in 2000.
-  //       setYear("20" + year);
-  //     }
-  //   }
-  // };
+  const autoCompleteYear = () => {
+    // Auto-complete 2-digit years into 4-digit years.
+    if (year && year.length < 3) {
+      if (parseInt(year) > parseInt(currentYear.slice(2))) {
+        // 2-digit years greater than the current 2-digit year are in 1900.
+        setYear("19" + year);
+      } else {
+        // 2-digit years less than the current 2-digit year are in 2000.
+        setYear("20" + year);
+      }
+    }
+  };
 
   const validate = (event: React.ChangeEvent) => {
     if (!isValid()) {
@@ -117,7 +114,11 @@ export default function EventDate() {
   const isValid = () => {
     // If a day is provided, ensure that the date is valid.
     if (day) {
-      return month && year && dateSchema.safeParse(formatDate()).success;
+      return (
+        month &&
+        year &&
+        dateSchema.safeParse(formatDate(day, month, year)).success
+      );
     } else {
       // If a day is not provided, require a valid year.
       return yearSchema.safeParse(year).success;
@@ -196,6 +197,7 @@ export default function EventDate() {
             placeholder="YYYY"
             value={year}
             onChange={handleYearChange}
+            onBlur={autoCompleteYear}
             required
           />
         </DateInputGroup>
