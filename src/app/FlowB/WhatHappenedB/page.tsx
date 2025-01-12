@@ -131,7 +131,7 @@ export default function WhatHappenedB() {
         default:
       }
     }
-  }, []);
+  }, [userData]);
 
   const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMonth(event.target.value);
@@ -147,33 +147,23 @@ export default function WhatHappenedB() {
   };
 
   const formatDate = () => {
-    let result = "";
-    if (month && day && year) {
-      updateUserData(EVENT_DATE_PRECISION, "day");
-      try {
-        result = new Date(month + "/" + day + "/" + year).toDateString();
-      } catch {
-        result = "";
-      }
-    } else if (year) {
-      const partialDate = new Date();
-
-      // Prevents problems caused if the current day is 31,
-      // and the target month doesn't have 31 days.
-      partialDate.setDate(1);
-
-      // If the date is incomplete, default to a less specific value.
-      if (month) {
-        updateUserData(EVENT_DATE_PRECISION, "month");
-        // Month on the date object uses a 0-based index.
-        partialDate.setMonth(parseInt(month) - 1);
-      } else {
-        updateUserData(EVENT_DATE_PRECISION, "year");
-      }
-      partialDate.setFullYear(parseInt(year));
-      result = partialDate.toDateString();
+    const result = new Date();
+    let precision = "year";
+    if (day) {
+      result.setDate(parseInt(day));
+      precision = "day";
     }
-    return result;
+    if (month) {
+      result.setMonth(parseInt(month) - 1);
+      if (!day) {
+        precision = "month";
+      }
+    }
+    if (year) {
+      result.setFullYear(parseInt(year));
+    }
+    updateUserData(EVENT_DATE_PRECISION, precision);
+    return result.toDateString();
   };
 
   const autoCompleteYear = () => {
