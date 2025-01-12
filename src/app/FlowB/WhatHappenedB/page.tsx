@@ -117,6 +117,20 @@ export default function WhatHappenedB() {
   const [year, setYear] = useState("");
   const currentYear = new Date().getFullYear().toString();
 
+  // Pre-populate date from existing data if applicable.
+  if (userData[EVENT_DATE] && typeof userData[EVENT_DATE] === "string") {
+    const currentDate = new Date(userData[EVENT_DATE]);
+    switch (userData[EVENT_DATE_PRECISION]) {
+      case "day":
+        setDay(currentDate.getDate().toString());
+      case "month":
+        setMonth((currentDate.getMonth() + 1).toString());
+      case "year":
+        setYear(currentDate.getFullYear().toString());
+      default:
+    }
+  }
+
   const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMonth(event.target.value);
     updateUserData(EVENT_DATE, formatDate());
@@ -354,6 +368,7 @@ export default function WhatHappenedB() {
               id="eventDateMonth"
               name="eventDateMonth"
               value={month}
+              defaultValue={month}
               onChange={handleMonthChange}
             >
               <option>- Select -</option>
@@ -378,6 +393,7 @@ export default function WhatHappenedB() {
             unit="day"
             maxLength={2}
             placeholder="DD"
+            value={day}
             onChange={handleDayChange}
           />
           <DateInput
@@ -387,6 +403,7 @@ export default function WhatHappenedB() {
             unit="year"
             maxLength={4}
             placeholder="YYYY"
+            value={year}
             onChange={handleYearChange}
             onBlur={autoCompleteYear}
             required
