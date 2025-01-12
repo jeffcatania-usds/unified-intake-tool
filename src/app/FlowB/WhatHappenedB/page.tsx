@@ -131,22 +131,22 @@ export default function WhatHappenedB() {
         default:
       }
     }
-  }, [userData]);
+  });
 
   const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMonth(event.target.value);
-    updateUserData(EVENT_DATE, formatDate());
+    updateUserData(EVENT_DATE, formatDate(day, event.target.value, year));
   };
   const handleDayChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDay(event.target.value);
-    updateUserData(EVENT_DATE, formatDate());
+    updateUserData(EVENT_DATE, formatDate(event.target.value, month, year));
   };
   const handleYearChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setYear(event.target.value);
-    updateUserData(EVENT_DATE, formatDate());
+    updateUserData(EVENT_DATE, formatDate(day, month, event.target.value));
   };
 
-  const formatDate = () => {
+  const formatDate = (day: string, month: string, year: string) => {
     const result = new Date();
     let precision = "year";
     if (day) {
@@ -190,7 +190,11 @@ export default function WhatHappenedB() {
   const isDateValid = () => {
     // If a day is provided, ensure that the date is valid.
     if (day) {
-      return month && year && dateSchema.safeParse(formatDate()).success;
+      return (
+        month &&
+        year &&
+        dateSchema.safeParse(formatDate(day, month, year)).success
+      );
     } else {
       // If a day is not provided, require a valid year.
       return yearSchema.safeParse(year).success;

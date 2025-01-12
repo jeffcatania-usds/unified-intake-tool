@@ -55,8 +55,6 @@ export default function EventDate() {
   const handleYearChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setYear(event.target.value);
     updateUserData(EVENT_DATE, formatDate(day, month, event.target.value));
-    console.log("Year: " + year);
-    console.log("Date: " + userData[EVENT_DATE]);
   };
 
   const formatDate = (day: string, month: string, year: string) => {
@@ -98,8 +96,6 @@ export default function EventDate() {
       setValidated(true);
       return false;
     }
-    console.log("Year Save: " + year);
-    console.log("Date Save: " + userData[EVENT_DATE]);
     return true;
   };
 
