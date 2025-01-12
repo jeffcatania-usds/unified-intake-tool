@@ -42,7 +42,9 @@ export default function EventDate() {
         default:
       }
     }
-  }, [userData]);
+    console.log("Year Load: " + year);
+    console.log("Date Load: " + userData[EVENT_DATE]);
+  }, [userData, year]);
 
   const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMonth(event.target.value);
@@ -55,6 +57,8 @@ export default function EventDate() {
   const handleYearChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setYear(event.target.value);
     updateUserData(EVENT_DATE, formatDate());
+    console.log("Year: " + year);
+    console.log("Date: " + userData[EVENT_DATE]);
   };
 
   const formatDate = () => {
@@ -96,6 +100,8 @@ export default function EventDate() {
       setValidated(true);
       return false;
     }
+    console.log("Year Save: " + year);
+    console.log("Date Save: " + userData[EVENT_DATE]);
     return true;
   };
 
