@@ -20,6 +20,7 @@ import {
   NDC_NUMBER,
   WHAT_HAPPENED,
   EVENT_DATE,
+  EVENT_DATE_PRECISION,
   ADDITIONAL_FILES,
   PRODUCT_TYPE,
   SUBMISSION_TYPE,
@@ -132,17 +133,29 @@ export default function WhatHappenedB() {
   const formatDate = () => {
     let result = "";
     if (month && day && year) {
+      updateUserData(EVENT_DATE_PRECISION, "day");
       try {
         result = new Date(month + "/" + day + "/" + year).toDateString();
       } catch {
         result = "";
       }
     } else if (year) {
+      const partialDate = new Date();
+
+      // Prevents problems caused if the current day is 31,
+      // and the target month doesn't have 31 days.
+      partialDate.setDate(1);
+
       // If the date is incomplete, default to a less specific value.
       if (month) {
-        result = month + "/";
+        updateUserData(EVENT_DATE_PRECISION, "month");
+        // Month on the date object uses a 0-based index.
+        partialDate.setMonth(parseInt(month) - 1);
+      } else {
+        updateUserData(EVENT_DATE_PRECISION, "year");
       }
-      result += year;
+      partialDate.setFullYear(parseInt(year));
+      result = partialDate.toDateString();
     }
     return result;
   };

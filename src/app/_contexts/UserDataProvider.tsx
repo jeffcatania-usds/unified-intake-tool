@@ -10,6 +10,7 @@ export const PRODUCT_PHOTOS = "productPhotos";
 export const PRODUCT_NAME = "productName";
 export const WHAT_HAPPENED = "whatHappened";
 export const EVENT_DATE = "eventDate";
+export const EVENT_DATE_PRECISION = "eventDatePrecision";
 export const HARMED_AGE = "harmedAge";
 export const HARMED_AGE_UNIT = "harmedAgeUnit";
 export const HARMED_GENDER = "harmedGender";
