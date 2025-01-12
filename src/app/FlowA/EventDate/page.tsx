@@ -28,11 +28,14 @@ export default function EventDate() {
   const [year, setYear] = useState("");
   const currentYear = new Date().getFullYear().toString();
 
+  const initialDate = userData[EVENT_DATE];
+  const initialPrecision = userData[EVENT_DATE_PRECISION];
+
   useEffect(() => {
     // Pre-populate date from existing data if applicable.
-    if (userData[EVENT_DATE] && typeof userData[EVENT_DATE] === "string") {
-      const currentDate = new Date(userData[EVENT_DATE]);
-      switch (userData[EVENT_DATE_PRECISION]) {
+    if (initialDate && typeof initialDate === "string") {
+      const currentDate = new Date(initialDate);
+      switch (initialPrecision) {
         case "day":
           setDay(currentDate.getDate().toString());
         case "month":
@@ -42,9 +45,7 @@ export default function EventDate() {
         default:
       }
     }
-    console.log("Year Load: " + year);
-    console.log("Date Load: " + userData[EVENT_DATE]);
-  }, [userData, year]);
+  }, []);
 
   const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMonth(event.target.value);
