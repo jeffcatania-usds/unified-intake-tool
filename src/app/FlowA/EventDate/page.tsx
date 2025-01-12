@@ -81,18 +81,18 @@ export default function EventDate() {
     return result.toDateString();
   };
 
-  const autoCompleteYear = () => {
-    // Auto-complete 2-digit years into 4-digit years.
-    if (year && year.length < 3) {
-      if (parseInt(year) > parseInt(currentYear.slice(2))) {
-        // 2-digit years greater than the current 2-digit year are in 1900.
-        setYear("19" + year);
-      } else {
-        // 2-digit years less than the current 2-digit year are in 2000.
-        setYear("20" + year);
-      }
-    }
-  };
+  // const autoCompleteYear = () => {
+  //   // Auto-complete 2-digit years into 4-digit years.
+  //   if (year && year.length < 3) {
+  //     if (parseInt(year) > parseInt(currentYear.slice(2))) {
+  //       // 2-digit years greater than the current 2-digit year are in 1900.
+  //       setYear("19" + year);
+  //     } else {
+  //       // 2-digit years less than the current 2-digit year are in 2000.
+  //       setYear("20" + year);
+  //     }
+  //   }
+  // };
 
   const validate = (event: React.ChangeEvent) => {
     if (!isValid()) {
