@@ -26,7 +26,7 @@ import {
   SUBMISSION_TYPE,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavigateBackB from "@/_components/NavigateBackB";
 import NavigateNext from "@/_components/NavigateNext";
 import { WhatHappenedBMetadata } from "./metadata";
@@ -117,19 +117,21 @@ export default function WhatHappenedB() {
   const [year, setYear] = useState("");
   const currentYear = new Date().getFullYear().toString();
 
-  // Pre-populate date from existing data if applicable.
-  if (userData[EVENT_DATE] && typeof userData[EVENT_DATE] === "string") {
-    const currentDate = new Date(userData[EVENT_DATE]);
-    switch (userData[EVENT_DATE_PRECISION]) {
-      case "day":
-        setDay(currentDate.getDate().toString());
-      case "month":
-        setMonth((currentDate.getMonth() + 1).toString());
-      case "year":
-        setYear(currentDate.getFullYear().toString());
-      default:
+  useEffect(() => {
+    // Pre-populate date from existing data if applicable.
+    if (userData[EVENT_DATE] && typeof userData[EVENT_DATE] === "string") {
+      const currentDate = new Date(userData[EVENT_DATE]);
+      switch (userData[EVENT_DATE_PRECISION]) {
+        case "day":
+          setDay(currentDate.getDate().toString());
+        case "month":
+          setMonth((currentDate.getMonth() + 1).toString());
+        case "year":
+          setYear(currentDate.getFullYear().toString());
+        default:
+      }
     }
-  }
+  }, []);
 
   const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMonth(event.target.value);
