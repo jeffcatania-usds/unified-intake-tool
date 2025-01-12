@@ -195,7 +195,6 @@ export default function EventDate() {
             placeholder="YYYY"
             value={year}
             onChange={handleYearChange}
-            onBlur={autoCompleteYear}
             required
           />
         </DateInputGroup>
