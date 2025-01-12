@@ -41,6 +41,8 @@ export default function EventDate() {
           setYear(currentDate.getFullYear().toString());
         default:
       }
+      console.log("Year Load: " + year);
+      console.log("Date Load: " + userData[EVENT_DATE]);
     }
   }, []);
 
@@ -55,6 +57,8 @@ export default function EventDate() {
   const handleYearChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setYear(event.target.value);
     updateUserData(EVENT_DATE, formatDate());
+    console.log("Year: " + year);
+    console.log("Date: " + userData[EVENT_DATE]);
   };
 
   const formatDate = () => {
@@ -106,6 +110,8 @@ export default function EventDate() {
       setValidated(true);
       return false;
     }
+    console.log("Year Save: " + year);
+    console.log("Date Save: " + userData[EVENT_DATE]);
     return true;
   };
 
