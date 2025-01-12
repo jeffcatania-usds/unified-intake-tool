@@ -28,19 +28,19 @@ export default function EventDate() {
   const [year, setYear] = useState("");
   const currentYear = new Date().getFullYear().toString();
 
-  // Pre-populate date from existing data if applicable.
-  if (userData[EVENT_DATE] && typeof userData[EVENT_DATE] === "string") {
-    const currentDate = new Date(userData[EVENT_DATE]);
-    switch (userData[EVENT_DATE_PRECISION]) {
-      case "day":
-        setDay(currentDate.getDate().toString());
-      case "month":
-        setMonth((currentDate.getMonth() + 1).toString());
-      case "year":
-        setYear(currentDate.getFullYear().toString());
-      default:
-    }
-  }
+  // // Pre-populate date from existing data if applicable.
+  // if (userData[EVENT_DATE] && typeof userData[EVENT_DATE] === "string") {
+  //   const currentDate = new Date(userData[EVENT_DATE]);
+  //   switch (userData[EVENT_DATE_PRECISION]) {
+  //     case "day":
+  //       setDay(currentDate.getDate().toString());
+  //     case "month":
+  //       setMonth((currentDate.getMonth() + 1).toString());
+  //     case "year":
+  //       setYear(currentDate.getFullYear().toString());
+  //     default:
+  //   }
+  // }
 
   const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMonth(event.target.value);
