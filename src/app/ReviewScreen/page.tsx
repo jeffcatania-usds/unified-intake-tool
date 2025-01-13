@@ -1,23 +1,22 @@
 "use client";
 
 import { useUserDataContext } from "@/_contexts/UserDataProvider";
+import NavigateBack from "@/_components/NavigateBack";
+import NavigateNext from "@/_components/NavigateNext";
 import { ReviewScreenMetadata } from "./metadata";
 import { screenOrder } from "@/_utils/Navigation";
-import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
 export default function ReviewScreen() {
   const screenName = ReviewScreenMetadata.name;
   const { userData } = useUserDataContext();
-  const { setCurrentScreen } = useNavigationContext();
 
   const displayedScreens = screenOrder().filter((screen) =>
     screen.shouldDisplay(userData),
   );
 
-  setCurrentScreen(screenName, () => true, true, true, "Submit");
-
   return (
     <>
+      <NavigateBack userData={userData} screenName={screenName} />
       <h1 className="font-ui-lg text-bold">Review your submission</h1>
       <div className="margin-bottom-2">
         Review your information below to make sure it is correct. After you
@@ -31,6 +30,11 @@ export default function ReviewScreen() {
           return <></>;
         }
       })}
+      <NavigateNext
+        userData={userData}
+        screenName={screenName}
+        buttonText="Submit"
+      />
     </>
   );
 }

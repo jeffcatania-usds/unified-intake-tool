@@ -9,14 +9,14 @@ import {
 } from "@trussworks/react-uswds";
 import { PRODUCT_TYPE, useUserDataContext } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
+import NavigateBack from "@/_components/NavigateBack";
+import NavigateNext from "@/_components/NavigateNext";
 import { ProductTypeMetadata } from "./metadata";
-import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
 export default function ProductType() {
   const screenName = ProductTypeMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
-  const { setCurrentScreen } = useNavigationContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     updateUserData(PRODUCT_TYPE, event.target.value);
@@ -35,10 +35,9 @@ export default function ProductType() {
     return userData[PRODUCT_TYPE] && userData[PRODUCT_TYPE].length > 0;
   };
 
-  setCurrentScreen(screenName, validate);
-
   return (
     <>
+      <NavigateBack userData={userData} screenName={screenName} />
       <FormGroup error={validated && !isValid()}>
         <Label htmlFor="ProductType">
           What was the product?
@@ -134,6 +133,11 @@ export default function ProductType() {
           />
         </Fieldset>
       </FormGroup>
+      <NavigateNext
+        userData={userData}
+        screenName={screenName}
+        validate={validate}
+      />
     </>
   );
 }

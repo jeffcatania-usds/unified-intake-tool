@@ -11,14 +11,14 @@ import {
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
+import NavigateBack from "@/_components/NavigateBack";
+import NavigateNext from "@/_components/NavigateNext";
 import { WhatHappenedMetadata } from "./metadata";
-import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
 export default function WhatHappened() {
   const screenName = WhatHappenedMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
-  const { setCurrentScreen } = useNavigationContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     updateUserData(WHAT_HAPPENED, event.target.value);
@@ -37,10 +37,9 @@ export default function WhatHappened() {
     return userData[WHAT_HAPPENED] && userData[WHAT_HAPPENED].length > 0;
   };
 
-  setCurrentScreen(screenName, validate);
-
   return (
     <>
+      <NavigateBack userData={userData} screenName={screenName} />
       <FormGroup className="margin-bottom-3" error={validated && !isValid()}>
         <Label htmlFor="whatHappened">
           Describe what happened in detail
@@ -79,6 +78,11 @@ export default function WhatHappened() {
           required
         />
       </FormGroup>
+      <NavigateNext
+        userData={userData}
+        screenName={screenName}
+        validate={validate}
+      />
     </>
   );
 }

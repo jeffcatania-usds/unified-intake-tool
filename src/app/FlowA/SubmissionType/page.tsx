@@ -12,14 +12,14 @@ import {
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
+import NavigateBack from "@/_components/NavigateBack";
+import NavigateNext from "@/_components/NavigateNext";
 import { SubmissionTypeMetadata } from "./metadata";
-import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
 export default function SubmissionType() {
   const screenName = SubmissionTypeMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
-  const { setCurrentScreen } = useNavigationContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof userData[SUBMISSION_TYPE] === "object") {
@@ -49,10 +49,9 @@ export default function SubmissionType() {
     return userData[SUBMISSION_TYPE] && userData[SUBMISSION_TYPE].length > 0;
   };
 
-  setCurrentScreen(screenName, validate);
-
   return (
     <>
+      <NavigateBack userData={userData} screenName={screenName} />
       <FormGroup error={validated && !isValid()}>
         <Label htmlFor="SubmissionType">
           Tell us what happened
@@ -121,6 +120,11 @@ export default function SubmissionType() {
           />
         </Fieldset>
       </FormGroup>
+      <NavigateNext
+        userData={userData}
+        screenName={screenName}
+        validate={validate}
+      />
     </>
   );
 }

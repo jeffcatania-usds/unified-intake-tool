@@ -20,15 +20,15 @@ import {
 } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
 import { z } from "zod";
+import NavigateBack from "@/_components/NavigateBack";
+import NavigateNext from "@/_components/NavigateNext";
 import NavigateSkip from "@/_components/NavigateSkip";
 import { HarmedPersonMetadata } from "./metadata";
-import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
 export default function HarmedPerson() {
   const screenName = HarmedPersonMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
-  const { setCurrentScreen } = useNavigationContext();
 
   const handleAgeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     updateUserData(HARMED_AGE, event.target.value);
@@ -90,10 +90,9 @@ export default function HarmedPerson() {
     );
   };
 
-  setCurrentScreen(screenName, validate);
-
   return (
     <>
+      <NavigateBack userData={userData} screenName={screenName} />
       <div>
         Tell us about who was harmed (optional)
         <br />
@@ -219,6 +218,12 @@ export default function HarmedPerson() {
           maxLength={8000}
         />
       </FormGroup>
+
+      <NavigateNext
+        userData={userData}
+        screenName={screenName}
+        validate={validate}
+      />
     </>
   );
 }

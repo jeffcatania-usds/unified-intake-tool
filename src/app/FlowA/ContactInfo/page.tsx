@@ -14,15 +14,15 @@ import {
 } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
 import { z } from "zod";
+import NavigateBack from "@/_components/NavigateBack";
+import NavigateNext from "@/_components/NavigateNext";
 import NavigateSkip from "@/_components/NavigateSkip";
 import { ContactInfoMetadata } from "./metadata";
-import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
 export default function ContactInfo() {
   const screenName = ContactInfoMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
-  const { setCurrentScreen } = useNavigationContext();
 
   const handleFirstNameChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -56,10 +56,9 @@ export default function ContactInfo() {
     );
   };
 
-  setCurrentScreen(screenName, validate);
-
   return (
     <>
+      <NavigateBack userData={userData} screenName={screenName} />
       <div>
         Can we contact you? (optional)
         <br />
@@ -122,6 +121,11 @@ export default function ContactInfo() {
           onChange={handleEmailChange}
         />
       </FormGroup>
+      <NavigateNext
+        userData={userData}
+        screenName={screenName}
+        validate={validate}
+      />
     </>
   );
 }

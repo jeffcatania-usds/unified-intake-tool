@@ -1,13 +1,12 @@
 "use client";
 
+import { useUserDataContext } from "@/_contexts/UserDataProvider";
+import NavigateNext from "@/_components/NavigateNext";
 import { LandingMetadata } from "./metadata";
-import { useNavigationContext } from "./_contexts/NavigationProvider";
 
 export default function Landing() {
   const screenName = LandingMetadata.name;
-  const { setCurrentScreen } = useNavigationContext();
-
-  setCurrentScreen(screenName, () => true, true, false, "Get Started");
+  const { userData } = useUserDataContext();
 
   return (
     <>
@@ -27,6 +26,11 @@ export default function Landing() {
         </a>
       </div>
       <div>We will reach out if we have any questions.</div>
+      <NavigateNext
+        userData={userData}
+        screenName={screenName}
+        buttonText="Get Started"
+      />
     </>
   );
 }
