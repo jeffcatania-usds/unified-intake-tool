@@ -29,9 +29,11 @@ export default function ScreenWithNavigation({
 }: ScreenWithNavigationProps) {
   const router = useRouter();
   const handleSubmit = (event: React.ChangeEvent) => {
+    event.preventDefault();
     if (!validate || validate(event)) {
       router.push(nextScreen(screenName, userData));
     }
+    return false;
   };
 
   return (
