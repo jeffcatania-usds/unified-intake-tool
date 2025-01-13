@@ -12,14 +12,14 @@ import {
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
-import NavigateBack from "@/_components/NavigateBack";
-import NavigateNext from "@/_components/NavigateNext";
 import { ProductNameMetadata } from "./metadata";
+import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
 export default function ProductName() {
   const screenName = ProductNameMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
+  const { setCurrentScreen } = useNavigationContext();
 
   const isRequired =
     userData[SUBMISSION_TYPE]?.includes(
@@ -50,9 +50,10 @@ export default function ProductName() {
     );
   };
 
+  setCurrentScreen(screenName, validate);
+
   return (
     <>
-      <NavigateBack userData={userData} screenName={screenName} />
       <FormGroup error={validated && !isValid()}>
         <Label>
           Product name
@@ -83,11 +84,6 @@ export default function ProductName() {
           required
         />
       </FormGroup>
-      <NavigateNext
-        userData={userData}
-        screenName={screenName}
-        validate={validate}
-      />
     </>
   );
 }

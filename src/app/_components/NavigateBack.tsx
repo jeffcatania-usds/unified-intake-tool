@@ -1,23 +1,28 @@
 import NextLink from "next/link";
 import { Link } from "@trussworks/react-uswds";
 import { previousScreen } from "@/_utils/Navigation";
-import { UserData } from "@/_contexts/UserDataProvider";
+import { useUserDataContext } from "@/_contexts/UserDataProvider";
+import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
-interface NavigateBackProps {
-  screenName: string;
-  userData: UserData;
+export default function NavigateBack() {
+  const { userData } = useUserDataContext();
+  const { navigationData } = useNavigationContext();
+  return (
+    navigationData.showPrevious &&
+    !navigationData.previousButtonBottom && (
+      <div className="margin-bottom-2 margin-top-2">
+        <NextLink
+          href={previousScreen(navigationData.currentScreen, userData)}
+          passHref
+          legacyBehavior
+        >
+          <Link variant="nav">
+            {navigationData.previousButtonText
+              ? navigationData.previousButtonText
+              : "&lt; Back"}
+          </Link>
+        </NextLink>
+      </div>
+    )
+  );
 }
-
-const NavigateBack = ({ screenName, userData }: NavigateBackProps) => (
-  <div className="margin-bottom-2 margin-top-2">
-    <NextLink
-      href={previousScreen(screenName, userData)}
-      passHref
-      legacyBehavior
-    >
-      <Link variant="nav">&lt; Back</Link>
-    </NextLink>
-  </div>
-);
-
-export default NavigateBack;

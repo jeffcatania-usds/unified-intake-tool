@@ -2,22 +2,23 @@
 
 import { FileInput, FormGroup, Label } from "@trussworks/react-uswds";
 import { BARCODE, useUserDataContext } from "@/_contexts/UserDataProvider";
-import NavigateBack from "@/_components/NavigateBack";
-import NavigateNext from "@/_components/NavigateNext";
 import NavigateSkip from "@/_components/NavigateSkip";
 import { ScanBarcodeMetadata } from "./metadata";
+import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
 export default function ScanBarcode() {
   const screenName = ScanBarcodeMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
+  const { setCurrentScreen } = useNavigationContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     updateUserData(BARCODE, event.target.value);
   };
 
+  setCurrentScreen(screenName);
+
   return (
     <>
-      <NavigateBack userData={userData} screenName={screenName} />
       <NavigateSkip userData={userData} screenName={screenName} />
       <FormGroup>
         <Label htmlFor="barcodeFileInput">
@@ -40,7 +41,6 @@ export default function ScanBarcode() {
           multiple
         />
       </FormGroup>
-      <NavigateNext userData={userData} screenName={screenName} />
     </>
   );
 }
