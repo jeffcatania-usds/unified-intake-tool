@@ -19,10 +19,9 @@ import {
 } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
 import { z } from "zod";
-import NavigateBackB from "@/_components/NavigateBackB";
-import NavigateNext from "@/_components/NavigateNext";
 import NavigateSkip from "@/_components/NavigateSkip";
 import { ContactInfoBMetadata } from "./metadata";
+import ScreenWithNavigation from "@/_components/ScreenWithNavigation";
 
 export default function ContactInfo() {
   const screenName = ContactInfoBMetadata.name;
@@ -68,7 +67,12 @@ export default function ContactInfo() {
   };
 
   return (
-    <>
+    <ScreenWithNavigation
+      userData={userData}
+      screenName={screenName}
+      validate={validate}
+      isBottomBack={true}
+    >
       <StepIndicator
         headingLevel="h1"
         ofText="of"
@@ -171,12 +175,6 @@ export default function ContactInfo() {
           onChange={handleEmailChange}
         />
       </FormGroup>
-      <NavigateNext
-        userData={userData}
-        screenName={screenName}
-        validate={validate}
-      />
-      <NavigateBackB userData={userData} screenName={screenName} />
-    </>
+    </ScreenWithNavigation>
   );
 }

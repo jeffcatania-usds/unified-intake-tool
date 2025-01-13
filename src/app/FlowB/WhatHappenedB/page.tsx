@@ -27,10 +27,9 @@ import {
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
 import { useEffect, useState } from "react";
-import NavigateBackB from "@/_components/NavigateBackB";
-import NavigateNext from "@/_components/NavigateNext";
 import { WhatHappenedBMetadata } from "./metadata";
 import { z } from "zod";
+import ScreenWithNavigation from "@/_components/ScreenWithNavigation";
 
 export default function WhatHappenedB() {
   const screenName = WhatHappenedBMetadata.name;
@@ -202,7 +201,12 @@ export default function WhatHappenedB() {
   };
 
   return (
-    <>
+    <ScreenWithNavigation
+      userData={userData}
+      screenName={screenName}
+      validate={validate}
+      isBottomBack={true}
+    >
       <StepIndicator
         headingLevel="h1"
         ofText="of"
@@ -421,12 +425,6 @@ export default function WhatHappenedB() {
           multiple
         />
       </FormGroup>
-      <NavigateNext
-        userData={userData}
-        screenName={screenName}
-        validate={validate}
-      />
-      <NavigateBackB userData={userData} screenName={screenName} />
-    </>
+    </ScreenWithNavigation>
   );
 }

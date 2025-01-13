@@ -22,10 +22,9 @@ import {
 } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
 import { z } from "zod";
-import NavigateBackB from "@/_components/NavigateBackB";
-import NavigateNext from "@/_components/NavigateNext";
 import NavigateSkip from "@/_components/NavigateSkip";
 import { HarmedPersonBMetadata } from "./metadata";
+import ScreenWithNavigation from "@/_components/ScreenWithNavigation";
 
 export default function HarmedPersonB() {
   const screenName = HarmedPersonBMetadata.name;
@@ -93,7 +92,12 @@ export default function HarmedPersonB() {
   };
 
   return (
-    <>
+    <ScreenWithNavigation
+      userData={userData}
+      screenName={screenName}
+      validate={validate}
+      isBottomBack={true}
+    >
       <StepIndicator
         headingLevel="h1"
         ofText="of"
@@ -227,13 +231,6 @@ export default function HarmedPersonB() {
           maxLength={8000}
         />
       </FormGroup>
-
-      <NavigateNext
-        userData={userData}
-        screenName={screenName}
-        validate={validate}
-      />
-      <NavigateBackB userData={userData} screenName={screenName} />
-    </>
+    </ScreenWithNavigation>
   );
 }
