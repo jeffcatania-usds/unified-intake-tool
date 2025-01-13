@@ -1,13 +1,18 @@
-import type { Metadata } from "next";
+"use client";
+
+// import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "@trussworks/react-uswds/lib/uswds.css";
 import "@trussworks/react-uswds/lib/index.css";
-import { GovBanner } from "@trussworks/react-uswds";
+import { Form, GovBanner } from "@trussworks/react-uswds";
 import FakeHeader from "@/components/FakeHeader";
 import FakeFooter from "@/components/FakeFooter";
 import UserDataProvider from "@/_contexts/UserDataProvider";
 import NavigationProvider from "./_contexts/NavigationProvider";
+import NavigateBack from "./_components/NavigateBack";
+import NavigateNext from "./_components/NavigateNext";
+import NavigateBackB from "./_components/NavigateBackB";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,10 +24,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Unified Intake Tool",
-  description: "Unified Intake Tool prototype for FDA by USDS",
-};
+// export const metadata: Metadata = {
+//   title: "Unified Intake Tool",
+//   description: "Unified Intake Tool prototype for FDA by USDS",
+// };
 
 export default function RootLayout({
   children,
@@ -46,7 +51,14 @@ export default function RootLayout({
         <GovBanner />
         <FakeHeader />
         <NavigationProvider>
-          <UserDataProvider>{children}</UserDataProvider>
+          <Form large={true} className="padding-9 padding-top-0">
+            <UserDataProvider>
+              <NavigateBack />
+              {children}
+              <NavigateNext />
+              <NavigateBackB />
+            </UserDataProvider>
+          </Form>
         </NavigationProvider>
         <FakeFooter />
       </body>

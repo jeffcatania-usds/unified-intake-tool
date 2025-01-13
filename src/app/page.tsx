@@ -3,18 +3,17 @@
 import { LandingMetadata } from "./metadata";
 import { useNavigationContext } from "./_contexts/NavigationProvider";
 import { useEffect } from "react";
-import ScreenWithNavigation from "./_components/ScreenWithNavigation";
 
 export default function Landing() {
   const screenName = LandingMetadata.name;
   const { setCurrentScreen } = useNavigationContext();
 
   useEffect(() => {
-    setCurrentScreen(screenName, () => true, true, false, "Get Started");
+    setCurrentScreen(screenName, () => false, true, false, "Get Started");
   });
 
   return (
-    <ScreenWithNavigation>
+    <>
       <h1 className="font-ui-xl text-bold">Report a problem</h1>
       <div className="margin-bottom-2">
         We review every submission. We use this information to monitor the
@@ -31,6 +30,6 @@ export default function Landing() {
         </a>
       </div>
       <div>We will reach out if we have any questions.</div>
-    </ScreenWithNavigation>
+    </>
   );
 }
