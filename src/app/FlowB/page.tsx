@@ -5,6 +5,7 @@ import { FlowBMetadata } from "./metadata";
 import Cookies from "js-cookie";
 import { useNavigationContext } from "@/_contexts/NavigationProvider";
 import { useEffect } from "react";
+import ScreenWithNavigation from "@/_components/ScreenWithNavigation";
 
 export default function FlowB() {
   const screenName = FlowBMetadata.name;
@@ -17,10 +18,10 @@ export default function FlowB() {
   });
 
   return (
-    <>
+    <ScreenWithNavigation>
       <h1 className="font-ui-xl text-bold">Report a problem</h1>
       <p>Please tell us about</p>
       <OverviewProcessList />
-    </>
+    </ScreenWithNavigation>
   );
 }
