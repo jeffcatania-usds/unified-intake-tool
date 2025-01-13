@@ -55,6 +55,7 @@ export default function ScreenWithNavigation({
       {!hideBack && isBottomBack && (
         <NavigateBackB userData={userData} screenName={screenName} />
       )}
+      <input type="submit" hidden />
     </Form>
   );
 }
