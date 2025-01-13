@@ -219,7 +219,8 @@ export default function HarmedPersonB() {
           Provide their medical details (optional)
           <br />
           <span className="usa-hint">
-            List any prescriptions taken at the same time or allergies
+            List any products taken at the same time including over-the-counter
+            medications, supplements, and any allergies.
           </span>
         </Label>
         <CharacterCount
@@ -228,7 +229,7 @@ export default function HarmedPersonB() {
           isTextArea={true}
           value={userData[HARMED_MEDICAL]}
           onChange={handleMedicalChange}
-          maxLength={8000}
+          maxLength={4000}
         />
       </FormGroup>
     </ScreenWithNavigation>
