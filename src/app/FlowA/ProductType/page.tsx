@@ -8,7 +8,7 @@ import {
   Label,
 } from "@trussworks/react-uswds";
 import { PRODUCT_TYPE, useUserDataContext } from "@/_contexts/UserDataProvider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductTypeMetadata } from "./metadata";
 import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
@@ -35,7 +35,9 @@ export default function ProductType() {
     return userData[PRODUCT_TYPE] && userData[PRODUCT_TYPE].length > 0;
   };
 
-  setCurrentScreen(screenName, validate);
+  useEffect(() => {
+    setCurrentScreen(screenName, validate);
+  });
 
   return (
     <>

@@ -12,7 +12,7 @@ import {
   CONTACT_EMAIL,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 import NavigateSkip from "@/_components/NavigateSkip";
 import { ContactInfoMetadata } from "./metadata";
@@ -56,7 +56,9 @@ export default function ContactInfo() {
     );
   };
 
-  setCurrentScreen(screenName, validate);
+  useEffect(() => {
+    setCurrentScreen(screenName, validate);
+  });
 
   return (
     <>

@@ -7,6 +7,7 @@ import {
 } from "@/_contexts/UserDataProvider";
 import { AdditionalFilesMetadata } from "./metadata";
 import { useNavigationContext } from "@/_contexts/NavigationProvider";
+import { useEffect } from "react";
 
 export default function AdditionalFiles() {
   const screenName = AdditionalFilesMetadata.name;
@@ -17,7 +18,9 @@ export default function AdditionalFiles() {
     updateUserData(ADDITIONAL_FILES, event.target.value);
   };
 
-  setCurrentScreen(screenName);
+  useEffect(() => {
+    setCurrentScreen(screenName);
+  });
 
   return (
     <>

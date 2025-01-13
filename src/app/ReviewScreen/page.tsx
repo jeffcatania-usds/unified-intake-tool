@@ -4,6 +4,7 @@ import { useUserDataContext } from "@/_contexts/UserDataProvider";
 import { ReviewScreenMetadata } from "./metadata";
 import { screenOrder } from "@/_utils/Navigation";
 import { useNavigationContext } from "@/_contexts/NavigationProvider";
+import { useEffect } from "react";
 
 export default function ReviewScreen() {
   const screenName = ReviewScreenMetadata.name;
@@ -14,7 +15,9 @@ export default function ReviewScreen() {
     screen.shouldDisplay(userData),
   );
 
-  setCurrentScreen(screenName, () => true, true, true, "Submit");
+  useEffect(() => {
+    setCurrentScreen(screenName, () => true, true, true, "Submit");
+  });
 
   return (
     <>

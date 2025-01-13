@@ -10,7 +10,7 @@ import {
   WHAT_HAPPENED,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { WhatHappenedMetadata } from "./metadata";
 import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
@@ -37,7 +37,9 @@ export default function WhatHappened() {
     return userData[WHAT_HAPPENED] && userData[WHAT_HAPPENED].length > 0;
   };
 
-  setCurrentScreen(screenName, validate);
+  useEffect(() => {
+    setCurrentScreen(screenName, validate);
+  });
 
   return (
     <>

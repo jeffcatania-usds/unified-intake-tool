@@ -20,7 +20,7 @@ import {
   HARMED_MEDICAL,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 import NavigateSkip from "@/_components/NavigateSkip";
 import { HarmedPersonBMetadata } from "./metadata";
@@ -92,7 +92,9 @@ export default function HarmedPersonB() {
     );
   };
 
-  setCurrentScreen(screenName, validate, true, true, "", "", true);
+  useEffect(() => {
+    setCurrentScreen(screenName, validate, true, true, "", "", true);
+  });
 
   return (
     <>

@@ -121,7 +121,9 @@ export default function EventDate() {
     }
   };
 
-  setCurrentScreen(screenName, validate);
+  useEffect(() => {
+    setCurrentScreen(screenName, validate);
+  });
 
   return (
     <>

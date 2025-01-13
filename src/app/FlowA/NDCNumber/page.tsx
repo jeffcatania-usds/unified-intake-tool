@@ -7,7 +7,7 @@ import {
   Label,
 } from "@trussworks/react-uswds";
 import { NDC_NUMBER, useUserDataContext } from "@/_contexts/UserDataProvider";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 import NavigateSkip from "@/_components/NavigateSkip";
 import { NDCNumberMetadata } from "./metadata";
@@ -45,7 +45,9 @@ export default function NDCNumber() {
     );
   };
 
-  setCurrentScreen(screenName, validate);
+  useEffect(() => {
+    setCurrentScreen(screenName, validate);
+  });
 
   return (
     <>

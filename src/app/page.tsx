@@ -2,12 +2,15 @@
 
 import { LandingMetadata } from "./metadata";
 import { useNavigationContext } from "./_contexts/NavigationProvider";
+import { useEffect } from "react";
 
 export default function Landing() {
   const screenName = LandingMetadata.name;
   const { setCurrentScreen } = useNavigationContext();
 
-  setCurrentScreen(screenName, () => true, true, false, "Get Started");
+  useEffect(() => {
+    setCurrentScreen(screenName, () => true, true, false, "Get Started");
+  });
 
   return (
     <>
