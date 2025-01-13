@@ -27,15 +27,15 @@ import {
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
 import { useEffect, useState } from "react";
+import NavigateBackB from "@/_components/NavigateBackB";
+import NavigateNext from "@/_components/NavigateNext";
 import { WhatHappenedBMetadata } from "./metadata";
 import { z } from "zod";
-import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
 export default function WhatHappenedB() {
   const screenName = WhatHappenedBMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
-  const { setCurrentScreen } = useNavigationContext();
 
   const isProductNameRequired =
     userData[SUBMISSION_TYPE]?.includes(
@@ -200,8 +200,6 @@ export default function WhatHappenedB() {
       return yearSchema.safeParse(year).success;
     }
   };
-
-  setCurrentScreen(screenName, validate, true, true, "", "", true);
 
   return (
     <>
@@ -423,6 +421,12 @@ export default function WhatHappenedB() {
           multiple
         />
       </FormGroup>
+      <NavigateNext
+        userData={userData}
+        screenName={screenName}
+        validate={validate}
+      />
+      <NavigateBackB userData={userData} screenName={screenName} />
     </>
   );
 }

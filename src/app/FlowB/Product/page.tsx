@@ -16,14 +16,14 @@ import {
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
+import NavigateBackB from "@/_components/NavigateBackB";
+import NavigateNext from "@/_components/NavigateNext";
 import { ProductMetadata } from "./metadata";
-import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
 export default function Product() {
   const screenName = ProductMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
-  const { setCurrentScreen } = useNavigationContext();
 
   const handleTypeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     updateUserData(PRODUCT_TYPE, event.target.value);
@@ -62,8 +62,6 @@ export default function Product() {
   const isValidReportType = () => {
     return userData[SUBMISSION_TYPE] && userData[SUBMISSION_TYPE].length > 0;
   };
-
-  setCurrentScreen(screenName, validate, true, true, "", "", true);
 
   return (
     <>
@@ -242,6 +240,12 @@ export default function Product() {
           />
         </Fieldset>
       </FormGroup>
+      <NavigateNext
+        userData={userData}
+        screenName={screenName}
+        validate={validate}
+      />
+      <NavigateBackB userData={userData} screenName={screenName} />
     </>
   );
 }
