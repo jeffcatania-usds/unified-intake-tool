@@ -148,7 +148,7 @@ export default function WhatHappenedB() {
         default:
       }
     }
-  });
+  }, [userData]);
 
   const handleMonthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMonth(event.target.value);
