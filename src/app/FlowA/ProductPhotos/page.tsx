@@ -7,7 +7,6 @@ import {
 } from "@/_contexts/UserDataProvider";
 import { ProductPhotosMetadata } from "./metadata";
 import { useNavigationContext } from "@/_contexts/NavigationProvider";
-import { useEffect } from "react";
 
 export default function ProductPhotos() {
   const screenName = ProductPhotosMetadata.name;
@@ -18,9 +17,7 @@ export default function ProductPhotos() {
     updateUserData(PRODUCT_PHOTOS, event.target.value);
   };
 
-  useEffect(() => {
-    setCurrentScreen(screenName);
-  });
+  setCurrentScreen(screenName);
 
   return (
     <>

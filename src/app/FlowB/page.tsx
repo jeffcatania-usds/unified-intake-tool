@@ -4,7 +4,6 @@ import OverviewProcessList from "@/components/OverviewProcessList";
 import { FlowBMetadata } from "./metadata";
 import Cookies from "js-cookie";
 import { useNavigationContext } from "@/_contexts/NavigationProvider";
-import { useEffect } from "react";
 
 export default function FlowB() {
   const screenName = FlowBMetadata.name;
@@ -12,9 +11,7 @@ export default function FlowB() {
 
   Cookies.set("CurrentFlow", "B");
 
-  useEffect(() => {
-    setCurrentScreen(screenName, () => true, true, false, "Next");
-  });
+  setCurrentScreen(screenName, () => true, true, false, "Next");
 
   return (
     <>

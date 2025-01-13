@@ -11,7 +11,7 @@ import {
   SUBMISSION_TYPE,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { SubmissionTypeMetadata } from "./metadata";
 import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
@@ -49,9 +49,7 @@ export default function SubmissionType() {
     return userData[SUBMISSION_TYPE] && userData[SUBMISSION_TYPE].length > 0;
   };
 
-  useEffect(() => {
-    setCurrentScreen(screenName, validate);
-  });
+  setCurrentScreen(screenName, validate);
 
   return (
     <>

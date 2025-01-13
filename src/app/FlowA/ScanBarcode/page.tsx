@@ -5,7 +5,6 @@ import { BARCODE, useUserDataContext } from "@/_contexts/UserDataProvider";
 import NavigateSkip from "@/_components/NavigateSkip";
 import { ScanBarcodeMetadata } from "./metadata";
 import { useNavigationContext } from "@/_contexts/NavigationProvider";
-import { useEffect } from "react";
 
 export default function ScanBarcode() {
   const screenName = ScanBarcodeMetadata.name;
@@ -16,9 +15,7 @@ export default function ScanBarcode() {
     updateUserData(BARCODE, event.target.value);
   };
 
-  useEffect(() => {
-    setCurrentScreen(screenName);
-  });
+  setCurrentScreen(screenName);
 
   return (
     <>

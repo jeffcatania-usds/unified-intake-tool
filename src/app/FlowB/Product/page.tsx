@@ -15,7 +15,7 @@ import {
   PRODUCT_TYPE,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ProductMetadata } from "./metadata";
 import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
@@ -63,9 +63,7 @@ export default function Product() {
     return userData[SUBMISSION_TYPE] && userData[SUBMISSION_TYPE].length > 0;
   };
 
-  useEffect(() => {
-    setCurrentScreen(screenName, validate, true, true, "", "", true);
-  });
+  setCurrentScreen(screenName, validate, true, true, "", "", true);
 
   return (
     <>

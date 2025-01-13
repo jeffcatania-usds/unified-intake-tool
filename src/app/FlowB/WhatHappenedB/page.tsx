@@ -201,9 +201,7 @@ export default function WhatHappenedB() {
     }
   };
 
-  useEffect(() => {
-    setCurrentScreen(screenName, validate, true, true, "", "", true);
-  });
+  setCurrentScreen(screenName, validate, true, true, "", "", true);
 
   return (
     <>
