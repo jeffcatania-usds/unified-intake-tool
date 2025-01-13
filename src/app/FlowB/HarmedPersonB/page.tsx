@@ -22,15 +22,15 @@ import {
 } from "@/_contexts/UserDataProvider";
 import { useState } from "react";
 import { z } from "zod";
-import NavigateBackB from "@/_components/NavigateBackB";
-import NavigateNext from "@/_components/NavigateNext";
 import NavigateSkip from "@/_components/NavigateSkip";
 import { HarmedPersonBMetadata } from "./metadata";
+import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
 export default function HarmedPersonB() {
   const screenName = HarmedPersonBMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
+  const { setCurrentScreen } = useNavigationContext();
 
   const handleAgeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     updateUserData(HARMED_AGE, event.target.value);
@@ -91,6 +91,8 @@ export default function HarmedPersonB() {
       !userData[HARMED_AGE] || ageSchema.safeParse(userData[HARMED_AGE]).success
     );
   };
+
+  setCurrentScreen(screenName, validate, true, true, "", "", true);
 
   return (
     <>
@@ -227,13 +229,6 @@ export default function HarmedPersonB() {
           maxLength={8000}
         />
       </FormGroup>
-
-      <NavigateNext
-        userData={userData}
-        screenName={screenName}
-        validate={validate}
-      />
-      <NavigateBackB userData={userData} screenName={screenName} />
     </>
   );
 }

@@ -1,27 +1,23 @@
 "use client";
 
 import OverviewProcessList from "@/components/OverviewProcessList";
-import { useUserDataContext } from "@/_contexts/UserDataProvider";
-import NavigateNext from "@/_components/NavigateNext";
 import { FlowBMetadata } from "./metadata";
 import Cookies from "js-cookie";
+import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
 export default function FlowB() {
   const screenName = FlowBMetadata.name;
-  const { userData } = useUserDataContext();
+  const { setCurrentScreen } = useNavigationContext();
 
   Cookies.set("CurrentFlow", "B");
+
+  setCurrentScreen(screenName, () => true, true, false, "Next");
 
   return (
     <>
       <h1 className="font-ui-xl text-bold">Report a problem</h1>
       <p>Please tell us about</p>
       <OverviewProcessList />
-      <NavigateNext
-        userData={userData}
-        screenName={screenName}
-        buttonText="Next"
-      />
     </>
   );
 }

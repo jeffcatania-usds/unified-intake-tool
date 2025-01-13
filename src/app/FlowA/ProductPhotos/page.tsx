@@ -5,21 +5,22 @@ import {
   PRODUCT_PHOTOS,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
-import NavigateBack from "@/_components/NavigateBack";
-import NavigateNext from "@/_components/NavigateNext";
 import { ProductPhotosMetadata } from "./metadata";
+import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
 export default function ProductPhotos() {
   const screenName = ProductPhotosMetadata.name;
-  const { userData, updateUserData } = useUserDataContext();
+  const { updateUserData } = useUserDataContext();
+  const { setCurrentScreen } = useNavigationContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     updateUserData(PRODUCT_PHOTOS, event.target.value);
   };
 
+  setCurrentScreen(screenName);
+
   return (
     <>
-      <NavigateBack userData={userData} screenName={screenName} />
       <FormGroup>
         <Label htmlFor="productPhotosFileInput">
           Upload product photos (optional)
@@ -40,7 +41,6 @@ export default function ProductPhotos() {
           multiple
         />
       </FormGroup>
-      <NavigateNext userData={userData} screenName={screenName} />
     </>
   );
 }

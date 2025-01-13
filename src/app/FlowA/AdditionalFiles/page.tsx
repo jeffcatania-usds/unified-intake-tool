@@ -5,21 +5,22 @@ import {
   ADDITIONAL_FILES,
   useUserDataContext,
 } from "@/_contexts/UserDataProvider";
-import NavigateBack from "@/_components/NavigateBack";
-import NavigateNext from "@/_components/NavigateNext";
 import { AdditionalFilesMetadata } from "./metadata";
+import { useNavigationContext } from "@/_contexts/NavigationProvider";
 
 export default function AdditionalFiles() {
   const screenName = AdditionalFilesMetadata.name;
-  const { userData, updateUserData } = useUserDataContext();
+  const { updateUserData } = useUserDataContext();
+  const { setCurrentScreen } = useNavigationContext();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     updateUserData(ADDITIONAL_FILES, event.target.value);
   };
 
+  setCurrentScreen(screenName);
+
   return (
     <>
-      <NavigateBack userData={userData} screenName={screenName} />
       <FormGroup>
         <Label htmlFor="additionalFileInput">
           Upload any additional information (optional)
@@ -35,7 +36,6 @@ export default function AdditionalFiles() {
           multiple
         />
       </FormGroup>
-      <NavigateNext userData={userData} screenName={screenName} />
     </>
   );
 }
