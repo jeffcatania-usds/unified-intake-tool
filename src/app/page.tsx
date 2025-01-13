@@ -9,7 +9,7 @@ export default function Landing() {
   const { setCurrentScreen } = useNavigationContext();
 
   useEffect(() => {
-    setCurrentScreen(screenName, () => false, true, false, "Get Started");
+    setCurrentScreen(screenName, () => true, true, false, "Get Started");
   });
 
   return (
