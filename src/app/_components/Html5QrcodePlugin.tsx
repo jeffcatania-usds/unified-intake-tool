@@ -8,8 +8,6 @@ import {
 import { Html5QrcodeScannerConfig } from "html5-qrcode/esm/html5-qrcode-scanner";
 import { useEffect } from "react";
 
-const qrcodeRegionId = "html5qr-code-full-region";
-
 interface Html5QrcodeScannerProps {
   fps?: number;
   qrbox?: number | QrDimensions | QrDimensionFunction;
@@ -18,6 +16,7 @@ interface Html5QrcodeScannerProps {
   verbose?: boolean;
   successCallback: QrcodeSuccessCallback;
   errorCallback?: QrcodeErrorCallback;
+  id: string;
 }
 
 // Creates the configuration object for Html5QrcodeScanner.
@@ -42,7 +41,7 @@ const Html5QrcodePlugin = (props: Html5QrcodeScannerProps) => {
       throw "successCallback is required callback.";
     }
     const html5QrcodeScanner = new Html5QrcodeScanner(
-      qrcodeRegionId,
+      props.id,
       config,
       verbose,
     );
@@ -56,7 +55,7 @@ const Html5QrcodePlugin = (props: Html5QrcodeScannerProps) => {
     };
   }, [props]);
 
-  return <div id={qrcodeRegionId} />;
+  return <div id={props.id} />;
 };
 
 export default Html5QrcodePlugin;
