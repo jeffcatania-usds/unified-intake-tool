@@ -5,6 +5,7 @@ import { BARCODE, useUserDataContext } from "@/_contexts/UserDataProvider";
 import NavigateSkip from "@/_components/NavigateSkip";
 import { ScanBarcodeMetadata } from "./metadata";
 import ScreenWithNavigation from "@/_components/ScreenWithNavigation";
+import Html5QrcodePlugin from "@/_components/Html5QrcodePlugin";
 
 export default function ScanBarcode() {
   const screenName = ScanBarcodeMetadata.name;
@@ -12,6 +13,11 @@ export default function ScanBarcode() {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     updateUserData(BARCODE, event.target.value);
+  };
+
+  const handleBarcodeScan = (decodedText: string) => {
+    updateUserData(BARCODE, decodedText);
+    console.log("Barcode " + decodedText);
   };
 
   return (
@@ -29,6 +35,7 @@ export default function ScanBarcode() {
             the frame.
           </div>
         </Label>
+        <Html5QrcodePlugin successCallback={handleBarcodeScan} />
         <FileInput
           id="barcodeFileInput"
           name="barcodeFileInput"

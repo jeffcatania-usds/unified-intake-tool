@@ -30,18 +30,18 @@ export default function ScreenWithNavigation({
 }: ScreenWithNavigationProps) {
   const router = useRouter();
 
-  const handlePopState = (event: PopStateEvent) => {
-    event.preventDefault();
-    router.back();
-    return false;
-  };
-
   useEffect(() => {
+    const handlePopState = (event: PopStateEvent) => {
+      event.preventDefault();
+      router.back();
+      return false;
+    };
+
     window.addEventListener("popstate", handlePopState);
     return () => {
       window.removeEventListener("popstate", handlePopState);
     };
-  }, [router, handlePopState]);
+  }, [router]);
 
   const handleSubmit = (event: React.ChangeEvent) => {
     event.preventDefault();
