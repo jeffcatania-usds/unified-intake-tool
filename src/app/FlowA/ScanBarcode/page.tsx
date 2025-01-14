@@ -26,25 +26,27 @@ export default function ScanBarcode() {
 
   return (
     <ScreenWithNavigation userData={userData} screenName={screenName}>
-      <NavigateSkip userData={userData} screenName={screenName} />
       {!scanSuccessful && (
-        <FormGroup>
-          <Label htmlFor="barcodeFileInput">
-            Scan barcode (optional)
-            <div className="usa-hint margin-bottom-2" id="barcode-hint">
-              Find the barcode on the package. Open your camera application and
-              take a photo of the barcode.
-              <br />
-              <br />
-              Make sure there is good lighting and the barcode is fully visible
-              in the frame.
-            </div>
-          </Label>
-          <Html5QrcodePlugin
-            successCallback={handleBarcodeScan}
-            id="barcodeFileInput"
-          />
-        </FormGroup>
+        <>
+          <NavigateSkip userData={userData} screenName={screenName} />
+          <FormGroup>
+            <Label htmlFor="barcodeFileInput">
+              Scan barcode (optional)
+              <div className="usa-hint margin-bottom-2" id="barcode-hint">
+                Find the barcode on the package. Open your camera application
+                and take a photo of the barcode.
+                <br />
+                <br />
+                Make sure there is good lighting and the barcode is fully
+                visible in the frame.
+              </div>
+            </Label>
+            <Html5QrcodePlugin
+              successCallback={handleBarcodeScan}
+              id="barcodeFileInput"
+            />
+          </FormGroup>
+        </>
       )}
       {scanSuccessful && (
         <FormGroup>
