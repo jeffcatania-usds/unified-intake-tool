@@ -7,7 +7,6 @@ import { ScanBarcodeMetadata } from "./metadata";
 import ScreenWithNavigation from "@/_components/ScreenWithNavigation";
 import Html5QrcodePlugin from "@/_components/Html5QrcodePlugin";
 import { useState } from "react";
-import UPCLookup from "@/_components/UPCLookup";
 
 export default function ScanBarcode() {
   const screenName = ScanBarcodeMetadata.name;
@@ -59,9 +58,6 @@ export default function ScanBarcode() {
             onChange={handleBarcodeTextChange}
             type="text"
           />
-          {userData[BARCODE] && typeof userData[BARCODE] === "string" && (
-            <UPCLookup upc={userData[BARCODE]} />
-          )}
         </FormGroup>
       )}
     </ScreenWithNavigation>
