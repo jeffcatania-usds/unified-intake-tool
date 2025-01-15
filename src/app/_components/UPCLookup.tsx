@@ -27,7 +27,7 @@ export default function UPCLookup({ upc }: UPCLookupProps) {
 
   useEffect(() => {
     if (upc) {
-      fetch("https://api.upcitemdb.com/prod/trial/lookup?upc=" + upc, {
+      fetch("https://api.upcitemdb.com/prod/trial/lookup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
