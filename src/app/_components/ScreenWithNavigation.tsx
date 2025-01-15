@@ -2,7 +2,6 @@ import { Form } from "@trussworks/react-uswds";
 import { UserData } from "@/_contexts/UserDataProvider";
 import NavigateBack from "./NavigateBack";
 import NavigateNext from "./NavigateNext";
-import NavigateBackB from "./NavigateBackB";
 import { useRouter } from "next/navigation";
 import { nextScreen } from "@/_utils/Navigation";
 import { useEffect } from "react";
@@ -12,7 +11,6 @@ interface ScreenWithNavigationProps {
   userData: UserData;
   validate?: (event: React.ChangeEvent) => boolean;
   buttonText?: string;
-  isBottomBack?: boolean;
   hideBack?: boolean;
   hideNext?: boolean;
   children: React.ReactNode;
@@ -23,7 +21,6 @@ export default function ScreenWithNavigation({
   userData,
   validate,
   buttonText,
-  isBottomBack,
   hideBack,
   hideNext,
   children,
@@ -57,7 +54,7 @@ export default function ScreenWithNavigation({
       className="padding-9 padding-top-0"
       onSubmit={handleSubmit}
     >
-      {!hideBack && !isBottomBack && (
+      {!hideBack && (
         <NavigateBack userData={userData} screenName={screenName} />
       )}
       {children}
@@ -68,9 +65,6 @@ export default function ScreenWithNavigation({
           validate={validate}
           buttonText={buttonText}
         />
-      )}
-      {!hideBack && isBottomBack && (
-        <NavigateBackB userData={userData} screenName={screenName} />
       )}
       <input type="submit" hidden />
     </Form>
