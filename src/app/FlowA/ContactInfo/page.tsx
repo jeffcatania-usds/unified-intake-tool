@@ -5,7 +5,6 @@ import {
   FormGroup,
   ErrorMessage,
   Label,
-  Checkbox,
   TextInputMask,
   Fieldset,
   Radio,
@@ -28,7 +27,6 @@ export default function ContactInfo() {
   const screenName = ContactInfoMetadata.name;
   const { userData, updateUserData } = useUserDataContext();
   const [validated, setValidated] = useState(false);
-  const [emailNotAvailable, setEmailNotAvailable] = useState(false);
 
   const handleFirstNameChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -46,12 +44,6 @@ export default function ContactInfo() {
 
   const handlePhoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     updateUserData(CONTACT_PHONE, event.target.value);
-  };
-
-  const handleEmailNotAvailableChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    setEmailNotAvailable(event.target.checked);
   };
 
   const handleContactPermissionChange = (
@@ -191,9 +183,18 @@ export default function ContactInfo() {
               onChange={handleLastNameChange}
             />
           </FormGroup>
+          <div>
+            Provide your email or phone number
+            <abbr
+              title="required"
+              className="usa-hint usa-hint--required text-no-underline"
+            >
+              *
+            </abbr>
+          </div>
           <FormGroup error={validated && !isValid()}>
             <Label htmlFor="email">
-              Email address (optional)
+              Email
               <br />
               <span className="usa-hint">For example, Name@domain.com</span>
             </Label>
@@ -210,36 +211,27 @@ export default function ContactInfo() {
               onChange={handleEmailChange}
             />
           </FormGroup>
-          <Checkbox
-            id="emailNotAvailable"
-            name="emailNotAvailable"
-            label="I don't have an email address"
-            checked={emailNotAvailable}
-            onChange={handleEmailNotAvailableChange}
-          />
-          {emailNotAvailable && (
-            <FormGroup error={validated && !isPhoneValid()}>
-              <Label htmlFor="email">
-                Phone number (optional)
-                <br />
-                <span className="usa-hint">For example, 555-555-5555</span>
-              </Label>
-              {validated && !isPhoneValid() && (
-                <ErrorMessage id="email-error">
-                  Please provide a valid phone number.
-                </ErrorMessage>
-              )}
-              <TextInputMask
-                id="phone"
-                name="phone"
-                type="tel"
-                value={userData[CONTACT_PHONE]}
-                onChange={handlePhoneChange}
-                mask="___-___-____"
-                pattern="\d{3}-\d{3}-\d{4}"
-              />
-            </FormGroup>
-          )}
+          <FormGroup error={validated && !isPhoneValid()}>
+            <Label htmlFor="email">
+              Phone number
+              <br />
+              <span className="usa-hint">For example, 555-555-5555</span>
+            </Label>
+            {validated && !isPhoneValid() && (
+              <ErrorMessage id="email-error">
+                Please provide a valid phone number.
+              </ErrorMessage>
+            )}
+            <TextInputMask
+              id="phone"
+              name="phone"
+              type="tel"
+              value={userData[CONTACT_PHONE]}
+              onChange={handlePhoneChange}
+              mask="___-___-____"
+              pattern="\d{3}-\d{3}-\d{4}"
+            />
+          </FormGroup>
         </>
       )}
     </ScreenWithNavigation>
