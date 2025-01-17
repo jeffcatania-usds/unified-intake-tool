@@ -36,6 +36,7 @@ import { useEffect, useState } from "react";
 import { WhatHappenedBMetadata } from "./metadata";
 import { z } from "zod";
 import ScreenWithNavigation from "@/_components/ScreenWithNavigation";
+import RequiredAsterisk from "@/_components/RequiredAsterisk";
 
 export default function WhatHappenedB() {
   const screenName = WhatHappenedBMetadata.name;
@@ -276,14 +277,7 @@ export default function WhatHappenedB() {
       <FormGroup error={validated && !isProductNameValid()}>
         <Label htmlFor="productName">
           Product name
-          {isProductNameRequired && (
-            <abbr
-              title="required"
-              className="usa-hint usa-hint--required text-no-underline"
-            >
-              *
-            </abbr>
-          )}
+          {isProductNameRequired && <RequiredAsterisk />}
           <br />
           <span className="usa-hint">
             Include as much detail as possible, including the brand.
@@ -300,7 +294,8 @@ export default function WhatHappenedB() {
           type="text"
           value={userData[PRODUCT_NAME]}
           onChange={handleProductNameChange}
-          required
+          required={isProductNameRequired}
+          aria-required={isProductNameRequired}
         />
       </FormGroup>
       {userData[PRODUCT_TYPE] === "Drug" && (
@@ -337,12 +332,7 @@ export default function WhatHappenedB() {
       >
         <Label htmlFor="whatHappened">
           Describe what happened, step by step, and the timing
-          <abbr
-            title="required"
-            className="usa-hint usa-hint--required text-no-underline"
-          >
-            *
-          </abbr>
+          <RequiredAsterisk />
           <br />
           <span className="usa-hint">
             When first using the product, how long did it take before problems
@@ -363,17 +353,13 @@ export default function WhatHappenedB() {
           onChange={handleDescriptionChange}
           maxLength={4000}
           required
+          aria-required="true"
         />
       </FormGroup>
       <FormGroup error={validated && !isDateValid()}>
         <Label htmlFor="eventDateMonth" className="margin-bottom-neg-2">
           When did this happen?
-          <abbr
-            title="required"
-            className="usa-hint usa-hint--required text-no-underline"
-          >
-            *
-          </abbr>
+          <RequiredAsterisk />
           <br />
           <span className="usa-hint">
             For example: October 1, 2024
@@ -436,6 +422,7 @@ export default function WhatHappenedB() {
             onChange={handleYearChange}
             onBlur={autoCompleteYear}
             required
+            aria-required="true"
           />
         </DateInputGroup>
       </FormGroup>
