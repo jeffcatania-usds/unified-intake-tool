@@ -111,7 +111,7 @@ export default function SubmissionType() {
             id="illegalActivityOrFraudSubmissionType"
             value="illegalActivityOrFraudSubmissionType"
             name="SubmissionType"
-            label="Illegal activity or fraud"
+            label="Illegal activity, fraud, or misconduct"
             checked={userData[SUBMISSION_TYPE]?.includes(
               "illegalActivityOrFraudSubmissionType",
             )}
