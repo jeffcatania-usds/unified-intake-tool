@@ -31,6 +31,7 @@ import {
   WHAT_HAPPENED_OUTCOME,
   WHAT_HAPPENED_DIAGNOSIS,
   PREVIOUSLY_REPORTED_TO_MANUFACTURER,
+  BARCODE,
 } from "@/_contexts/UserDataProvider";
 import { useEffect, useState } from "react";
 import { WhatHappenedBMetadata } from "./metadata";
@@ -61,6 +62,10 @@ export default function WhatHappenedB() {
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     updateUserData(PRODUCT_NAME, event.target.value);
+  };
+
+  const handleBarcodeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    updateUserData(BARCODE, event.target.value);
   };
 
   const handleNDCChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -296,6 +301,22 @@ export default function WhatHappenedB() {
           onChange={handleProductNameChange}
           required={isProductNameRequired}
           aria-required={isProductNameRequired}
+        />
+      </FormGroup>
+      <FormGroup>
+        <Label htmlFor="barcode">
+          UPC number (optional)
+          <br />
+          <span className="usa-hint">
+            This 12-digit number is on the barcode of the product or packaging.
+          </span>
+        </Label>
+        <TextInput
+          id="barcode"
+          name="barcode"
+          type="text"
+          value={userData[BARCODE]}
+          onChange={handleBarcodeChange}
         />
       </FormGroup>
       {userData[PRODUCT_TYPE] === "Drug" && (
