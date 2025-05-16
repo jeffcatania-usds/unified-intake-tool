@@ -1,10 +1,11 @@
 import Image from "next/image";
+import FDALogo from "../../../public/FDA_Logo_Icon_White.svg"
 
 const FakeHeader = () => (
   <header className="usa-header usa-header--extended" role="banner">
     <div style={{ backgroundColor: "#222c67", padding: "10px", width: "100%" }}>
       <Image
-        src="/site/joefarhavenusds/unified-intake-tool/FDA_Logo_Icon_White.svg"
+        src={FDALogo}
         style={{ height: 80, paddingTop: "10px", paddingLeft: "10px" }}
         alt="FDA Logo"
       />
