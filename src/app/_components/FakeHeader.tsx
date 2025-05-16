@@ -1,5 +1,5 @@
 import Image from "next/image";
-import FDALogo from "../../../public/FDA_Logo_Icon_White.svg"
+import FDALogo from "./FDA_Logo_Icon_White.svg";
 
 const FakeHeader = () => (
   <header className="usa-header usa-header--extended" role="banner">
