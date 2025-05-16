@@ -4,7 +4,11 @@ const FakeHeader = () => (
   <header className="usa-header usa-header--extended" role="banner">
     <div style={{ backgroundColor: "#222c67", padding: "10px", width: "100%" }}>
       <Image
-        src="/site/joefarhavenusds/unified-intake-tool/FDA_Logo_Icon_White.svg"
+        src={
+          "/site/jeffcatania-usds/unified-intake-tool/FDA_Logo_Icon_White.svg"
+        }
+        width={80}
+        height={80}
         style={{ height: 80, paddingTop: "10px", paddingLeft: "10px" }}
         alt="FDA Logo"
       />
